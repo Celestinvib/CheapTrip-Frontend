@@ -1,0 +1,97 @@
+<div class="container">
+  <br>
+  <div class="row">
+      <h1 class="heading1">Cuentas</h1>
+  </div>
+  <div class="row mt-4">
+      <div class="d-flex justify-content-between">
+          <div>
+              Mostrar:
+              <select name="registers" id="registers">
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+              </select>
+          </div>
+          <div>
+              <form class="d-flex">
+                  <input class="form-control me-2" type="text" placeholder="Buscar">
+                  <button class="btn btn-primary" type="button"><i class="bi bi-search"></i></button>
+                </form>
+          </div>
+      </div>
+  </div>
+  <br>
+  <div class="row">
+      <table class="table table-bordered table-hover">
+          <thead class="table-dark">
+              <tr>
+                  <th scope="col">
+                      <div>Nombre</div>
+                  <th scope="col">
+                      <div>Fecha de salida</div>
+                  </th>
+                  <th scope="col">
+                      <div>Precio</div>
+                  </th>
+                  <th scope="col">
+                    <div>Acciones</div>
+                </th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <th scope="row">Ruta por las Ruas Portuguesas</th>
+                  <td>19/10/2022</td>
+                  <td>250€</td>
+                  <td>
+                      <button type="button" class="btn btn-success btn-sm">
+                          <i class="bi bi-pencil-square"></i>
+                      </button>
+                      <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                          <i class="bi bi-trash"></i>
+                      </button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+      <!-- Modal -->
+      <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">¿Cancelar Reserva?</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+              ¿Estas seguro de que quieres cancelar tu reserva?
+              </div>
+              <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-danger">Cancelar Reserva</button>
+              </div>
+          </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="row">
+      <div class="d-flex justify-content-between">
+          <div>
+              <button type="button" class="btn btn-primary"><a href="#">Agregar Usuario</a></button>
+          </div>
+          <ul class="pagination">
+              <li class="page-item text-secondary">
+                  <a class="page-link text-secondary">Anterior</a>
+              </li>
+              <li class="page-item">
+                  <a class="page-link" href="#">1</a>
+              </li>
+              <li class="page-item ">
+                  <a class="page-link text-secondary" href="#">Siguiente</a>
+              </li>
+          </ul>
+      </div>
+
+  </div>
+</div>
