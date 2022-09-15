@@ -10,46 +10,46 @@ import { MatDividerModule} from '@angular/material/divider';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './page-bars/navbar/navbar.component';
 import { MainComponent } from './main/main.component';
-import { PerfilNavBarComponent } from './perfil-nav-bar/perfil-nav-bar.component';
-import { CholloComponent } from './chollo/chollo.component';
-import { PerfilComponent } from './perfil/perfil.component';
-import { FiltrosComponent } from './filtros/filtros.component';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './page-bars/footer/footer.component';
 import { LoginComponent } from '../app/access/login/login.component';
 import { SingupComponent } from './access/singup/singup.component';
 import { ForgotpasswordComponent } from './access/forgotpassword/forgotpassword.component';
-import { InfocholloComponent } from './infochollo/infochollo.component';
-import { TerminosyCondicionesComponent } from './terminosy-condiciones/terminosy-condiciones.component';
-import { CookiesComponent } from './cookies/cookies.component';
-import { ChollosReservadosComponent } from './perfil-nav-bar/paginas/chollos-reservados/chollos-reservados.component';
-import { ChollosFavoritosComponent } from './perfil-nav-bar/paginas/chollos-favoritos/chollos-favoritos.component';
-import { DatosPersonalesComponent } from './perfil-nav-bar/paginas/datos-personales/datos-personales.component';
-import { ContadorComponent } from './contador/contador.component';
-import { DesplegablescholloComponent } from './desplegableschollo/desplegableschollo.component';
+import { CookiesComponent } from './politycs/cookies/cookies.component';
+import { TermsAndConditionsComponent } from './politycs/terms-and-conditions/terms-and-conditions.component';
+import { BargainComponent } from './bargains/bargain/bargain.component';
+import { BargainInformationComponent } from './bargains/bargain-information/bargain-information.component';
+import { BargainAccordionComponent } from './bargains/bargain-accordion/bargain-accordion.component';
+import { BargainCountdownComponent } from './bargains/bargain-countdown/bargain-countdown.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ProfileNavBarComponent } from './page-bars/profile-nav-bar/profile-nav-bar.component';
+import { BargainsBookedComponent } from './profile/paginas/bargains-booked/bargains-booked.component';
+import { BargainsBookmarkedComponent } from './profile/paginas/bargains-bookmarked/bargains-bookmarked.component';
+import { PersonalDataComponent } from './profile/paginas/personal-data/personal-data.component';
+import { FiltersComponent } from './main/filters/filters.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     MainComponent,
-    PerfilNavBarComponent,
-    CholloComponent,
-    PerfilComponent,
-    FiltrosComponent,
     FooterComponent,
     LoginComponent,
     SingupComponent,
     ForgotpasswordComponent,
-    InfocholloComponent,
-    TerminosyCondicionesComponent,
     CookiesComponent,
-    ChollosReservadosComponent,
-    ChollosFavoritosComponent,
-    DatosPersonalesComponent,
-    ContadorComponent,
-    DesplegablescholloComponent
+    TermsAndConditionsComponent,
+    BargainComponent,
+    BargainInformationComponent,
+    BargainAccordionComponent,
+    BargainCountdownComponent,
+    ProfileComponent,
+    ProfileNavBarComponent,
+    BargainsBookedComponent,
+    BargainsBookmarkedComponent,
+    PersonalDataComponent,
+    FiltersComponent
   ],
   imports: [
     BrowserModule,
