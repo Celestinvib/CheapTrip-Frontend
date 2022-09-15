@@ -10,6 +10,7 @@ import { MatDividerModule} from '@angular/material/divider';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { NavbarComponent } from './page-bars/navbar/navbar.component';
 import { MainComponent } from './main/main.component';
 import { FooterComponent } from './page-bars/footer/footer.component';
@@ -28,6 +29,8 @@ import { BargainsBookedComponent } from './profile/paginas/bargains-booked/barga
 import { BargainsBookmarkedComponent } from './profile/paginas/bargains-bookmarked/bargains-bookmarked.component';
 import { PersonalDataComponent } from './profile/paginas/personal-data/personal-data.component';
 import { FiltersComponent } from './main/filters/filters.component';
+import { CitiesListComponent } from './components/admin/city/cities-list/cities-list.component';
+import { CityAddComponent } from './components/admin/city/city-add/city-add.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,9 @@ import { FiltersComponent } from './main/filters/filters.component';
     BargainsBookedComponent,
     BargainsBookmarkedComponent,
     PersonalDataComponent,
-    FiltersComponent
+    FiltersComponent,
+    CitiesListComponent,
+    CityAddComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,87 @@
+<div class="container">
+  <br>
+  <div class="row">
+      <h1 class="heading1">Ciudades</h1>
+  </div>
+  <div class="row mt-4">
+      <div class="d-flex">
+          <div>
+              Mostrar:
+              <select name="registers" id="registers">
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+              </select>
+          </div>
+      </div>
+  </div>
+  <br>
+  <div class="row">
+      <table class="table table-bordered table-hover">
+          <thead class="table-dark">
+              <tr>
+                  <th scope="col">
+                      <div>Id</div>
+                  <th scope="col">
+                      <div>Nombre</div>
+                  </th>
+                  <th scope="col">
+                      <div>Acciones</div>
+                  </th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let city of cities; let i = index">
+                  <th scope="row">{{city.id}}</th>
+                  <td>{{city.name}}</td>
+                  <td>
+                      <button type="button" class="btn btn-success btn-sm">
+                          <i class="bi bi-pencil-square"></i>
+                      </button>
+                      <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                          <i class="bi bi-trash"></i>
+                      </button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+      <!-- Modal -->
+      <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">¿Eliminar Registro?</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+              ¿Estas seguro que quieres borrar el registro, se borrará definiticamente?
+              </div>
+              <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-danger">Eliminar registro</button>
+              </div>
+          </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="row">
+      <div class="d-flex justify-content-between">
+          <div>
+              <button type="button" class="btn btn-primary"><a href="#">Agregar Ciudad</a></button>
+          </div>
+          <ul class="pagination">
+              <li class="page-item text-secondary">
+                  <a class="page-link text-secondary">Anterior</a>
+              </li>
+              <li class="page-item">
+                  <a class="page-link" href="#">1</a>
+              </li>
+              <li class="page-item ">
+                  <a class="page-link text-secondary" href="#">Siguiente</a>
+              </li>
+          </ul>
+      </div>
+
+  </div>
+</div>
