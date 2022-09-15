@@ -27,6 +27,7 @@ import { ChollosReservadosComponent } from './perfil-nav-bar/paginas/chollos-res
 import { ChollosFavoritosComponent } from './perfil-nav-bar/paginas/chollos-favoritos/chollos-favoritos.component';
 import { DatosPersonalesComponent } from './perfil-nav-bar/paginas/datos-personales/datos-personales.component';
 import { ContadorComponent } from './contador/contador.component';
+import { DesplegablescholloComponent } from './desplegableschollo/desplegableschollo.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ContadorComponent } from './contador/contador.component';
     ChollosReservadosComponent,
     ChollosFavoritosComponent,
     DatosPersonalesComponent,
-    ContadorComponent
+    ContadorComponent,
+    DesplegablescholloComponent
   ],
   imports: [
     BrowserModule,

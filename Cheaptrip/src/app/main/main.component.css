@@ -1,7 +1,5 @@
-div.cards {
-  margin: 80px auto;
-  max-width: 700px;
-  text-align: center;
+.col-8 {
+  margin-top: 40px;
 }
 
 .col-3 {
