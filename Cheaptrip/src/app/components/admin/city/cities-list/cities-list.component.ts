@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CityService } from '../../../../services/city.service';
+import { CityService } from '../../../../services/city/city.service';
 
 @Component({
   selector: 'app-cities-list',
