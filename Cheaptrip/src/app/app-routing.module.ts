@@ -11,6 +11,7 @@ import { LoginComponent } from './components/access/login/login.component';
 import { BasicLoginComponent } from './components/access/basic-login/basic-login.component';
 import { SingupComponent } from './components/access/singup/singup.component';
 import { ForgotpasswordComponent } from './components/access/forgotpassword/forgotpassword.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 
@@ -54,6 +55,10 @@ const routes: Routes = [
   {
     path: 'password_reset',
     component: ForgotpasswordComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
   }
 
 
