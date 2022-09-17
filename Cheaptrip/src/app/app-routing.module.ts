@@ -8,6 +8,7 @@ import { CityUpdateComponent } from './components/admin/city/city-update/city-up
 import { CookiesComponent } from './components/politycs/cookies/cookies.component';
 import { TermsAndConditionsComponent } from './components/politycs/terms-and-conditions/terms-and-conditions.component';
 import { LoginComponent } from './components/access/login/login.component';
+import { BasicLoginComponent } from './components/access/basic-login/basic-login.component';
 import { SingupComponent } from './components/access/singup/singup.component';
 import { ForgotpasswordComponent } from './components/access/forgotpassword/forgotpassword.component';
 
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'basic-login',
+    component: BasicLoginComponent
   },
   {
     path: 'signup',
