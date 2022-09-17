@@ -8,3 +8,7 @@ footer{
   --bs-text-opacity: 1;
   color: white!important;
 }
+
+#logo{
+  cursor: pointer;
+}
