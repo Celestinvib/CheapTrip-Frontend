@@ -1,1 +1,35 @@
-<p>basic-login works!</p>
+<div class="container">
+  <div class="card card-container mt-4 p-4">
+    <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="form-group">
+        <label for="email" class="form-label">Email</label>
+        <input type="text" class="form-control" id="email" name="email"  [(ngModel)]="form.email" required #email="ngModel">
+        <div class="mt-2 alert alert-danger" role="alert" *ngIf="email.errors && f.submitted">
+          Username is required!
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password" class="form-label">Password</label>
+        <input type="text" class="form-control" id="password" name="password"  [(ngModel)]="form.password" required minlength="6" #password="ngModel">
+        <div class="mt-2 alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">
+            Password is required!
+          </div>
+      </div><br>
+      <div class="form-group">
+        <button class="btn btn-primary">Login</button>
+      </div>
+      <div class="form-group">
+        <div class="mt-2 alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
+          Login failed...
+          Check the fields and try again
+        </div>
+      </div>
+    </form>
+
+    <div class="mt-2 alert alert-success" *ngIf="isLoggedIn">
+      Welcome!!
+    </div>
+
+  </div>
+</div>
