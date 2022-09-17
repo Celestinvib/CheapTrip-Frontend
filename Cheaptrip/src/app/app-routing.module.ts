@@ -7,6 +7,9 @@ import { CityAddComponent } from './components/admin/city/city-add/city-add.comp
 import { CityUpdateComponent } from './components/admin/city/city-update/city-update.component';
 import { CookiesComponent } from './components/politycs/cookies/cookies.component';
 import { TermsAndConditionsComponent } from './components/politycs/terms-and-conditions/terms-and-conditions.component';
+import { LoginComponent } from './components/access/login/login.component';
+import { SingupComponent } from './components/access/singup/singup.component';
+import { ForgotpasswordComponent } from './components/access/forgotpassword/forgotpassword.component';
 
 
 
@@ -34,6 +37,18 @@ const routes: Routes = [
   {
     path:'terms-of-use',
     component: TermsAndConditionsComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'signup',
+    component: SingupComponent
+  },
+  {
+    path: 'password_reset',
+    component: ForgotpasswordComponent
   }
 
 

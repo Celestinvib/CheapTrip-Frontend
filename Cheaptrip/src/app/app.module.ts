@@ -35,6 +35,7 @@ import { CityAddComponent } from './components/admin/city/city-add/city-add.comp
 import { CityUpdateComponent } from './components/admin/city/city-update/city-update.component';
 import { AdminNavComponent } from './components/admin/admin-nav/admin-nav.component';
 import { HomeComponent } from './components/admin/home/home.component';
+import { NewpasswordComponent } from './components/access/newpassword/newpassword.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { HomeComponent } from './components/admin/home/home.component';
     CityAddComponent,
     CityUpdateComponent,
     AdminNavComponent,
-    HomeComponent
+    HomeComponent,
+    NewpasswordComponent
   ],
   imports: [
     BrowserModule,
