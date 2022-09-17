@@ -1,0 +1,43 @@
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <a class=" btn btn-primary text-light" routerLink="/cities"><i class="bi bi-caret-left"></i></a>
+  <form class="row g-3 border border-dark rounded-2 p-3">
+
+      <div class="col">
+      <label for="ICCityName" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="ICCityName" required [(ngModel)]="city.name" name="name" value="{{city.name}}">
+      </div>
+        <div class="row mt-4">
+          <div class="d-flex justify-content-between">
+              <div>
+                  <button type="submit" class="btn btn-success" (click)="onSubmit()">Actualizar</button>
+              </div>
+              <div>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                  Eliminar
+              </button>
+            </div>
+          </div>
+        </div>
+  </form>
+</div>
+      <!-- Modal -->
+      <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">¿Eliminar Registro?</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            ¿Estas seguro que quieres borrar el registro, se borrará definiticamente?
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-danger"  data-bs-dismiss="modal" >Eliminar registro</button>
+            </div>
+        </div>
+        </div>
+    </div>

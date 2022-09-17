@@ -32,6 +32,7 @@ import { PersonalDataComponent } from './components/profile/paginas/personal-dat
 import { FiltersComponent } from './components/main/filters/filters.component';
 import { CitiesListComponent } from './components/admin/city/cities-list/cities-list.component';
 import { CityAddComponent } from './components/admin/city/city-add/city-add.component';
+import { CityUpdateComponent } from './components/admin/city/city-update/city-update.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { CityAddComponent } from './components/admin/city/city-add/city-add.comp
     PersonalDataComponent,
     FiltersComponent,
     CitiesListComponent,
-    CityAddComponent
+    CityAddComponent,
+    CityUpdateComponent
   ],
   imports: [
     BrowserModule,
