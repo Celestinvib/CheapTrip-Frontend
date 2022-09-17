@@ -42,7 +42,7 @@ export class CityUpdateComponent implements OnInit {
       },
       (error) => {
         console.log('There has been a getting that city');
-        this.router.navigate(['/cities']);
+        this.router.navigate(['/site-admin/cities']);
       }
     );
   }
@@ -73,7 +73,7 @@ export class CityUpdateComponent implements OnInit {
           id: 0 ,
           name: ''
         }
-        this.router.navigate(['/cities']);
+        this.router.navigate(['/site-admin/cities']);
       },
       (error) => {
         console.log('There has been a problem trying to delete the city');

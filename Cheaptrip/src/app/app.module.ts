@@ -33,6 +33,8 @@ import { FiltersComponent } from './components/main/filters/filters.component';
 import { CitiesListComponent } from './components/admin/city/cities-list/cities-list.component';
 import { CityAddComponent } from './components/admin/city/city-add/city-add.component';
 import { CityUpdateComponent } from './components/admin/city/city-update/city-update.component';
+import { AdminNavComponent } from './components/admin/admin-nav/admin-nav.component';
+import { HomeComponent } from './components/admin/home/home.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { CityUpdateComponent } from './components/admin/city/city-update/city-up
     FiltersComponent,
     CitiesListComponent,
     CityAddComponent,
-    CityUpdateComponent
+    CityUpdateComponent,
+    AdminNavComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

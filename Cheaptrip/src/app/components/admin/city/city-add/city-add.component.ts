@@ -39,7 +39,7 @@ export class CityAddComponent implements OnInit {
     .subscribe(
       response => {
         console.log(response);
-        this.router.navigate(['/cities-list']);
+        this.router.navigate(['/site-admin/cities-list']);
       },
       error => {
         console.log(error);
