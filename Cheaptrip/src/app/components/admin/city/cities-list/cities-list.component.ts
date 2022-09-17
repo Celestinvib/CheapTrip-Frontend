@@ -10,6 +10,8 @@ export class CitiesListComponent implements OnInit {
 
   cities:any = null;
 
+  idCityToDelete:number = 0;
+
   constructor(private cityService: CityService) { }
 
   ngOnInit(): void {
@@ -22,6 +24,26 @@ export class CitiesListComponent implements OnInit {
           console.log('There has been a problem');
         }
       );
+  }
+
+  MaybeDeleteThisCity(cityId: number){
+    this.idCityToDelete = cityId;
+  }
+
+  deleteCity() {
+    this.cityService.delete(this.idCityToDelete)
+    .subscribe(
+      (result) => {
+        this.reloadPage();
+      },
+      (error) => {
+        console.log('There has been a problem trying to delete the city');
+      }
+    );
+  }
+
+  reloadPage(): void {
+    window.location.reload();
   }
 
 

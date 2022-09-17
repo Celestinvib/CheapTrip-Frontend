@@ -30,7 +30,7 @@ export class CityUpdateComponent implements OnInit {
           this.getCity();
         },
         (error) => {
-          this.router.navigate(['/cities']);
+          console.log(error);
         });
   }
 
@@ -41,7 +41,8 @@ export class CityUpdateComponent implements OnInit {
         this.city = result;
       },
       (error) => {
-        console.log('There has been a problem');
+        console.log('There has been a getting that city');
+        this.router.navigate(['/cities']);
       }
     );
   }
@@ -62,6 +63,22 @@ export class CityUpdateComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+
+  deleteCity() {
+    this.cityService.delete(this.city.id)
+    .subscribe(
+      (result) => {
+        this.city = {
+          id: 0 ,
+          name: ''
+        }
+        this.router.navigate(['/cities']);
+      },
+      (error) => {
+        console.log('There has been a problem trying to delete the city');
+      }
+    );
   }
 
 }
