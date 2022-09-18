@@ -4,7 +4,7 @@
   <div class="row">
       <h1 class="heading1">Ciudades</h1>
   </div>
-  <div class="row mt-4">
+  <div class="row mt-4" *ngIf="cities!=null; else wait">
       <div class="d-flex">
           <div>
               Mostrar:
@@ -17,7 +17,7 @@
       </div>
   </div>
   <br>
-  <div class="row" *ngIf="cities!=null; else wait">
+  <div class="row" *ngIf="cities!=null;">
       <table class="table table-bordered table-hover">
           <thead class="table-dark">
               <tr>
@@ -72,7 +72,7 @@
           <div>
               <a class="btn btn-primary text-light" routerLink="/site-admin/cities/add">Agregar Ciudad</a>
           </div>
-          <ul class="pagination">
+          <ul class="pagination" *ngIf="cities!=null;">
               <li class="page-item text-secondary">
                   <a class="page-link text-secondary">Anterior</a>
               </li>
@@ -87,5 +87,5 @@
 
   </div>
 </div>
-<ng-template #wait>Waiting for the data, it could takes a couple of seconds...</ng-template>
+<ng-template #wait>Esperando los datos, esto puede tardar un par de segundos...</ng-template>
 

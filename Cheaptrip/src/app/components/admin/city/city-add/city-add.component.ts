@@ -11,6 +11,10 @@ import { City } from '../../../../models/city/city.model';
 })
 export class CityAddComponent implements OnInit {
 
+  form: any = {
+    name:null
+    };
+
   city: City = {
     name: ''
   }
@@ -23,16 +27,15 @@ export class CityAddComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   onSubmit(): void {
-    if( this.city.name != '') {
+    if( this.form.name != '') {
       this.saveCity();
     }
   }
 
   saveCity(): void {
     const data = {
-      name: this.city.name
+      name: this.form.name
     }
 
     this.cityService.create(data)
