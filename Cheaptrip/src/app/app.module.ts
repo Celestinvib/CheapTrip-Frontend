@@ -7,6 +7,7 @@ import { MatSidenavModule} from '@angular/material/sidenav';
 import { MatButtonModule} from '@angular/material/button';
 import { MatIconModule} from '@angular/material/icon';
 import { MatDividerModule} from '@angular/material/divider';
+import {MatExpansionModule} from '@angular/material/expansion';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -26,9 +27,9 @@ import { BargainAccordionComponent } from './components/bargains/bargain-accordi
 import { BargainCountdownComponent } from './components/bargains/bargain-countdown/bargain-countdown.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProfileNavBarComponent } from './components/page-bars/profile-nav-bar/profile-nav-bar.component';
-import { BargainsBookedComponent } from './components/profile/paginas/bargains-booked/bargains-booked.component';
-import { BargainsBookmarkedComponent } from './components/profile/paginas/bargains-bookmarked/bargains-bookmarked.component';
-import { PersonalDataComponent } from './components/profile/paginas/personal-data/personal-data.component';
+import { BargainsBookedComponent } from './components/profile/pages/bargains-booked/bargains-booked.component';
+import { BargainsBookmarkedComponent } from './components/profile/pages/bargains-bookmarked/bargains-bookmarked.component';
+import { PersonalDataComponent } from './components/profile/pages/personal-data/personal-data.component';
 import { FiltersComponent } from './components/main/filters/filters.component';
 import { CitiesListComponent } from './components/admin/city/cities-list/cities-list.component';
 import { CityAddComponent } from './components/admin/city/city-add/city-add.component';
@@ -68,7 +69,9 @@ import { CityAddComponent } from './components/admin/city/city-add/city-add.comp
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
-    HttpClientModule
+    HttpClientModule,
+    MatExpansionModule,
+    
 
   ],
   providers: [],
