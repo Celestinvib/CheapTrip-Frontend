@@ -1,9 +1,14 @@
 footer{
   background-color: #ee566f;
-
+  margin: 0px!important;
+  margin-top: 100px!important;
 }
 
 .text-muted {
   --bs-text-opacity: 1;
   color: white!important;
+}
+
+#logo{
+  cursor: pointer;
 }

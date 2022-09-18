@@ -1,3 +1,4 @@
+<app-admin-nav></app-admin-nav>
 <div class="container">
   <br>
   <div class="row">
@@ -16,7 +17,7 @@
       </div>
   </div>
   <br>
-  <div class="row">
+  <div class="row" *ngIf="cities!=null; else wait">
       <table class="table table-bordered table-hover">
           <thead class="table-dark">
               <tr>
@@ -35,10 +36,11 @@
                   <th scope="row">{{city.id}}</th>
                   <td>{{city.name}}</td>
                   <td>
-                      <button type="button" class="btn btn-success btn-sm">
-                          <i class="bi bi-pencil-square"></i>
-                      </button>
-                      <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                      <a class="btn btn-success btn-sm" routerLink="/site-admin/cities/update/show" [queryParams]="{id: city.id}">
+                        <i class="bi bi-pencil-square" ></i>
+                      </a>
+                      &nbsp;
+                      <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="MaybeDeleteThisCity(city.id)">
                           <i class="bi bi-trash"></i>
                       </button>
                   </td>
@@ -57,8 +59,8 @@
               ¿Estas seguro que quieres borrar el registro, se borrará definiticamente?
               </div>
               <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-danger">Eliminar registro</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-danger"  data-bs-dismiss="modal" (click)="deleteCity()">Eliminar registro</button>
               </div>
           </div>
           </div>
@@ -68,7 +70,7 @@
   <div class="row">
       <div class="d-flex justify-content-between">
           <div>
-              <button type="button" class="btn btn-primary"><a class="text-light" routerLink="/cities/add">Agregar Ciudad</a></button>
+              <a class="btn btn-primary text-light" routerLink="/site-admin/cities/add">Agregar Ciudad</a>
           </div>
           <ul class="pagination">
               <li class="page-item text-secondary">
@@ -85,3 +87,5 @@
 
   </div>
 </div>
+<ng-template #wait>Waiting for the data, it could takes a couple of seconds...</ng-template>
+

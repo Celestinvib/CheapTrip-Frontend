@@ -33,6 +33,11 @@ import { PersonalDataComponent } from './components/profile/pages/personal-data/
 import { FiltersComponent } from './components/main/filters/filters.component';
 import { CitiesListComponent } from './components/admin/city/cities-list/cities-list.component';
 import { CityAddComponent } from './components/admin/city/city-add/city-add.component';
+import { CityUpdateComponent } from './components/admin/city/city-update/city-update.component';
+import { AdminNavComponent } from './components/admin/admin-nav/admin-nav.component';
+import { HomeComponent } from './components/admin/home/home.component';
+import { NewpasswordComponent } from './components/access/newpassword/newpassword.component';
+import { BasicLoginComponent } from './components/access/basic-login/basic-login.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +61,12 @@ import { CityAddComponent } from './components/admin/city/city-add/city-add.comp
     PersonalDataComponent,
     FiltersComponent,
     CitiesListComponent,
-    CityAddComponent
+    CityAddComponent,
+    CityUpdateComponent,
+    AdminNavComponent,
+    HomeComponent,
+    NewpasswordComponent,
+    BasicLoginComponent
   ],
   imports: [
     BrowserModule,

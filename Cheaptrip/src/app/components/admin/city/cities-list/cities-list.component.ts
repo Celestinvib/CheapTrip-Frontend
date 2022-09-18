@@ -10,10 +10,12 @@ export class CitiesListComponent implements OnInit {
 
   cities:any = null;
 
-  constructor(private citiesService: CityService) { }
+  idCityToDelete:number = 0;
+
+  constructor(private cityService: CityService) { }
 
   ngOnInit(): void {
-    this.citiesService.getAll()
+    this.cityService.getAll()
       .subscribe(
         (result) => {
           this.cities = result;
@@ -23,5 +25,26 @@ export class CitiesListComponent implements OnInit {
         }
       );
   }
+
+  MaybeDeleteThisCity(cityId: number){
+    this.idCityToDelete = cityId;
+  }
+
+  deleteCity() {
+    this.cityService.delete(this.idCityToDelete)
+    .subscribe(
+      (result) => {
+        this.reloadPage();
+      },
+      (error) => {
+        console.log('There has been a problem trying to delete the city');
+      }
+    );
+  }
+
+  reloadPage(): void {
+    window.location.reload();
+  }
+
 
 }

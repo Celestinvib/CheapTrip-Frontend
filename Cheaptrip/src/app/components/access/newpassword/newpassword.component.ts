@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-cookies',
-  templateUrl: './cookies.component.html',
+  selector: 'app-newpassword',
+  templateUrl: './newpassword.component.html',
   styleUrls: ['../style.css']
 })
-export class CookiesComponent implements OnInit {
+export class NewpasswordComponent implements OnInit {
 
   constructor() { }
 
