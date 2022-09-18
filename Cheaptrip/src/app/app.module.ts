@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './helpers/auth.interceptor';
 
+import {NgxPaginationModule} from 'ngx-pagination';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -70,6 +72,7 @@ import { BasicLoginComponent } from './components/access/basic-login/basic-login
     HomeComponent,
     NewpasswordComponent,
     BasicLoginComponent
+
   ],
   imports: [
     BrowserModule,
@@ -84,7 +87,7 @@ import { BasicLoginComponent } from './components/access/basic-login/basic-login
     MatDividerModule,
     HttpClientModule,
     MatExpansionModule,
-
+    NgxPaginationModule
 
   ],
   providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
