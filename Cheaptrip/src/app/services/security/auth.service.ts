@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const API_URL = "https://pcn-cheaptrip-api.herokuapp.com/"
+const API_URL = "http://pcn-cheaptrip-api.herokuapp.com/"
 
 const httpOptions = {
   headers: new HttpHeaders ({ 'Content-Type' : 'application/json' })

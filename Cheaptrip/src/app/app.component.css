@@ -1,4 +1,4 @@
-:root {
+:host {
   --main-bg-color: white;
   --font-family: black;
 
@@ -19,10 +19,9 @@
   --green-primary-color: #2bb35a;
   --green-subprimary-color: #1db352;
   --green-subprimary-color-2: #68db90;
-
 }
 
-  .btn-primary {
+:host ::ng-deep .btn-primary {
     --bs-btn-color: #fff;
     --bs-btn-bg: var(--blue-primary-color);
     --bs-btn-border-color: var(--blue-subprimary-color);
@@ -39,12 +38,12 @@
 }
 
 
-.btn-primary  a{
+:host ::ng-deep .btn-primary  a{
   text-decoration: none;
   color: white;
 }
 
-.btn-warning{
+:host ::ng-deep .btn-warning{
   --bs-btn-color: rgb(54, 54, 54);
   --bs-btn-bg: var(--yellow-primary-color);
   --bs-btn-border-color: var(--yellow-subprimary-color);
@@ -59,7 +58,7 @@
   --bs-btn-disabled-color: #fff;
 }
 
-.btn-danger {
+:host ::ng-deep .btn-danger {
   --bs-btn-color: #fff;
   --bs-btn-bg: var(--red-primary-color);
   --bs-btn-border-color: var(--red-subprimary-color);
@@ -74,7 +73,7 @@
   --bs-btn-disabled-color: #fff;
 }
 
-.btn-success  {
+:host ::ng-deep .btn-success  {
   --bs-btn-color: #fff;
   --bs-btn-bg: var(--green-primary-color);
   --bs-btn-border-color: var(--green-subprimary-color);
@@ -89,6 +88,7 @@
   --bs-btn-disabled-color: #fff;
 }
 
+:host ::ng-deep
 .btn-primary,
 .btn-danger,
 .btn-warning,
@@ -96,3 +96,41 @@
  --bs-btn-focus-shadow-rgb: none ;
 }
 
+:host ::ng-deep h1 {
+  color: var(--blue-primary-color);
+}
+
+/*Site Administrator styles*/
+:host ::ng-deep .main-bg{
+  background-color: var(--sub-main-page-color-2);
+}
+
+:host ::ng-deep .navbar-brand{
+  color: white;
+}
+
+:host ::ng-deep .navbar-brand:hover{
+  color: rgb(218, 214, 214);
+}
+
+:host ::ng-deep .nav-link {
+color: white;
+}
+
+:host ::ng-deep .nav-link:hover {
+color: rgb(218, 214, 214);
+}
+
+:host ::ng-deep .nav-link:visited {
+  color: rgb(196, 195, 195);
+ }
+
+
+ :host ::ng-deep .btn-primary  a {
+  text-decoration: none;
+  color: white;
+}
+ /*Site Administrator pagination styles*/
+:host ::ng-deep .my-pagination  .ngx-pagination .current {
+  background: var(--blue-primary-color);
+}
