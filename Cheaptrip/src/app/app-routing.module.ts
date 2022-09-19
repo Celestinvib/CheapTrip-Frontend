@@ -12,6 +12,8 @@ import { BasicLoginComponent } from './components/access/basic-login/basic-login
 import { SingupComponent } from './components/access/singup/singup.component';
 import { ForgotpasswordComponent } from './components/access/forgotpassword/forgotpassword.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { MainComponent } from './components/main/main.component';
+import { BargainInformationComponent } from './components/bargains/bargain-information/bargain-information.component';
 
 
 
@@ -59,7 +61,15 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent
-  }
+  },
+  {
+    path: 'main',
+    component: MainComponent
+  },
+  {
+    path: 'bargain-info',
+    component: BargainInformationComponent
+  },
 
 
 ];
