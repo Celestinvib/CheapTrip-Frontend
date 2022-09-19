@@ -5,15 +5,15 @@
         <label for="email" class="form-label">Email</label>
         <input type="text" class="form-control" id="email" name="email"  [(ngModel)]="form.email" required #email="ngModel">
         <div class="mt-2 alert alert-danger" role="alert" *ngIf="email.errors && f.submitted">
-          Username is required!
+          Es obligatorio poner el correo electronico!
         </div>
       </div>
 
       <div class="form-group">
         <label for="password" class="form-label">Password</label>
-        <input type="text" class="form-control" id="password" name="password"  [(ngModel)]="form.password" required minlength="6" #password="ngModel">
+        <input type="text" class="form-control" id="password" name="password"  [(ngModel)]="form.password" required minlength="4" #password="ngModel">
         <div class="mt-2 alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">
-            Password is required!
+          Es obligatorio poner la contraseña!
           </div>
       </div><br>
       <div class="form-group">
@@ -21,14 +21,15 @@
       </div>
       <div class="form-group">
         <div class="mt-2 alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
-          Login failed...
-          Check the fields and try again
+          Error de inicio de sesion...
+          Revisa los campos e inténtalo de nuevo
         </div>
       </div>
     </form>
 
     <div class="mt-2 alert alert-success" *ngIf="isLoggedIn">
       Welcome!!
+      <button type="submit" class="btn btn-danger" (click)="logout()">Logout</button>
     </div>
 
   </div>

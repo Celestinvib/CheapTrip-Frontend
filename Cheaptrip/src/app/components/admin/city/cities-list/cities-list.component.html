@@ -4,12 +4,12 @@
   <div class="row">
       <h1 class="heading1">Ciudades</h1>
   </div>
-  <div class="row mt-4">
+  <div class="row mt-4" *ngIf="cities!=null; else wait">
       <div class="d-flex">
           <div>
               Mostrar:
-              <select name="registers" id="registers">
-                  <option value="5">5</option>
+              <select name="registers" id="registers" [(ngModel)]="ItemsViewed">
+                  <option value="5" selected>5</option>
                   <option value="10">10</option>
                   <option value="20">20</option>
               </select>
@@ -17,7 +17,7 @@
       </div>
   </div>
   <br>
-  <div class="row" *ngIf="cities!=null; else wait">
+  <div class="row" *ngIf="cities!=null;">
       <table class="table table-bordered table-hover">
           <thead class="table-dark">
               <tr>
@@ -32,7 +32,7 @@
               </tr>
           </thead>
           <tbody>
-              <tr *ngFor="let city of cities; let i = index">
+              <tr *ngFor="let city of cities | paginate: {itemsPerPage: ItemsViewed,currentPage: pageActual}; let i = index">
                   <th scope="row">{{city.id}}</th>
                   <td>{{city.name}}</td>
                   <td>
@@ -72,20 +72,18 @@
           <div>
               <a class="btn btn-primary text-light" routerLink="/site-admin/cities/add">Agregar Ciudad</a>
           </div>
-          <ul class="pagination">
-              <li class="page-item text-secondary">
-                  <a class="page-link text-secondary">Anterior</a>
-              </li>
-              <li class="page-item">
-                  <a class="page-link" href="#">1</a>
-              </li>
-              <li class="page-item ">
-                  <a class="page-link text-secondary" href="#">Siguiente</a>
-              </li>
-          </ul>
+          <div *ngIf="cities!=null;">
+
+            <pagination-controls
+            (pageChange)="pageActual = $event"
+            (maxSize)="5"
+            previousLabel="Anterior" nextLabel="Siguiente">
+          </pagination-controls>
+
+        </div>
       </div>
 
   </div>
 </div>
-<ng-template #wait>Waiting for the data, it could takes a couple of seconds...</ng-template>
+<ng-template #wait>Esperando los datos, esto puede tardar un par de segundos...</ng-template>
 

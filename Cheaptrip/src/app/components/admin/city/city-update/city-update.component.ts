@@ -54,7 +54,11 @@ export class CityUpdateComponent implements OnInit {
   }
 
   updateCity(): void {
-    this.cityService.update(this.city.id,this.city.name)
+    const data = {
+      name: this.city.name
+    }
+
+    this.cityService.update(this.city.id,data)
     .subscribe(
       response => {
         console.log(response);

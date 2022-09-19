@@ -40,8 +40,9 @@ export class BasicLoginComponent implements OnInit {
     this.authService.login(email, password)
     .subscribe(
       data => {
+        console.log('In!');
         this.tokenStorage.saveToken(JSON.stringify(data['token']).replace(/['"]+/g, ''));
-        this.tokenStorage.saveUser((this.form.username));
+        this.tokenStorage.saveUser((this.form.email));
 
         this.isLoginFailed = false;
         this.isLoggedIn = true;
@@ -56,6 +57,7 @@ export class BasicLoginComponent implements OnInit {
 
       },
       err => {
+        console.log('error')
         this.errorMessage = err;
         this.isLoginFailed = true;
       }
@@ -64,6 +66,13 @@ export class BasicLoginComponent implements OnInit {
 
   reloadPage(): void {
     window.location.reload();
+  }
+
+  logout()  {
+    this.tokenStorage.signOut()
+    this.isLoggedIn = false;
+    this.reloadPage();
+    this.router.navigate(['/login']);
   }
 
 }

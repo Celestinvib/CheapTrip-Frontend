@@ -4,11 +4,14 @@
   <br>
   <br>
   <a class=" btn btn-primary text-light" routerLink="/site-admin/cities"><i class="bi bi-caret-left"></i></a>
-  <form class="row g-3 border border-dark rounded-2 p-3">
+  <form class="row g-3 border border-dark rounded-2 p-3"  name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
 
       <div class="col">
       <label for="ICCityName" class="form-label">Nombre</label>
-      <input type="text" class="form-control" id="ICCityName" required [(ngModel)]="city.name" name="name">
+      <input type="text" class="form-control" id="ICCityName" required [(ngModel)]="city.name" name="name" required #name="ngModel">
+      <div class="mt-2 alert alert-danger" role="alert" *ngIf="name.errors && f.submitted">
+        ¡Se requiere el nombre!
+      </div>
       </div>
       <div class="col-12">
       <button type="submit" class="btn btn-primary" (click)="onSubmit()">Crear</button>

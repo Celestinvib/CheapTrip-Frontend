@@ -4,13 +4,20 @@ import { CityService } from '../../../../services/city/city.service';
 @Component({
   selector: 'app-cities-list',
   templateUrl: './cities-list.component.html',
-  styleUrls: ['./cities-list.component.css']
+  styleUrls: ['./cities-list.component.css'],
+
 })
 export class CitiesListComponent implements OnInit {
 
   cities:any = null;
 
   idCityToDelete:number = 0;
+
+  //Variables that manage pagination
+
+  pageActual: number = 1;  //Current page of the table
+
+  ItemsViewed: number = 5; //Items viewed in table
 
   constructor(private cityService: CityService) { }
 
@@ -46,5 +53,8 @@ export class CitiesListComponent implements OnInit {
     window.location.reload();
   }
 
+  changeItemsViewed(items:number): void {
+    this.ItemsViewed = items;
+  }
 
 }
