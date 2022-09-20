@@ -19,35 +19,38 @@ export class CityAddComponent implements OnInit {
     name: ''
   }
 
+  itemAdded: boolean = false;
+
   constructor(
     private cityService: CityService,
     private router: Router
     ) { }
 
   ngOnInit(): void {
+
   }
 
   onSubmit(): void {
-    if( this.form.name != '') {
+    if( this.city.name != '') {
       this.saveCity();
     }
   }
 
   saveCity(): void {
-    const data = {
-      name: this.form.name
-    }
 
-    this.cityService.create(data)
-    .subscribe(
-      response => {
-        console.log(response);
-        this.router.navigate(['/site-admin/cities-list']);
-      },
-      error => {
-        console.log(error);
-      }
-    )
+    const data = {
+      name: this.city.name
+    }
+     this.cityService.create(data)
+     .subscribe(
+       response => {
+         this.itemAdded= true;
+
+       },
+       error => {
+         console.log(error);
+       }
+     )
   }
 
 }

@@ -14,7 +14,10 @@
       </div>
       </div>
       <div class="col-12">
-      <button type="submit" class="btn btn-primary" (click)="onSubmit()">Crear</button>
+      <button type="submit" class="btn btn-primary">Crear</button>
       </div>
   </form>
+  <div class="mt-2 alert alert-success" *ngIf="itemAdded">
+    Ciudad añadida correctamente!!
+  </div>
 </div>
