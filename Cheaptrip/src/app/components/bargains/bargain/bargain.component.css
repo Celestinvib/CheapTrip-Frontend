@@ -33,13 +33,15 @@
 }
  div.card {
 	 background: #ffffff;
-	 display: inline-block;
 	 margin: 8px;
 	 perspective: 1000;
 	 position: relative;
 	 text-align: left;
 	 transition: all 0.3s 0s ease-in;
 	 z-index: 1;
+}
+.card__image{
+  width: 100%;
 }
  div.card img {
   border-radius: 10px;
