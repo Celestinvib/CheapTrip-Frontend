@@ -76,12 +76,11 @@
 	 width: 12px;
 }
  div.card div.card-title a.toggle-info span.left {
-	 right: 13px;
-	 transform: rotate(45deg);
+	 right: 9px;
+	 transform: rotate(90deg);
 }
  div.card div.card-title a.toggle-info span.right {
-	 left: 13px;
-	 transform: rotate(-45deg);
+	 left: 9px;
 }
  div.card div.card-title h2 {
 	 font-size: 24px;

@@ -2,6 +2,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Bargain } from '../../../models/bargain/bargain.model';
 import { BargainService } from '../../../services/bargain/bargain.service';
+import { Accommodation } from '../../../models/accommodation/accommodation.model';
+import { AccommodationService } from 'src/app/services/accommodation/accommodation.service';
 
 @Component({
   selector: 'app-bargain',
@@ -18,9 +20,20 @@ export class BargainComponent implements OnInit {
     description: ''
   }
 
-  constructor(private activatedRoute: ActivatedRoute, private bargainService: BargainService, private router: Router) {
+  accommodation: Accommodation = {
+    id: 1,
+    name: '',
+    address: '',
+    category: '',
+    latitude: 0,
+	  longitude: 0,
+    rating: 0
+
+  }
+
+  constructor(private activatedRoute: ActivatedRoute, private bargainService: BargainService, private accomodationService: AccommodationService, private router: Router) {
     $(document).ready(function(){
-      var zindex = 10;
+      var zindex = 0;
 
       $("div.card").click(function(e){
         e.preventDefault();
@@ -67,6 +80,7 @@ export class BargainComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBargain();
+    this.getAccommodation();
   }
 
   getBargain() {
@@ -79,6 +93,20 @@ export class BargainComponent implements OnInit {
         },
         (error) => {
           console.log('Was impossible to take bargain info');
+        }
+      );
+  }
+
+  getAccommodation() {
+    this.accomodationService.get(this.accommodation.id)
+      .subscribe(
+        (result) => {
+          this.accommodation = result;
+          console.log('result ->' + result);
+
+        },
+        (error) => {
+          console.log('Was impossible to take accomodation info');
         }
       );
   }
