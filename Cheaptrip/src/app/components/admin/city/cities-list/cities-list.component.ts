@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CityService } from '../../../../services/city/city.service';
-import { TokenStorageService } from '../../../../services/security/token-storage.service';
-import {  Router } from '@angular/router';
 import {  ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -21,37 +19,14 @@ export class CitiesListComponent implements OnInit {
 
   ItemsViewed: number = 5; //Items viewed in table
 
-  //Auth variables
-  isLoggedIn: boolean = false;
-
-  role:string | undefined;
-
-  token : string | null | undefined;
-
   constructor(
     private cityService: CityService,
-    private router: Router,
-    private route: ActivatedRoute,
-    private tokenStorage: TokenStorageService
+    private route: ActivatedRoute
     ) { }
 
   ngOnInit(): void {
-
-    this.isLoggedIn = this.tokenStorage.getUser();
-
-    this.token = this.tokenStorage.getToken();
-
-      if (this.token != null)
-      {
-        this.role = this.tokenStorage.getRole()?.toString();
-
-        this.checkParams();
-
-        this.getCities();
-
-      }else {
-          this.router.navigate(['/login']);
-      }
+      this.checkParams();
+      this.getCities();
   }
 
   /**
