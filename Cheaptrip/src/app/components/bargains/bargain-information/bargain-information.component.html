@@ -9,7 +9,7 @@
     </p>
 
     <div class="container">
-      <h1>Hotel 5 * en Lisboa</h1>
+      <h1>{{bargain.title}}</h1>
 
       <button type="button" class="btn btn-outline-dark">
         Reservar Chollo
@@ -24,7 +24,7 @@
         data-id="1968"
       >
         <div class="summary-name-container">
-          <span class="summary-name">Hotel Pestana CR7</span>
+          <span class="summary-name">{{accommodation.name}}</span>
           <span class="summary-stars-keys inline-flex">
             <i class="fa fa-star" aria-hidden="true"></i>
             <i class="fa fa-star" aria-hidden="true"></i>
@@ -33,7 +33,7 @@
             <i class="fa fa-star" aria-hidden="true"></i>
           </span>
           <div class="summary-address color-secondary-medium">
-            Rua das Portas,50-52, Lisboa
+            {{accommodation.address}}
           </div>
         </div>
         <div class="hotel-rating-container">
@@ -41,8 +41,8 @@
             class="rating-content rounded-container-secondary-lighter width-max-content centered-flex"
             data-entity="ratingContainer"
           >
-            <span class="rating-value bold">8.8</span>
-            <span class="rating-text underline">Ver 276 opiniones</span>
+            <span class="rating-value bold">{{accommodation.rating}}</span> <br>
+            <span class="rating-text underline">{{bargain.price}} €</span>
           </div>
         </div>
       </div>

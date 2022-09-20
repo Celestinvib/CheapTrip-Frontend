@@ -1,6 +1,6 @@
 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-  <div class="mainflip">
-    <div class="frontside">
+  <div class="mainflip" *ngIf="bargain!=null;">
+    <div class="frontside" >
       <div class="card">
         <div class="card-body text-center">
           <p>
@@ -10,7 +10,7 @@
               alt="card image"
             />
           </p>
-          <h4 class="card-title">Sunlimetech</h4>
+          <h4 class="card-title">{{bargain.title}}</h4>
           <p class="card-text">
             This is basic card with image on top, title, description and button.
           </p>
@@ -21,16 +21,13 @@
     <div class="backside">
       <div class="card">
         <div class="card-body text-center mt-4">
-          <h4 class="card-title">Sunlimetech</h4>
+          <h4 class="card-title">{{bargain.title}}</h4>
           <p class="card-text">
-            This is basic card with image on top, title, description and
-            button.This is basic card with image on top, title, description and
-            button.This is basic card with image on top, title, description and
-            button.
+            {{bargain.description}}
           </p>
           <ul class="list-inline">
             <li class="list-inline-item">
-              <button type="button" class="btn btn-outline-dark">Ir al chollo</button>
+              <button type="button" class="btn btn-outline-dark" [routerLink]="['/bargain-info', bargain.id ]">Ir al chollo</button>
             </li>
           </ul>
         </div>
