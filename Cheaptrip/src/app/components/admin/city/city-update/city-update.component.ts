@@ -16,6 +16,11 @@ export class CityUpdateComponent implements OnInit {
     name: ''
   }
 
+  itemUpdated: boolean = false;
+
+  lastPage:number =1;
+
+  lastItemsViewed:number = 5;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,16 +29,39 @@ export class CityUpdateComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.route.queryParams
-        .subscribe(params => {
-          this.city.id = params['id'];
-          this.getCity();
-        },
-        (error) => {
-          console.log(error);
-        });
+    this.checkParams();
   }
 
+  /**
+  * Check the routes params
+  * Allows the user to get back to the page of the list where they were before (if they were on the item-list of this item)
+  * With the same items displayed on the list
+  */
+  checkParams() {
+    this.route.queryParams
+    .subscribe(params => {
+
+      if(params['lastPage']) {
+        this.lastPage = params['lastPage'];
+      }
+
+      if(params['lastItemsViewed']) {
+        this.lastItemsViewed = params['lastItemsViewed'];
+      }
+
+      if(params['id']) {
+        this.city.id = params['id'];
+        this.getCity();
+      }else {
+        this.router.navigate(['/site-admin/cities'],
+        { queryParams: { lastPage: this.lastPage , lastItemsViewed: this.lastItemsViewed } });
+      }
+    });
+  }
+
+  /**
+  * Get a city
+  */
   getCity() {
     this.cityService.get(this.city.id)
     .subscribe(
@@ -47,12 +75,18 @@ export class CityUpdateComponent implements OnInit {
     );
   }
 
+  /**
+  * When the form is submmited
+  */
   onSubmit(): void {
     if( this.city.name != '') {
       this.updateCity();
     }
   }
 
+  /**
+  * Update a city
+  */
   updateCity(): void {
     const data = {
       name: this.city.name
@@ -61,7 +95,12 @@ export class CityUpdateComponent implements OnInit {
     this.cityService.update(this.city.id,data)
     .subscribe(
       response => {
-        console.log(response);
+        this.itemUpdated= true;
+        setTimeout(() =>
+          {
+            this.itemUpdated= false;
+          },
+          6000);
       },
       error => {
         console.log(error);
@@ -69,6 +108,9 @@ export class CityUpdateComponent implements OnInit {
     )
   }
 
+  /**
+  * Delete a city
+  */
   deleteCity() {
     this.cityService.delete(this.city.id)
     .subscribe(

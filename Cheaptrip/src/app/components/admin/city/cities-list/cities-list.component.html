@@ -36,7 +36,7 @@
                   <th scope="row">{{city.id}}</th>
                   <td>{{city.name}}</td>
                   <td>
-                      <a class="btn btn-success btn-sm" routerLink="/site-admin/cities/update/show" [queryParams]="{id: city.id}">
+                      <a class="btn btn-success btn-sm" routerLink="/site-admin/cities/update/show" [queryParams]="{id: city.id,lastPage: pageActual, lastItemsViewed:ItemsViewed}">
                         <i class="bi bi-pencil-square" ></i>
                       </a>
                       &nbsp;
@@ -70,7 +70,7 @@
   <div class="row">
       <div class="d-flex justify-content-between">
           <div>
-              <a class="btn btn-primary text-light" routerLink="/site-admin/cities/add">Agregar Ciudad</a>
+              <a class="btn btn-primary text-light" routerLink="/site-admin/cities/add"  [queryParams]="{lastPage: pageActual, lastItemsViewed:ItemsViewed}">Agregar Ciudad</a>
           </div>
           <div *ngIf="cities!=null;">
 

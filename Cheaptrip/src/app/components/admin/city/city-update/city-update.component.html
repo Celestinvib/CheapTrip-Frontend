@@ -3,7 +3,7 @@
   <br>
   <br>
   <br>
-  <a class=" btn btn-primary text-light" routerLink="/site-admin/cities"><i class="bi bi-caret-left"></i></a>
+  <a class=" btn btn-primary text-light" routerLink="/site-admin/cities"  [queryParams]="{lastPageActual: lastPage, lastItemsViewed: lastItemsViewed }"><i class="bi bi-caret-left"></i></a>
   <form class="row g-3 border border-dark rounded-2 p-3" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
 
       <div class="col">
@@ -26,6 +26,9 @@
           </div>
         </div>
   </form>
+  <div class="mt-2 alert alert-success" *ngIf="itemUpdated">
+    Ciudad Actualizada correctamente!!
+  </div>
 </div>
       <!-- Modal -->
       <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -43,5 +46,6 @@
                 <button type="button" class="btn btn-danger"  data-bs-dismiss="modal"  (click)="deleteCity()">Eliminar registro</button>
               </div>
           </div>
-        </div>
       </div>
+    </div>
+
