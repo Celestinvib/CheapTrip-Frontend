@@ -18,8 +18,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { MainComponent } from './components/main/main.component';
 
 import { BargainInformationComponent } from './components/bargains/bargain-information/bargain-information.component';
-import { ProfileModule } from './components/profile/profile.module';
-
+import { ProfileModule } from './components/page-bars/profile-nav-bar/profile.module';
 import { FeaturesListComponent } from './components/admin/feature/features-list/features-list.component';
 import { FeatureAddComponent } from './components/admin/feature/feature-add/feature-add.component';
 import { FeatureUpdateComponent } from './components/admin/feature/feature-update/feature-update.component';
@@ -108,7 +107,7 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    loadChildren: () => import('./components/profile/profile-routing.module').then( m => ProfileModule )
+    loadChildren: () => import('./components/page-bars/profile-nav-bar/profile-nav-bar.routing.module').then( m => ProfileModule )
   }
 
 

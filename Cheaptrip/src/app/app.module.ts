@@ -7,13 +7,13 @@ import { MatSidenavModule} from '@angular/material/sidenav';
 import { MatButtonModule} from '@angular/material/button';
 import { MatIconModule} from '@angular/material/icon';
 import { MatDividerModule} from '@angular/material/divider';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AuthInterceptor } from './helpers/auth.interceptor';
 
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -46,7 +46,7 @@ import { BasicLoginComponent } from './components/access/basic-login/basic-login
 import { FeaturesListComponent } from './components/admin/feature/features-list/features-list.component';
 import { FeatureAddComponent } from './components/admin/feature/feature-add/feature-add.component';
 import { FeatureUpdateComponent } from './components/admin/feature/feature-update/feature-update.component';
-import { ProfileModule } from './components/profile/profile.module';
+import { ProfileModule } from './components/page-bars/profile-nav-bar/profile.module';
 import { AccomomodationListComponent } from './components/admin/accommodation/accomomodation-list/accomomodation-list.component';
 import { AccomomodationAddComponent } from './components/admin/accommodation/accomomodation-add/accomomodation-add.component';
 import { AccomomodationUpdateComponent } from './components/admin/accommodation/accomomodation-update/accomomodation-update.component';
