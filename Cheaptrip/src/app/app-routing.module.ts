@@ -59,10 +59,6 @@ const routes: Routes = [
     component: ForgotpasswordComponent
   },
   {
-    path: 'profile',
-    component: ProfileComponent
-  },
-  {
     path: 'main',
     component: MainComponent
   },

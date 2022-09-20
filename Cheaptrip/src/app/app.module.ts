@@ -43,6 +43,7 @@ import { AdminNavComponent } from './components/admin/admin-nav/admin-nav.compon
 import { HomeComponent } from './components/admin/home/home.component';
 import { NewpasswordComponent } from './components/access/newpassword/newpassword.component';
 import { BasicLoginComponent } from './components/access/basic-login/basic-login.component';
+import { ProfileModule } from './components/profile/profile.module';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { BasicLoginComponent } from './components/access/basic-login/basic-login
     MatDividerModule,
     HttpClientModule,
     MatExpansionModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ProfileModule
 
   ],
   providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],

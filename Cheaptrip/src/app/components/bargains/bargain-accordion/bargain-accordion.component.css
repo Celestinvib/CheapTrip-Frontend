@@ -1,16 +1,18 @@
 div, h2 {
-  text-align: center;
+
   background: linear-gradient(to right, #EE566F, #FEB36F);
-  border-radius: 10px;
+
 }
 
 .col-4, .accordion, .accordion-item, .accordion-header, .accordion-button {
-  text-align: center;
+
   background: linear-gradient(to right, #EE566F, #FEB36F);
 
 }
 
 .accordion-button {
   color: white;
-  border: 0;
+  border: 0px;
 }
+
+
