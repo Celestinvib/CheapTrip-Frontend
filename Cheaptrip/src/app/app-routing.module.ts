@@ -15,6 +15,9 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { MainComponent } from './components/main/main.component';
 import { BargainInformationComponent } from './components/bargains/bargain-information/bargain-information.component';
 import { ProfileModule } from './components/profile/profile.module';
+import { FeaturesListComponent } from './components/admin/feature/features-list/features-list.component';
+import { FeatureAddComponent } from './components/admin/feature/feature-add/feature-add.component';
+import { FeatureUpdateComponent } from './components/admin/feature/feature-update/feature-update.component';
 
 
 const routes: Routes = [
@@ -29,6 +32,18 @@ const routes: Routes = [
   {
     path:'site-admin/cities/update/:id',
     component: CityUpdateComponent
+  },
+  {
+    path:'site-admin/features',
+    component: FeaturesListComponent
+  },
+  {
+    path:'site-admin/features/add',
+    component: FeatureAddComponent
+  },
+  {
+    path:'site-admin/features/update/:id',
+    component: FeatureUpdateComponent
   },
   {
     path:'site-admin/home',

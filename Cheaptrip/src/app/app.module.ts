@@ -43,6 +43,9 @@ import { AdminNavComponent } from './components/admin/admin-nav/admin-nav.compon
 import { HomeComponent } from './components/admin/home/home.component';
 import { NewpasswordComponent } from './components/access/newpassword/newpassword.component';
 import { BasicLoginComponent } from './components/access/basic-login/basic-login.component';
+import { FeaturesListComponent } from './components/admin/feature/features-list/features-list.component';
+import { FeatureAddComponent } from './components/admin/feature/feature-add/feature-add.component';
+import { FeatureUpdateComponent } from './components/admin/feature/feature-update/feature-update.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +74,10 @@ import { BasicLoginComponent } from './components/access/basic-login/basic-login
     AdminNavComponent,
     HomeComponent,
     NewpasswordComponent,
-    BasicLoginComponent
+    BasicLoginComponent,
+    FeaturesListComponent,
+    FeatureAddComponent,
+    FeatureUpdateComponent
 
   ],
   imports: [
