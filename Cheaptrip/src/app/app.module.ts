@@ -47,6 +47,9 @@ import { FeaturesListComponent } from './components/admin/feature/features-list/
 import { FeatureAddComponent } from './components/admin/feature/feature-add/feature-add.component';
 import { FeatureUpdateComponent } from './components/admin/feature/feature-update/feature-update.component';
 import { ProfileModule } from './components/profile/profile.module';
+import { AccomomodationListComponent } from './components/admin/accommodation/accomomodation-list/accomomodation-list.component';
+import { AccomomodationAddComponent } from './components/admin/accommodation/accomomodation-add/accomomodation-add.component';
+import { AccomomodationUpdateComponent } from './components/admin/accommodation/accomomodation-update/accomomodation-update.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +81,10 @@ import { ProfileModule } from './components/profile/profile.module';
     BasicLoginComponent,
     FeaturesListComponent,
     FeatureAddComponent,
-    FeatureUpdateComponent
+    FeatureUpdateComponent,
+    AccomomodationListComponent,
+    AccomomodationAddComponent,
+    AccomomodationUpdateComponent
 
   ],
   imports: [

@@ -19,12 +19,28 @@ export class AccommodationService {
     return this.http.get(`${baseUrl}/${id}`)
   }
 
-  create(data: any):  Observable<any> {
+  getAllWithThisCategory(category:string): Observable<Accommodation[]>  {
+    return this.http.get<Accommodation[]>(`${baseUrl}/categorias/${category}`);
+  }
+
+  getAllWithThisRatingOrUpper(rating:any): Observable<Accommodation[]>  {
+    return this.http.get<Accommodation[]>(`${baseUrl}/valoracion-minima/${rating}`);
+  }
+
+  getAllWithThisCity(city_id:number): Observable<Accommodation[]>  {
+    return this.http.get<Accommodation[]>(`${baseUrl}/ciudades/${city_id}`);
+  }
+
+  create(data: any): Observable<any> {
     return this.http.post(baseUrl,data);
   }
 
   update(id: any, data: any): Observable<any> {
     return this.http.put(`${baseUrl}/${id}`,data);
+  }
+
+  changeStatus(id:number,data: any): Observable<any> {
+    return this.http.put(`${baseUrl}/cambiar-estado/${id}`,data);
   }
 
   delete(id: any): Observable<any> {
