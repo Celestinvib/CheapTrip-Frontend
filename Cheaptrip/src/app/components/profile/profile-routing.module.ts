@@ -3,24 +3,30 @@ import { RouterModule, Routes } from '@angular/router';
 import { BargainsBookmarkedComponent } from './pages/bargains-bookmarked/bargains-bookmarked.component';
 import { PersonalDataComponent } from './pages/personal-data/personal-data.component';
 import { BargainsBookedComponent } from './pages/bargains-booked/bargains-booked.component';
+import { ProfileComponent } from './profile.component';
 
 const routes: Routes = [
   {
-    path:'profile/mydata',
+    path:'mydata',
     component: PersonalDataComponent
   },
   {
-    path:'profile/bookmarked',
+    path:'bookmarked',
     component: BargainsBookmarkedComponent
   },
   {
-    path:'profile/booked',
+    path:'booked',
     component: BargainsBookedComponent
+  },
+  {
+    path:'',
+    component: ProfileComponent
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+
+export class ProfileRoutingModule { }

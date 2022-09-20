@@ -9,8 +9,8 @@ import { MatIconModule} from '@angular/material/icon';
 import { MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { HttpClientModule } from '@angular/common/http';
-
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
 import { AuthInterceptor } from './helpers/auth.interceptor';
 
 import {NgxPaginationModule} from 'ngx-pagination';

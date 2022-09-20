@@ -14,9 +14,7 @@ import { ForgotpasswordComponent } from './components/access/forgotpassword/forg
 import { ProfileComponent } from './components/profile/profile.component';
 import { MainComponent } from './components/main/main.component';
 import { BargainInformationComponent } from './components/bargains/bargain-information/bargain-information.component';
-import { BargainsBookmarkedComponent } from './components/profile/pages/bargains-bookmarked/bargains-bookmarked.component';
-import { PersonalDataComponent } from './components/profile/pages/personal-data/personal-data.component';
-import { BargainsBookedComponent } from './components/profile/pages/bargains-booked/bargains-booked.component';
+import { ProfileModule } from './components/profile/profile.module';
 
 
 const routes: Routes = [
@@ -73,16 +71,8 @@ const routes: Routes = [
     component: BargainInformationComponent
   },
   {
-    path:'profile/mydata',
-    component: PersonalDataComponent
-  },
-  {
-    path:'profile/bookmarked',
-    component: BargainsBookmarkedComponent
-  },
-  {
-    path:'profile/booked',
-    component: BargainsBookedComponent
+    path: 'profile',
+    loadChildren: () => import('./components/profile/profile-routing.module').then( m => ProfileModule )
   }
 
 
