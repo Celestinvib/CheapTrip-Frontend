@@ -11,7 +11,7 @@ export class FeaturesListComponent implements OnInit {
 
   features:any = null;
 
-  idCityToDelete:number = 0;
+  idItemToDelete:number = 0;
 
   //Pagination variables
   pageActual: number = 1;  //Current page of the table
@@ -64,17 +64,17 @@ export class FeaturesListComponent implements OnInit {
     /**
     * Set the item that maybe is deleted
     * When clicking on the delete button on item in the list, the its id is saved, it will be used later on the delete modal to do so.
-    * @param cityId id of the city that maybe is deleted
+    * @param featureId id of the city that maybe is deleted
     */
-    MaybeDeleteThisFeature(cityId: number){
-      this.idCityToDelete = cityId;
+    MaybeDeleteThisFeature(featureId: number){
+      this.idItemToDelete = featureId;
     }
 
     /**
     * Delete a feature
     */
     deleteFeature() {
-      this.featureService.delete(this.idCityToDelete)
+      this.featureService.delete(this.idItemToDelete)
       .subscribe(
         (result) => {
           this.reloadPage();

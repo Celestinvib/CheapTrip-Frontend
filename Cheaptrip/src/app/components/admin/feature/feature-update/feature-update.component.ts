@@ -64,7 +64,7 @@ export class FeatureUpdateComponent implements OnInit {
   }
 
   /**
-  * Get a city
+  * Get a Feature
   */
   getFeature() {
     this.featureService.get(this.feature.id)
@@ -89,7 +89,7 @@ export class FeatureUpdateComponent implements OnInit {
   }
 
   /**
-  * Update a city
+  * Update a Feature
   */
   updateFeature(): void {
     const data = {
@@ -113,7 +113,7 @@ export class FeatureUpdateComponent implements OnInit {
   }
 
   /**
-  * Delete a city
+  * Delete a Feature
   */
   deleteFeature() {
     this.featureService.delete(this.feature.id)
