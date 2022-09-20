@@ -1,35 +1,26 @@
-<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-  <div class="mainflip" *ngIf="bargain!=null;">
-    <div class="frontside" >
-      <div class="card">
-        <div class="card-body text-center">
-          <p>
-            <img
-              class="img-fluid"
-              src="https://images.unsplash.com/photo-1588535684923-900727736ac0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-              alt="card image"
-            />
-          </p>
-          <h4 class="card-title">{{bargain.title}}</h4>
-          <p class="card-text">
-            This is basic card with image on top, title, description and button.
-          </p>
-          <button type="button" class="btn btn-outline-dark">Ver más</button>
-        </div>
-      </div>
+<div class="cards">
+
+  <div class="card">
+    <div class="card__image-holder">
+      <img class="card__image" src="https://source.unsplash.com/300x225/?wave" alt="wave" />
     </div>
-    <div class="backside">
-      <div class="card">
-        <div class="card-body text-center mt-4">
-          <h4 class="card-title">{{bargain.title}}</h4>
-          <p class="card-text">
-            {{bargain.description}}
-          </p>
-          <ul class="list-inline">
-            <li class="list-inline-item">
-              <button type="button" class="btn btn-outline-dark" [routerLink]="['/bargain-info', bargain.id ]">Ir al chollo</button>
-            </li>
-          </ul>
+    <div class="card-title">
+      <a href="#" class="toggle-info btn">
+        <span class="left"></span>
+        <span class="right"></span>
+      </a>
+      <h2>
+          Card title
+          <small>Image from unsplash.com</small>
+      </h2>
+    </div>
+    <div class="card-flap flap1">
+      <div class="card-description">
+        This grid is an attempt to make something nice that works on touch devices. Ignoring hover states when they're not available etc.
+      </div>
+      <div class="card-flap flap2">
+        <div class="card-actions">
+          <a href="#" class="btn">Read more</a>
         </div>
       </div>
     </div>

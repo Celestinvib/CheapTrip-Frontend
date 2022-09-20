@@ -46,6 +46,7 @@ import { BasicLoginComponent } from './components/access/basic-login/basic-login
 import { FeaturesListComponent } from './components/admin/feature/features-list/features-list.component';
 import { FeatureAddComponent } from './components/admin/feature/feature-add/feature-add.component';
 import { FeatureUpdateComponent } from './components/admin/feature/feature-update/feature-update.component';
+import { ProfileModule } from './components/profile/profile.module';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import { FeatureUpdateComponent } from './components/admin/feature/feature-updat
     MatDividerModule,
     HttpClientModule,
     MatExpansionModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ProfileModule
 
   ],
   providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
