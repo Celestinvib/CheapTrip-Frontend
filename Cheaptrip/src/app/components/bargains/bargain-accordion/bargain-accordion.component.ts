@@ -24,10 +24,8 @@ export class BargainAccordionComponent implements OnInit {
     id: 1,
     origin: 1,
     destination: 1,
-    departure_date: 23/05/3042,
-    arrival_date:
-  }
 
+  }
 
   constructor(private activatedRoute: ActivatedRoute, private bargainService: BargainService, private flightService: FlightService, private router: Router) { }
 
