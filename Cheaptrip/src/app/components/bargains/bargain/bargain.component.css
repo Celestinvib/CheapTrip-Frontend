@@ -29,24 +29,20 @@
 	 transition: all 0.025s 0s ease-out;
 }
  div.cards {
-	 margin: 80px auto;
-	 max-width: 960px;
 	 text-align: center;
 }
  div.card {
 	 background: #ffffff;
 	 display: inline-block;
 	 margin: 8px;
-	 max-width: 300px;
 	 perspective: 1000;
 	 position: relative;
 	 text-align: left;
 	 transition: all 0.3s 0s ease-in;
-	 width: 300px;
 	 z-index: 1;
 }
  div.card img {
-	 max-width: 300px;
+  border-radius: 10px;
 }
  div.card .card__image-holder {
 	 background: rgba(0,0,0,0.1);

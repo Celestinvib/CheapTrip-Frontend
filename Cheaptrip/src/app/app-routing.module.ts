@@ -22,6 +22,11 @@ import { FeatureUpdateComponent } from './components/admin/feature/feature-updat
 
 const routes: Routes = [
   {
+    path:'',
+    redirectTo:'/bargains',
+    pathMatch: 'full'
+  },
+  {
     path:'site-admin/cities',
     component: CitiesListComponent
   },
@@ -74,7 +79,7 @@ const routes: Routes = [
     component: ForgotpasswordComponent
   },
   {
-    path: 'main',
+    path: 'bargains',
     component: MainComponent
   },
   {
