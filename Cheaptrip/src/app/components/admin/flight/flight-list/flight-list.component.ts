@@ -66,10 +66,10 @@ export class FlightListComponent implements OnInit {
   /**
   * Set the item that maybe its status is changed
   * When clicking on the change status button on item in the list, the its id is saved, it will be used later on the change status modal to do so.
-  * @param accommodationId id of the city that maybe is deleted
+  * @param flightId id of the flight that maybe is updated
   */
-     MaybeChangeStatusThisFlight(accommodationId: number){
-      this.idItemToChangeStatus = accommodationId;
+     MaybeChangeStatusThisFlight(flightId: number){
+      this.idItemToChangeStatus = flightId;
     }
 
     /**
@@ -90,10 +90,10 @@ export class FlightListComponent implements OnInit {
   /**
   * Set the item that maybe is deleted
   * When clicking on the delete button on item in the list, the its id is saved, it will be used later on the delete modal to do so.
-  * @param accommodationId id of the city that maybe is deleted
+  * @param flightId id of the flight that maybe is deleted
   */
-  MaybeDeleteThisFlight(accommodationId: number){
-    this.idItemToDelete = accommodationId;
+  MaybeDeleteThisFlight(flightId: number){
+    this.idItemToDelete = flightId;
   }
 
   /**

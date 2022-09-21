@@ -53,6 +53,9 @@ import { AccomomodationUpdateComponent } from './components/admin/accommodation/
 import { FlightListComponent } from './components/admin/flight/flight-list/flight-list.component';
 import { FlightAddComponent } from './components/admin/flight/flight-add/flight-add.component';
 import { FlightUpdateComponent } from './components/admin/flight/flight-update/flight-update.component';
+import { AccountsListComponent } from './components/admin/account/accounts-list/accounts-list.component';
+import { AccountAddComponent } from './components/admin/account/account-add/account-add.component';
+import { AccountUpdateComponent } from './components/admin/account/account-update/account-update.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +93,10 @@ import { FlightUpdateComponent } from './components/admin/flight/flight-update/f
     AccomomodationUpdateComponent,
     FlightListComponent,
     FlightAddComponent,
-    FlightUpdateComponent
+    FlightUpdateComponent,
+    AccountsListComponent,
+    AccountAddComponent,
+    AccountUpdateComponent
 
   ],
   imports: [

@@ -16,21 +16,21 @@ export class AccountService {
   * Get all the accounts
   */
   getAccounts(): Observable<any> {
-    return this.http.get(baseUrl + "accounts",{ responseType: 'text'})
+    return this.http.get(baseUrl + "cuentas",{ responseType: 'text'})
   }
 
   /**
   * Get an account
   */
     get(id:number): Observable<Account>  {
-      return this.http.get(`${baseUrl}/${id}`)
+      return this.http.get(`${baseUrl}/cuenta/${id}`)
     }
 
   /**
   * Get an account with a specified
   */
   getAccountEmail(email:string): Observable<any> {
-    return this.http.get(baseUrl + "accounts/"+email)
+    return this.http.get(baseUrl + "cuentas/"+email)
   }
 
 
@@ -45,21 +45,29 @@ export class AccountService {
   * Save an account
   */
    create(data: any):  Observable<any> {
-    return this.http.post(baseUrl,data);
+    return this.http.post(`${baseUrl}/cuentas/`,data);
   }
 
   /**
   * Update an account
   */
   update(id: any, data: any): Observable<any> {
-    return this.http.put(`${baseUrl}/${id}`,data);
+    return this.http.put(`${baseUrl}/cuentas/${id}`,data);
   }
+
+  /**
+  * Change the status of an account
+  */
+     changeStatus(id:number,data: any): Observable<any> {
+      return this.http.put(`${baseUrl}/cuentas/cambiar-estado/${id}`,data);
+    }
+
 
   /**
   * Delete an account
   */
   delete(id: any): Observable<any> {
-    return this.http.delete(`${baseUrl}/${id}`);
+    return this.http.delete(`${baseUrl}/cuentas/${id}`);
   }
 
 

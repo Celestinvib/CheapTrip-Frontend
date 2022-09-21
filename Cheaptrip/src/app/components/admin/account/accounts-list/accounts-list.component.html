@@ -1,0 +1,142 @@
+<app-admin-nav></app-admin-nav>
+<div class="container">
+  <br>
+  <div class="row">
+      <h1 class="heading1">Cuentas</h1>
+  </div>
+  <div class="row mt-4" *ngIf="accounts!=null; else wait">
+      <div class="d-flex">
+          <div>
+              Mostrar:
+              <select name="registers" id="registers" [(ngModel)]="ItemsViewed">
+                  <option value="5" selected>5</option>
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+              </select>
+          </div>
+      </div>
+  </div>
+  <br>
+  <div class="row" *ngIf="accounts!=null;">
+      <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">
+              <div>Id</div>
+            <th scope="col">
+                <div>Nombre</div>
+            </th>
+            <th scope="col">
+                <div>Apellidos</div>
+            </th>
+            <th scope="col">
+                <div>Email</div>
+            </th>
+            <th scope="col">
+                <div>Contraseña</div>
+            </th>
+            <th scope="col">
+                <div>Número tel</div>
+            </th>
+            <th scope="col">
+                <div>Fecha Nacimiento</div>
+            </th>
+            <th scope="col">
+                <div>Fecha Creación</div>
+            </th>
+            <th scope="col">
+                <div>Acciones</div>
+            </th>
+        </tr>
+        </thead>
+          <tbody>
+              <tr *ngFor="let account of accounts | paginate: {itemsPerPage: ItemsViewed,currentPage: pageActual}; let i = index" >
+                  <th scope="row">{{account.id}}</th>
+                  <td>{{account.name}}</td>
+                  <td>{{account.lastnames}}</td>
+                  <td>{{account.email}}</td>
+                  <td>{{account.password}}</td>
+                  <td>{{account.phone_number}}</td>
+                  <td>{{account.birth_date}}</td>
+                  <td>{{account.creation_date}}</td>
+                  <td>
+                      <a class="btn btn-success btn-sm" routerLink="/site-admin/accounts/update/show" [queryParams]="{id: account.id,lastPage: pageActual, lastItemsViewed:ItemsViewed}">
+                        <i class="bi bi-pencil-square" ></i>
+                      </a>
+                      &nbsp;
+                      <span *ngIf="account.status == 1; else isHide">
+                        <button type="button" class="btn btn-warning  btn-sm" data-bs-toggle="modal" data-bs-target="#changeStatusModal" (click)="MaybeChangeStatusThisAccount(account.id)">
+                            <i class="bi bi-eye-slash"></i>
+                        </button>
+                      </span>
+                      <ng-template #isHide>
+                          <button type="button" class="btn btn-secondary  btn-sm" data-bs-toggle="modal" data-bs-target="#changeStatusModal" (click)="MaybeChangeStatusThisAccount(account.id)">
+                              <i class="bi bi-eye"></i>
+                          </button>
+                      </ng-template>
+                      &nbsp;
+                      <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="MaybeDeleteThisAccount(account.id)">
+                          <i class="bi bi-trash"></i>
+                      </button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+      <!-- ChangeStatus Modal -->
+      <div class="modal fade" id="changeStatusModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Cambiar estado del registro?</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            ¿Estas seguro que quieres cambiar el estado del registro?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-warning"  data-bs-dismiss="modal" (click)="changeStatusAccount()">Cambiar estado</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+      <!-- Delete Modal -->
+      <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">¿Eliminar Registro?</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+              ¿Estas seguro que quieres borrar el registro, se borrará definiticamente?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-danger"  data-bs-dismiss="modal" (click)="deleteAccount()">Eliminar registro</button>
+              </div>
+          </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="row">
+      <div class="d-flex justify-content-between">
+          <div>
+              <a class="btn btn-primary text-light" routerLink="/site-admin/accounts/add"  [queryParams]="{lastPage: pageActual, lastItemsViewed:ItemsViewed}">Agregar Cuenta</a>
+          </div>
+          <div *ngIf="accounts!=null;">
+
+            <pagination-controls class="my-pagination"
+            (pageChange)="pageActual = $event"
+            (maxSize)="5"
+            previousLabel="Anterior" nextLabel="Siguiente">
+          </pagination-controls>
+
+        </div>
+      </div>
+
+  </div>
+<ng-template #wait>Esperando los datos, esto puede tardar un par de segundos...</ng-template>
+

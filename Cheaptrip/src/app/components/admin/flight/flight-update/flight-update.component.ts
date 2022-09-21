@@ -74,7 +74,7 @@ export class FlightUpdateComponent implements OnInit {
     }
 
   /**
-  * Get a city
+  * Get a Flight
   */
     getFlight() {
       this.flightService.get(this.flight.id)
@@ -83,7 +83,7 @@ export class FlightUpdateComponent implements OnInit {
           this.flight = result;
         },
         (error) => {
-          console.log('There has been a getting that city');
+          console.log('There has been a getting that flight');
           this.router.navigate(['/site-admin/flights']);
         }
       );
@@ -161,7 +161,7 @@ export class FlightUpdateComponent implements OnInit {
         this.router.navigate(['/site-admin/flights']);
       },
       (error) => {
-        console.log('There has been a problem trying to delete the city');
+        console.log('There has been a problem trying to delete the flight');
       }
     );
   }

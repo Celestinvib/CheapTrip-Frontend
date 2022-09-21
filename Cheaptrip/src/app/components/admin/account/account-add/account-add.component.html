@@ -1,0 +1,63 @@
+<app-admin-nav></app-admin-nav>
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <div class="row">
+    <h1 class="heading1">Cuentas</h1>
+  </div>
+  <a class=" btn btn-primary text-light" routerLink="/site-admin/accounts" [queryParams]="{lastPageActual: lastPage, lastItemsViewed: lastItemsViewed }" ><i class="bi bi-caret-left"></i></a>
+  <form class="row g-3 border border-dark rounded-2 p-3"  name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+
+      <div class="col">
+        <label for="ICAccountName" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="ICAccountName required" [(ngModel)]="account.name" name="name" required #name="ngModel">
+        <div class="mt-2 alert alert-danger" role="alert" *ngIf="name.errors && f.submitted">
+        Se requiere el nombre!
+        </div>
+      </div>
+
+      <div class="col">
+        <label for="ICAccountLastanames" class="form-label">Apellidos</label>
+        <input type="text" class="form-control" id="ICAccountLastanames" required [(ngModel)]="account.surnames" name="surnames" required #surnames="ngModel">
+        <div class="mt-2 alert alert-danger" role="alert" *ngIf="surnames.errors && f.submitted">
+          Se requiere el apellido!
+        </div>
+      </div>
+
+      <div class="col">
+        <label for="ICAccountAddress" class="form-label">Email</label>
+        <input type="email" class="form-control" id="ICAccountAddress" [(ngModel)]="account.email" required  #email="ngModel" name="email">
+        <div class="mt-2 alert alert-danger" role="alert" *ngIf="email.errors && f.submitted">
+          Se requiere email!
+        </div>
+      </div>
+      <div class="col">
+        <label for="ICAccountPassword" class="form-label">Contraseña</label>
+        <input type="password" class="form-control" id="ICAccountPassword" [(ngModel)]="account.password" required  #password="ngModel" name="password">
+        <div class="mt-2 alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">
+          Se requiere contraseña!
+        </div>
+      </div>
+      <div class="col">
+        <label for="ICAccountTel" class="form-label">Número tel</label>
+        <input type="number" class="form-control" id="ICAccountTel" [(ngModel)]="account.phone_number" required  #phone_number="ngModel" name="phone_number">
+        <div class="mt-2 alert alert-danger" role="alert" *ngIf="phone_number.errors && f.submitted">
+          Se requiere número de teléfono!
+        </div>
+      </div>
+      <div class="col">
+        <label for="ICAccountPassword" class="form-label">Fecha de Nacimiento</label>
+        <input type="date" class="form-control" id="ICAccountPassword" [(ngModel)]="account.birth_date" required  #birth_date="ngModel" name="birth_date">
+        <div class="mt-2 alert alert-danger" role="alert" *ngIf="birth_date.errors && f.submitted">
+          Se requiere fecha de nacimiento!
+        </div>
+      </div>
+      <div class="col-12">
+      <button type="submit" class="btn btn-primary">Crear</button>
+      </div>
+  </form>
+  <div class="mt-2 alert alert-success" *ngIf="itemAdded">
+    Cuenta añadida correctamente!!
+  </div>
+</div>

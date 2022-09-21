@@ -17,6 +17,8 @@ export class AccomomodationListComponent implements OnInit {
 
   idItemToChangeStatus:number = 0;
 
+  accommodation_features:any = null;
+
   //Pagination variables
   pageActual: number = 1;  //Current page of the table
 
@@ -73,7 +75,7 @@ export class AccomomodationListComponent implements OnInit {
    this.accommodationsFeaturesService.getFeaturesAccommodation(accommodationId)
    .subscribe(
     (result) => {
-      // console.log(result);
+      this.accommodation_features = result;
     },
     (error) => {
       console.log('There has been a problem loading the features');

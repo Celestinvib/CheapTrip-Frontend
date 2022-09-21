@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Accommodation } from '../../models/accommodation/accommodation.model';
 import { Observable } from 'rxjs';
 
-const baseUrl = 'https://pcn-cheaptrip-api.herokuapp.com/alojamientos';
+const baseUrl = 'http://localhost:8181/alojamientos';
 @Injectable({
   providedIn: 'root'
 })
