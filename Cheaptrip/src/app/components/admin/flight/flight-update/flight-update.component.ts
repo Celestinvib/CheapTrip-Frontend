@@ -3,6 +3,7 @@ import {  ActivatedRoute, Router } from '@angular/router';
 import { FlightService } from '../../../../services/flight/flight.service';
 import { Flight } from '../../../../models/flight/flight.model';
 import { CityService } from '../../../../services/city/city.service';
+import { City } from 'src/app/models/city/city.model';
 
 @Component({
   selector: 'app-flight-update',
@@ -12,20 +13,16 @@ import { CityService } from '../../../../services/city/city.service';
 export class FlightUpdateComponent implements OnInit {
 
   form: any = {
-    origin:undefined,
-    destination:undefined,
+    origin: City,
+    destination: City,
     departure_date: undefined,
     arrival_date: undefined
     };
 
   flight: Flight = {
-    origin: undefined,
-    destination:undefined,
-    departure_date: undefined,
-    arrival_date: undefined
   }
 
-  cities:any = null;
+  cities:City[] = [];
 
   itemUpdated: boolean = false;
 

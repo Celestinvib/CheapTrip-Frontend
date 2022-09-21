@@ -29,8 +29,8 @@
 
       <div class="col-12">
         <label for="ICFlightOrigin" class="form-label">Ciudad Origen</label>
-        <select class="form-select" id="ICFlightOrigin" [(ngModel)]="flight.origin.id" required  #origin="ngModel" name="origin">
-          <option *ngFor="let city of cities"  value="{{city.id}}" [selected]="flight.origin.id ==city.id">{{city.name}}</option>
+        <select class="form-select" id="ICFlightOrigin" [(ngModel)]="flight.origin!.id" required  #origin="ngModel" name="origin">
+          <option *ngFor="let city of cities"  value="{{city.id}}" [selected]="flight.origin?.id ==city.id">{{city.name}}</option>
         </select>
         <div class="mt-2 alert alert-danger" role="alert" *ngIf="origin.errors && f.submitted">
           ¡Se requiere ciudad de origen!
@@ -39,8 +39,8 @@
 
       <div class="col-12">
           <label for="ICFlightDestination" class="form-label">Ciudad destino</label>
-          <select class="form-select" id="ICFlightDestination" [(ngModel)]="flight.destination.id" required  #destination="ngModel" name="destination">
-            <option  *ngFor="let city of cities"   value="{{city.id}}" [selected]="flight.destination.id == city.id" >{{city.name}}</option>
+          <select class="form-select" id="ICFlightDestination" [(ngModel)]="flight.destination!.id" required  #destination="ngModel" name="destination">
+            <option  *ngFor="let city of cities"   value="{{city.id}}" [selected]="flight.destination?.id == city.id" >{{city.name}}</option>
           </select>
           <div class="mt-2 alert alert-danger" role="alert" *ngIf="origin.errors && f.submitted">
             ¡Se requiere ciudad de destino!
