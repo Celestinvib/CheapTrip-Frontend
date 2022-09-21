@@ -28,10 +28,16 @@ export class AuthService {
     }), { headers: { 'Content-Type': 'application/json'}});
   }
 
-   register(email: string, password: string): Observable<any> {
+   register(name: string, surnames: string, email: string, password: string, phone_number: string, birth_date:any): Observable<any> {
+      let date = new Date();
      return this.http.post(API_URL + 'registrar' , {
+      name,
+      surnames,
       email,
-       password
+      password,
+      phone_number,
+      birth_date,
+      date
      }, httpOptions);
    }
 

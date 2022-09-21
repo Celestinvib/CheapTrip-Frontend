@@ -134,3 +134,7 @@ color: rgb(218, 214, 214);
 :host ::ng-deep .my-pagination  .ngx-pagination .current {
   background: var(--blue-primary-color);
 }
+
+#app-content {
+  height: 100vh;
+}
