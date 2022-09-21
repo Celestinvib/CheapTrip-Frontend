@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import * as $ from "jquery";
+import { TokenStorageService } from "../../../services/security/token-storage.service";
+import {  Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,52 +8,30 @@ import * as $ from "jquery";
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  private roles: string[] = [];
+  isLoggedIn = false;
+  showAdminBoard = false;
+  username?: string;
 
-  constructor() {
+  constructor(private tokenStorageService: TokenStorageService, private router: Router) { }
 
-    function test(){
-      var tabsNewAnim = $('#navbarSupportedContent');
-      var selectorNewAnim = $('#navbarSupportedContent').find('li').length;
-      var activeItemNewAnim = tabsNewAnim.find('.active');
-      var activeWidthNewAnimHeight = activeItemNewAnim.innerHeight();
-      var activeWidthNewAnimWidth = activeItemNewAnim.innerWidth();
-      var itemPosNewAnimTop = activeItemNewAnim.position();
-      var itemPosNewAnimLeft = activeItemNewAnim.position();
-      $(".hori-selector").css({
-        "top":itemPosNewAnimTop.top + "px",
-        "left":itemPosNewAnimLeft.left + "px",
-        "height": activeWidthNewAnimHeight + "px",
-        "width": activeWidthNewAnimWidth + "px"
-      });
-      $("#navbarSupportedContent").on("click","li",function(e){
-        $('#navbarSupportedContent ul li').removeClass("active");
-        $(this).addClass('active');
-        var activeWidthNewAnimHeight = $(this).innerHeight();
-        var activeWidthNewAnimWidth = $(this).innerWidth();
-        var itemPosNewAnimTop = $(this).position();
-        var itemPosNewAnimLeft = $(this).position();
-        $(".hori-selector").css({
-          "top":itemPosNewAnimTop.top + "px",
-          "left":itemPosNewAnimLeft.left + "px",
-          "height": activeWidthNewAnimHeight + "px",
-          "width": activeWidthNewAnimWidth + "px"
-        });
-      });
-    }
-    $(document).ready(function(){
-      setTimeout(function(){ test(); });
-    });
-    $(window).on('resize', function(){
-      setTimeout(function(){ test(); }, 500);
-    });
-    $(".navbar-toggler").click(function(){
-      setTimeout(function(){ test(); });
-    });
-   }
 
   ngOnInit(): void {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+
+      this.showAdminBoard = this.roles.includes('Admin');
+      this.username = user.username;
+    }
   }
 
-
+  logout(): void {
+    this.tokenStorageService.signOut();
+    window.location.reload();
+    this.router.navigate(['/bargains']);
+  }
 
 }

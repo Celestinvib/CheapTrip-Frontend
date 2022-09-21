@@ -1,10 +1,3 @@
-body {
-  color: #000;
-  overflow-x: hidden;
-  height: 100%;
-  background-image: linear-gradient(to right, #EE566F, #FEB36F);
-}
-
 input, textarea {
   background-color: #F3E5F5;
   border-radius: 50px !important;
@@ -34,20 +27,32 @@ button:focus {
   outline-width: 0;
 }
 
+.container {
+  min-height: 100vh;
+}
+
 .card {
   border-radius: 0;
   border: none;
   text-align: justify;
 }
 
+.card0 {
+  border-radius: 20px;
+  background-image: linear-gradient(to right, #FEB36F, #EE566F);
+  padding: 3px;
+}
+
 .card1 {
   width: 50%;
   padding: 40px 30px 10px 30px;
+  border-radius: 16px;
 }
 
 .card2 {
   width: 50%;
-  background-image: linear-gradient(to right, #FEB36F, #EE566F);
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 15px;
 }
 
 #logo {
