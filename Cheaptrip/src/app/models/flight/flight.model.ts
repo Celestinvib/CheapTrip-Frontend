@@ -1,7 +1,7 @@
 export class Flight {
   id?:any;
-  origin?:number;
-  destination?:number;
+  origin?:any;
+  destination?:any;
   departure_date?:Date;
   arrival_date?:Date;
   status?:number;

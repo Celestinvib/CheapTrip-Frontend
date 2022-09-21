@@ -1,0 +1,84 @@
+<app-admin-nav></app-admin-nav>
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <div class="row">
+    <h1 class="heading1">Vuelos</h1>
+  </div>
+  <a class=" btn btn-primary text-light" routerLink="/site-admin/flights" [queryParams]="{lastPageActual: lastPage, lastItemsViewed: lastItemsViewed }" ><i class="bi bi-caret-left"></i></a>
+  <form class="row g-3 border border-dark rounded-2 p-3 mb-4"  name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="col-12">
+            <h2>{{flight.id}}</h2>
+      </div>
+      <div class="col">
+        <label for="ICFlightDepartureDate" class="form-label">Fecha Salida</label>
+        <input type="datetime-local" class="form-control" id="ICFlightDepartureDate" required [(ngModel)]="flight.departure_date" value="{{flight.departure_date}}" name="departure_date" required #departure_date="ngModel">
+        <div class="mt-2 alert alert-danger" role="alert" *ngIf="departure_date.errors && f.submitted">
+        ¡Se requiere el fecha de salida!
+        </div>
+      </div>
+
+      <div class="col-6">
+        <label for="ICFlightArrivalDate" class="form-label">Fecha Llegada</label>
+        <input type="datetime-local" class="form-control" id="ICFlightArrivalDate" required [(ngModel)]="flight.arrival_date" value="{{flight.arrival_date}}"  name="arrival_date" required #arrival_date="ngModel">
+        <div class="mt-2 alert alert-danger" role="alert" *ngIf="arrival_date.errors && f.submitted">
+        ¡Se requiere el fecha de llegada!
+        </div>
+      </div>
+
+      <div class="col-12">
+        <label for="ICFlightOrigin" class="form-label">Ciudad Origen</label>
+        <select class="form-select" id="ICFlightOrigin" [(ngModel)]="flight.origin.id" required  #origin="ngModel" name="origin">
+          <option *ngFor="let city of cities"  value="{{city.id}}" [selected]="flight.origin.id ==city.id">{{city.name}}</option>
+        </select>
+        <div class="mt-2 alert alert-danger" role="alert" *ngIf="origin.errors && f.submitted">
+          ¡Se requiere ciudad de origen!
+        </div>
+      </div>
+
+      <div class="col-12">
+          <label for="ICFlightDestination" class="form-label">Ciudad destino</label>
+          <select class="form-select" id="ICFlightDestination" [(ngModel)]="flight.destination.id" required  #destination="ngModel" name="destination">
+            <option  *ngFor="let city of cities"   value="{{city.id}}" [selected]="flight.destination.id == city.id" >{{city.name}}</option>
+          </select>
+          <div class="mt-2 alert alert-danger" role="alert" *ngIf="origin.errors && f.submitted">
+            ¡Se requiere ciudad de destino!
+          </div>
+      </div>
+      <div class="row mt-4">
+        <div class="d-flex justify-content-between">
+            <div>
+                <button type="submit" class="btn btn-success" (click)="onSubmit()">Actualizar</button>
+            </div>
+            <div>
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                Eliminar
+            </button>
+          </div>
+        </div>
+      </div>
+  </form>
+  <div class="mt-2 alert alert-success" *ngIf="itemUpdated">
+    Vuelo actualizado correctamente!!
+  </div>
+        <!-- Modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">¿Eliminar Registro?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                ¿Estas seguro que quieres borrar el registro, se borrará definiticamente?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  <button type="button" class="btn btn-danger"  data-bs-dismiss="modal"  (click)="deleteFlight()">Eliminar registro</button>
+                </div>
+            </div>
+        </div>
+      </div>
+</div>
+

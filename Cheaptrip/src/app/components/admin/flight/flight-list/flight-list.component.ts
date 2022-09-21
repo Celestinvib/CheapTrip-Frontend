@@ -1,17 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { AccommodationService } from '../../../../services/accommodation/accommodation.service';
-import { AccommodationsFeaturesService } from '../../../../services/accommodations-features/accommodations-features.service';
-
+import { FlightService } from '../../../../services/flight/flight.service';
 import {  ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-accomomodation-list',
-  templateUrl: './accomomodation-list.component.html',
-  styleUrls: ['./accomomodation-list.component.css']
+  selector: 'app-flight-list',
+  templateUrl: './flight-list.component.html',
+  styleUrls: ['./flight-list.component.css']
 })
-export class AccomomodationListComponent implements OnInit {
+export class FlightListComponent implements OnInit {
 
-  accommodations:any = null;
+  flights:any = null;
 
   idItemToDelete:number = 0;
 
@@ -23,22 +21,21 @@ export class AccomomodationListComponent implements OnInit {
   ItemsViewed: number = 5; //Items viewed in table
 
   constructor(
-    private accommodationService: AccommodationService,
-    private accommodationsFeaturesService: AccommodationsFeaturesService,
-    private route: ActivatedRoute,
+    private flightService: FlightService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.checkParams();
-    this.getAccommodations();
+    this.getFlights();
   }
 
-  /**
+   /**
   * Check the routes params
   * Allows the user to get back to the page of the list where they were before (if they were creating or updatin some item of the list)
   * With the same items displayed on the list
   */
-     checkParams() {
+    checkParams() {
       this.route.queryParams
       .subscribe(params => {
         if(params['lastPageActual']) {
@@ -52,13 +49,13 @@ export class AccomomodationListComponent implements OnInit {
     }
 
   /**
-  * Get all the accommodations
+  * Get all the flights
   */
-   getAccommodations() {
-    this.accommodationService.getAll()
+   getFlights() {
+    this.flightService.getAll()
     .subscribe(
       (result) => {
-        this.accommodations = result;
+        this.flights = result;
       },
       (error) => {
         console.log('There has been a problem');
@@ -67,41 +64,25 @@ export class AccomomodationListComponent implements OnInit {
   }
 
   /**
-  * Get all the features of one accommodation
-  */
-  getAccommodationFeatures(accommodationId: number){
-   this.accommodationsFeaturesService.getFeaturesAccommodation(accommodationId)
-   .subscribe(
-    (result) => {
-      // console.log(result);
-    },
-    (error) => {
-      console.log('There has been a problem loading the features');
-    }
-  );
-
-  }
-
-  /**
   * Set the item that maybe its status is changed
   * When clicking on the change status button on item in the list, the its id is saved, it will be used later on the change status modal to do so.
   * @param accommodationId id of the city that maybe is deleted
   */
-     MaybeChangeStatusThisAccommodation(accommodationId: number){
+     MaybeChangeStatusThisFlight(accommodationId: number){
       this.idItemToChangeStatus = accommodationId;
     }
 
     /**
-    * Change status of an Accommodation
+    * Change status of an Flight
     */
-    changeStatusAccommodation() {
-      this.accommodationService.changeStatus(this.idItemToChangeStatus,null)
+    changeStatusFlight() {
+      this.flightService.changeStatus(this.idItemToChangeStatus,null)
       .subscribe(
         (result) => {
           this.reloadPage();
         },
         (error) => {
-          console.log('There has been a problem trying to delete the accommodation');
+          console.log('There has been a problem changing the flight');
         }
       );
     }
@@ -111,21 +92,21 @@ export class AccomomodationListComponent implements OnInit {
   * When clicking on the delete button on item in the list, the its id is saved, it will be used later on the delete modal to do so.
   * @param accommodationId id of the city that maybe is deleted
   */
-  MaybeDeleteThisAccommodation(accommodationId: number){
+  MaybeDeleteThisFlight(accommodationId: number){
     this.idItemToDelete = accommodationId;
   }
 
   /**
-  * Delete an Accommodation
+  * Delete an Flight
   */
-  deleteAccommodation() {
-    this.accommodationService.delete(this.idItemToDelete)
+  deleteFlight() {
+    this.flightService.delete(this.idItemToDelete)
     .subscribe(
       (result) => {
         this.reloadPage();
       },
       (error) => {
-        console.log('There has been a problem trying to delete the accommodation');
+        console.log('There has been a problem trying to delete the flight');
       }
     );
   }
@@ -143,5 +124,6 @@ export class AccomomodationListComponent implements OnInit {
   changeItemsViewed(items:number): void {
     this.ItemsViewed = items;
   }
+
 
 }

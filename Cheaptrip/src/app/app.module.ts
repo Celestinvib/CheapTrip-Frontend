@@ -50,6 +50,9 @@ import { ProfileModule } from './components/page-bars/profile-nav-bar/profile.mo
 import { AccomomodationListComponent } from './components/admin/accommodation/accomomodation-list/accomomodation-list.component';
 import { AccomomodationAddComponent } from './components/admin/accommodation/accomomodation-add/accomomodation-add.component';
 import { AccomomodationUpdateComponent } from './components/admin/accommodation/accomomodation-update/accomomodation-update.component';
+import { FlightListComponent } from './components/admin/flight/flight-list/flight-list.component';
+import { FlightAddComponent } from './components/admin/flight/flight-add/flight-add.component';
+import { FlightUpdateComponent } from './components/admin/flight/flight-update/flight-update.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +87,10 @@ import { AccomomodationUpdateComponent } from './components/admin/accommodation/
     FeatureUpdateComponent,
     AccomomodationListComponent,
     AccomomodationAddComponent,
-    AccomomodationUpdateComponent
+    AccomomodationUpdateComponent,
+    FlightListComponent,
+    FlightAddComponent,
+    FlightUpdateComponent
 
   ],
   imports: [

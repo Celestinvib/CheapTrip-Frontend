@@ -3,6 +3,7 @@ import { AuthService } from '../../../services/security/auth.service';
 import { TokenStorageService } from '../../../services/security//token-storage.service';
 import { AccountService } from '../../../services/account/account.service';
 import {  Router } from '@angular/router';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-basic-login',
@@ -40,17 +41,15 @@ export class BasicLoginComponent implements OnInit {
     this.authService.login(email, password)
     .subscribe(
       data => {
-        console.log('In!');
         this.tokenStorage.saveToken(JSON.stringify(data['token']).replace(/['"]+/g, ''));
         this.tokenStorage.saveUser((this.form.email));
 
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        let userDetails = this.accountService.getAccountEmail(this.form.email)
 
-
-        userDetails.subscribe(
+        this.accountService.getAccontRole().subscribe(
           result => {
+            console.log("In->" +result);
             this.tokenStorage.saveRole(result.role);
           }
         );

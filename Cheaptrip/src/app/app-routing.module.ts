@@ -26,6 +26,9 @@ import { FeatureUpdateComponent } from './components/admin/feature/feature-updat
 import { AccomomodationListComponent } from './components/admin/accommodation/accomomodation-list/accomomodation-list.component';
 import { AccomomodationAddComponent } from './components/admin/accommodation/accomomodation-add/accomomodation-add.component';
 import { AccomomodationUpdateComponent } from './components/admin/accommodation/accomomodation-update/accomomodation-update.component';
+import { FlightListComponent } from './components/admin/flight/flight-list/flight-list.component';
+import { FlightAddComponent } from './components/admin/flight/flight-add/flight-add.component';
+import { FlightUpdateComponent } from './components/admin/flight/flight-update/flight-update.component';
 
 const routes: Routes = [
   {
@@ -68,6 +71,18 @@ const routes: Routes = [
   {
     path:'site-admin/accommodations/update/:id',
     component: AccomomodationUpdateComponent
+  },
+  {
+    path:'site-admin/flights',
+    component: FlightListComponent
+  },
+  {
+    path:'site-admin/flights/add',
+    component: FlightAddComponent
+  },
+  {
+    path:'site-admin/flights/update/:id',
+    component: FlightUpdateComponent
   },
   {
     path:'site-admin/home',
