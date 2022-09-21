@@ -15,22 +15,27 @@
                       <a href="#" class="nav-link px-2 text-white" routerLink="/bargains">Inicio</a>
                   </li>
                   <li>
-                      <a href="#" class="nav-link px-2 text-white" routerLink="/bargains/favorites">Chollos favoritos</a>
+                      <a href="#" class="nav-link px-2 text-white" routerLink="/bargains/favorites" *ngIf="isLoggedIn">Chollos favoritos</a>
                   </li>
                   <li>
                       <a href="#" class="nav-link px-2 text-white" routerLink="/bargains/expirating-soon">Expiran pronto</a>
                   </li>
               </ul>
-              <div class="text-center dropdown">
+              <div class="text-center dropdown" *ngIf="!isLoggedIn">
+                <button id="btn-login" type="button" class="btn  btn-light" routerLink="/login">
+                    Login
+                </button>
+              </div>
+              <div class="text-center dropdown" *ngIf="isLoggedIn">
                   <button id="btn-profile" type="button" class="btn dropdown-toggle btn-light"
                   data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="bi bi-person-circle"></i> Mi Cuenta
                   </button>
                   <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="#" routerLink="/profile">Perfil</a></li>
-                      <li><a class="dropdown-item" href="#" routerLink="/bargains">Log out</a></li>
-                      <div class="dropdown-divider"></div>
-                      <li><a class="dropdown-item" href="#" routerLink="/site-admin/home">Administrador</a></li>
+                      <li><a class="dropdown-item" href="#" (click)="logout()">Log out</a></li>
+                      <div class="dropdown-divider" *ngIf="showAdminBoard"></div>
+                      <li><a class="dropdown-item" href="#" routerLink="/site-admin/home" *ngIf="showAdminBoard">Administrador</a></li>
                   </ul>
               </div>
           </div>
