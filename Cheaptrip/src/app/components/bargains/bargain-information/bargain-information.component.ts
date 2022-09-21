@@ -2,8 +2,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Bargain } from '../../../models/bargain/bargain.model';
 import { BargainService } from '../../../services/bargain/bargain.service';
-import { Accommodation } from '../../../models/accommodation/accommodation.model';
-import { AccommodationService } from 'src/app/services/accommodation/accommodation.service';
 
 @Component({
   selector: 'app-bargain-information',
@@ -12,34 +10,28 @@ import { AccommodationService } from 'src/app/services/accommodation/accommodati
 })
 export class BargainInformationComponent implements OnInit {
 
-  bargain: Bargain = {
-    id: 1,
-    title: '',
-    image: '',
-    price: 0,
-    description: ''
-  }
+  id: number = 0;
 
-  accommodation: Accommodation = {
-    id: 1,
-    name: '',
-    address: '',
-    category: '',
-    latitude: 0,
-	  longitude: 0,
-    rating: 0
+  bargain: Bargain = {}
 
-  }
-
-  constructor(private activatedRoute: ActivatedRoute, private bargainService: BargainService, private accomodationService: AccommodationService, private router: Router) { }
+  constructor(private activatedRoute: ActivatedRoute, private bargainService: BargainService, private router: Router) { }
 
   ngOnInit(): void {
-    this.getBargain();
-    this.getAccommodation();
+    this.check();
+    this.getBargains();
+    }
+
+  /**
+* Check the routes params
+* Allows the user to get back to the page of the list where they were before (if they were on the item-list of this item)
+* With the same items displayed on the list
+*/
+  check() {
+    this.id = parseInt(this.activatedRoute.snapshot.paramMap.get('id') || '[]')
   }
 
-  getBargain() {
-    this.bargainService.get(this.bargain.id)
+  getBargains() {
+    this.bargainService.get(this.id)
       .subscribe(
         (result) => {
           this.bargain = result;
@@ -52,17 +44,4 @@ export class BargainInformationComponent implements OnInit {
       );
   }
 
-  getAccommodation() {
-    this.accomodationService.get(this.accommodation.id)
-      .subscribe(
-        (result) => {
-          this.accommodation = result;
-          console.log('result ->' + result);
-
-        },
-        (error) => {
-          console.log('Was impossible to take accomodation info');
-        }
-      );
-  }
 }

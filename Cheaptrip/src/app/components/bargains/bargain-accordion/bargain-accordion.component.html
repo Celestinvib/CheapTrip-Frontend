@@ -1,4 +1,4 @@
-<div class="col-4">
+<div>
 <div class="accordion" id="accordionExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
@@ -20,10 +20,10 @@
     </h2>
     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-          <strong>Ciudad de salida:</strong>    {{flight.origin}} <br>
-          <strong>Ciudad de entrada:</strong>   {{flight.destination}} <br>
-          <strong>Fecha de salida:</strong>    {{flight.departure_date}} <br>
-          <strong>Fecha de llegada:</strong>   {{flight.arrival_date}} <br>
+          <strong>Ciudad de salida: </strong>   {{bargain.outbound_flight?.origin?.name}} <br>
+          <strong>Ciudad de llegada: </strong>  {{bargain.outbound_flight?.destination?.name}} <br>
+          <strong>Fecha de ida: </strong>    {{bargain.outbound_flight?.departure_date}} <br>
+          <strong>Fecha de vuelta: </strong>   {{bargain.return_flight?.arrival_date}} <br>
       </div>
     </div>
   </div>
@@ -35,7 +35,6 @@
     </h2>
     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-
       </div>
     </div>
   </div>

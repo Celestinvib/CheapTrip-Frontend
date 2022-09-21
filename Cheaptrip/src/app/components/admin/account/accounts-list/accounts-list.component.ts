@@ -56,7 +56,6 @@ getAccounts() {
   this.accountService.getAccounts()
   .subscribe(
     (result) => {
-      console.log(result)
       this.accounts = result;
     },
     (error) => {

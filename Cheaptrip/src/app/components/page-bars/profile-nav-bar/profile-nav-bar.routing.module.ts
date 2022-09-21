@@ -9,7 +9,11 @@ import { ProfileComponent } from '../../profile/profile.component';
 const routes: Routes = [
   {
     path:'',
-    redirectTo:'/mydata',
+    component: ProfileComponent,
+
+    children: [
+    { path:'',
+    redirectTo:'mydata',
     pathMatch: 'full'
   },
   {
@@ -25,8 +29,10 @@ const routes: Routes = [
     component: BargainsBookedComponent
   },
   {
-    path:'',
-    component: ProfileComponent
+    path: '**',
+    redirectTo: 'mydata'
+  }
+    ]
   }
 ];
 

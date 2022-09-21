@@ -1,5 +1,7 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import * as $ from "jquery";
+
+import { BargainService } from '../../services/bargain/bargain.service';
 
 @Component({
   selector: 'app-main',
@@ -8,54 +10,25 @@ import * as $ from "jquery";
 })
 export class MainComponent implements OnInit {
 
-  constructor() {
-    $(document).ready(function(){
-      var zindex = 10;
+  bargains: any = null
 
-      $("div.card").click(function(e){
-        e.preventDefault();
-
-        var isShowing = false;
-
-        if ($(this).hasClass("show")) {
-          isShowing = true
-        }
-
-        if ($("div.cards").hasClass("showing")) {
-          // a card is already in view
-          $("div.card.show")
-            .removeClass("show");
-
-          if (isShowing) {
-            // this card was showing - reset the grid
-            $("div.cards")
-              .removeClass("showing");
-          } else {
-            // this card isn't showing - get in with it
-            $(this)
-              .css({zIndex: zindex})
-              .addClass("show");
-
-          }
-
-          zindex++;
-
-        } else {
-          // no cards in view
-          $("div.cards")
-            .addClass("showing");
-          $(this)
-            .css({zIndex:zindex})
-            .addClass("show");
-
-          zindex++;
-        }
-
-      });
-    });
-  }
+  constructor(private activatedRoute: ActivatedRoute, private bargainService: BargainService, private router: Router) { }
 
   ngOnInit(): void {
+    this.getBargains();
+
   }
 
+  getBargains() {
+    this.bargainService.getAll()
+      .subscribe(
+        (result) => {
+          this.bargains = result;
+
+        },
+        (error) => {
+          console.log('Was impossible to take bargain info');
+        }
+      );
+  }
 }

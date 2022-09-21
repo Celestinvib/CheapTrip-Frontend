@@ -1,3 +1,5 @@
+import { Accommodation } from '../accommodation/accommodation.model';
+import { Flight } from '../flight/flight.model';
 export class Bargain {
   id?:any;
   title?:string;
@@ -5,8 +7,8 @@ export class Bargain {
   price?:number;
   description?:string;
   expiration_date?:Date;
-  outbound_flight?:string;
-  return_flight?:string;
-  accomodation_id?:number;
+  outbound_flight?:Flight;
+  return_flight?:Flight;
+  accommodation?:Accommodation;
   status?:number;
 }
