@@ -49,6 +49,12 @@ import { FeatureUpdateComponent } from './components/admin/feature/feature-updat
 import { AccomomodationListComponent } from './components/admin/accommodation/accomomodation-list/accomomodation-list.component';
 import { AccomomodationAddComponent } from './components/admin/accommodation/accomomodation-add/accomomodation-add.component';
 import { AccomomodationUpdateComponent } from './components/admin/accommodation/accomomodation-update/accomomodation-update.component';
+import { FlightListComponent } from './components/admin/flight/flight-list/flight-list.component';
+import { FlightAddComponent } from './components/admin/flight/flight-add/flight-add.component';
+import { FlightUpdateComponent } from './components/admin/flight/flight-update/flight-update.component';
+import { AccountsListComponent } from './components/admin/account/accounts-list/accounts-list.component';
+import { AccountAddComponent } from './components/admin/account/account-add/account-add.component';
+import { AccountUpdateComponent } from './components/admin/account/account-update/account-update.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +89,13 @@ import { AccomomodationUpdateComponent } from './components/admin/accommodation/
     FeatureUpdateComponent,
     AccomomodationListComponent,
     AccomomodationAddComponent,
-    AccomomodationUpdateComponent
+    AccomomodationUpdateComponent,
+    FlightListComponent,
+    FlightAddComponent,
+    FlightUpdateComponent,
+    AccountsListComponent,
+    AccountAddComponent,
+    AccountUpdateComponent
 
   ],
   imports: [

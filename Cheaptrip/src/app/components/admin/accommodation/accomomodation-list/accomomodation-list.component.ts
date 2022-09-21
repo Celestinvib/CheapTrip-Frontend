@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccommodationService } from '../../../../services/accommodation/accommodation.service';
+import { AccommodationsFeaturesService } from '../../../../services/accommodations-features/accommodations-features.service';
+
 import {  ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -22,7 +24,8 @@ export class AccomomodationListComponent implements OnInit {
 
   constructor(
     private accommodationService: AccommodationService,
-    private route: ActivatedRoute
+    private accommodationsFeaturesService: AccommodationsFeaturesService,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
@@ -56,7 +59,6 @@ export class AccomomodationListComponent implements OnInit {
     .subscribe(
       (result) => {
         this.accommodations = result;
-        console.log(result)
       },
       (error) => {
         console.log('There has been a problem');
@@ -65,25 +67,41 @@ export class AccomomodationListComponent implements OnInit {
   }
 
   /**
+  * Get all the features of one accommodation
+  */
+  getAccommodationFeatures(accommodationId: number){
+   this.accommodationsFeaturesService.getFeaturesAccommodation(accommodationId)
+   .subscribe(
+    (result) => {
+      // console.log(result);
+    },
+    (error) => {
+      console.log('There has been a problem loading the features');
+    }
+  );
+
+  }
+
+  /**
   * Set the item that maybe its status is changed
   * When clicking on the change status button on item in the list, the its id is saved, it will be used later on the change status modal to do so.
   * @param accommodationId id of the city that maybe is deleted
   */
      MaybeChangeStatusThisAccommodation(accommodationId: number){
-      this.idItemToDelete = accommodationId;
+      this.idItemToChangeStatus = accommodationId;
     }
 
     /**
     * Change status of an Accommodation
     */
     changeStatusAccommodation() {
-      this.accommodationService.changeStatus(this.idItemToDelete,null)
+      this.accommodationService.changeStatus(this.idItemToChangeStatus,null)
       .subscribe(
         (result) => {
           this.reloadPage();
         },
         (error) => {
-          console.log('There has been a problem trying to delete the city');
+          console.log('There has been a problem trying to delete the accommodation');
         }
       );
     }
@@ -94,20 +112,20 @@ export class AccomomodationListComponent implements OnInit {
   * @param accommodationId id of the city that maybe is deleted
   */
   MaybeDeleteThisAccommodation(accommodationId: number){
-    this.idItemToChangeStatus = accommodationId;
+    this.idItemToDelete = accommodationId;
   }
 
   /**
   * Delete an Accommodation
   */
   deleteAccommodation() {
-    this.accommodationService.delete(this.idItemToChangeStatus)
+    this.accommodationService.delete(this.idItemToDelete)
     .subscribe(
       (result) => {
         this.reloadPage();
       },
       (error) => {
-        console.log('There has been a problem trying to delete the city');
+        console.log('There has been a problem trying to delete the accommodation');
       }
     );
   }

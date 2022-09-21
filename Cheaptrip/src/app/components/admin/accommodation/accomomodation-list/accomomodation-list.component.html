@@ -62,7 +62,7 @@
                   <td>{{accommodation.longitude}}</td>
                   <td>{{accommodation.rating}}</td>
                   <td>{{accommodation.city.name}}</td>
-                  <td>Rasgos :)</td>
+                  <td><!--{{getAccommodationFeatures(accommodation.id)}}--></td>
                   <td>
                       <a class="btn btn-success btn-sm" routerLink="/site-admin/accommodations/update/show" [queryParams]="{id: accommodation.id,lastPage: pageActual, lastItemsViewed:ItemsViewed}">
                         <i class="bi bi-pencil-square" ></i>

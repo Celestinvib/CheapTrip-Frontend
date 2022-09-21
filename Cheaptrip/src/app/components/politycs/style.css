@@ -9,7 +9,8 @@ h1 {
 }
 
 .main-content{
-  padding-top: 10vw;
+  min-height: 100vh;
+  padding-top: 5vw;
   padding-left: 10vw;
   padding-right: 10vw;
   text-align: justify;
@@ -81,22 +82,6 @@ body {
   font-size: 15px;
 }
 }
-
-body {
-  font-size: 15px;
-  background: white;
-  color: #14193f;
-  width: 100%;
-  flex-direction: column;
-  position: relative;
-  font-family: proximanova,arial,sans-serif;
-  font-weight: 400;
-}
-body {
-  font-family: proximanova,arial,sans-serif;
-  font-weight: 400;
-}
-
 :root {
   --spacer: 30px;
 }
