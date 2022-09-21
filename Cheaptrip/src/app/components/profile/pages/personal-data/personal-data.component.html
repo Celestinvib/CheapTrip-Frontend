@@ -1,4 +1,4 @@
-<div class="container rounded bg-white mt-5 mb-5">
+
   <div class="row">
     <div class="col-md-3 border-right">
       <div class="d-flex flex-column align-items-center text-center p-3 py-5">
@@ -6,8 +6,8 @@
           class="rounded-circle mt-5"
           width="150px"
           src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
-        /><span class="font-weight-bold">Nombre usuario</span>
-        <span class="text-black-50">mail@mail.com.my</span><span> </span>
+        /><span class="font-weight-bold">{{account.name}}</span>
+        <span class="text-black-50">{{account.email}}</span><span> </span>
       </div>
     </div>
     <div class="col-md-5 border-right">
@@ -19,21 +19,21 @@
           <div class="col-md-6">
             <label class="labels">Nombre</label
             ><input
-              disabled
               type="text"
+              placeholder="{{account.name}}"
               class="form-control"
-              placeholder="first name"
               value=""
             />
           </div>
           <div class="col-md-6">
             <label class="labels">Apellidos</label
             ><input
+
               disabled
               type="text"
               class="form-control"
               value=""
-              placeholder="surname"
+              placeholder="{{account.surnames}}"
             />
           </div>
         </div>
@@ -41,30 +41,33 @@
           <div class="col-md-12">
             <label class="labels">Email</label
             ><input
+
               disabled
               type="text"
               class="form-control"
-              placeholder="enter phone number"
+              placeholder="{{account.email}}"
               value=""
             />
           </div>
           <div class="col-md-12">
             <label class="labels">Número de teléfono</label
             ><input
+
               disabled
               type="text"
               class="form-control"
-              placeholder="enter address line 1"
+              placeholder="{{account.phone_number}}"
               value=""
             />
           </div>
           <div class="col-md-12">
             <label class="labels">Fecha de nacimiento</label
             ><input
+
               disabled
               type="text"
               class="form-control"
-              placeholder="enter address line 2"
+              placeholder="{{account.birth_date}}"
               value=""
             />
           </div>
@@ -73,6 +76,7 @@
               disabled
               class="btn btn-primary profile-button"
               type="button"
+
             >
               Actualizar información
             </button>
@@ -86,4 +90,4 @@
       </div>
     </div>
   </div>
-</div>
+

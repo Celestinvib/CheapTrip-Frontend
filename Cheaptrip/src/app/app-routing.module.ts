@@ -14,7 +14,6 @@ import { BasicLoginComponent } from './components/access/basic-login/basic-login
 
 import { SingupComponent } from './components/access/singup/singup.component';
 import { ForgotpasswordComponent } from './components/access/forgotpassword/forgotpassword.component';
-import { ProfileComponent } from './components/profile/profile.component';
 import { MainComponent } from './components/main/main.component';
 
 import { BargainInformationComponent } from './components/bargains/bargain-information/bargain-information.component';
@@ -30,7 +29,7 @@ import { AccomomodationUpdateComponent } from './components/admin/accommodation/
 const routes: Routes = [
   {
     path:'',
-    redirectTo:'/bargains',
+    redirectTo:'bargains',
     pathMatch: 'full'
   },
   {
@@ -98,12 +97,12 @@ const routes: Routes = [
     component: ForgotpasswordComponent
   },
   {
-    path: 'bargains',
-    component: MainComponent
+    path: 'bargains/:id',
+    component: BargainInformationComponent
   },
   {
-    path: 'bargain-info',
-    component: BargainInformationComponent
+    path: 'bargains',
+    component: MainComponent
   },
   {
     path: 'profile',

@@ -1,19 +1,28 @@
 <div class="cards">
   <div class="card">
     <div class="card__image-holder">
-      <img class="card__image img-fluid" src="https://source.unsplash.com/300x225/?wave" alt="wave" />
+      <img
+        class="card__image img-fluid"
+        src="{{ bargain.image }}"
+        alt="wave"
+      />
     </div>
     <div class="card-title">
-      <a href="#" class="toggle-info btn" routerLink="/bargain-info">
-        <span class="left"></span>
-        <span class="right"></span>
-      </a>
-      <h2>
-          {{bargain.title}}
-          <small>En {{accommodation.name}}</small>
-      </h2>
-    </div>
-
+      <div class="row">
+        <div class="col-10">
+          <h2 routerLink="/bargains/{{bargain.id}}">
+            {{ bargain.title }}
+            <small>En {{bargain.accommodation?.name}} </small>
+          </h2>
+        </div>
+        <div class="col-1">
+          <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-outline-danger">
+              <i class="bi bi-bookmark-heart-fill"></i>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-
+  </div>
+</div>

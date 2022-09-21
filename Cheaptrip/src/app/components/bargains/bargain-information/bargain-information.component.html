@@ -1,4 +1,4 @@
-<div class="group-title-container">
+<div class="group-title-container container">
   <div class="center">
     <p>
       <img
@@ -9,7 +9,7 @@
     </p>
 
     <div class="container">
-      <h1>{{bargain.title}}</h1>
+      <h1>{{ bargain.title }}</h1>
 
       <button type="button" class="btn btn-outline-dark">
         Reservar Chollo
@@ -24,7 +24,7 @@
         data-id="1968"
       >
         <div class="summary-name-container">
-          <span class="summary-name">{{accommodation.name}}</span>
+          <span class="summary-name">{{ bargain.accommodation?.name }}</span>
           <span class="summary-stars-keys inline-flex">
             <i class="fa fa-star" aria-hidden="true"></i>
             <i class="fa fa-star" aria-hidden="true"></i>
@@ -33,7 +33,7 @@
             <i class="fa fa-star" aria-hidden="true"></i>
           </span>
           <div class="summary-address color-secondary-medium">
-            {{accommodation.address}}
+            {{ bargain.accommodation?.address }}
           </div>
         </div>
         <div class="hotel-rating-container">
@@ -41,15 +41,15 @@
             class="rating-content rounded-container-secondary-lighter width-max-content centered-flex"
             data-entity="ratingContainer"
           >
-            <span class="rating-value bold">{{accommodation.rating}}</span> <br>
-            <span class="rating-text underline">{{bargain.price}} €</span>
+            <span class="rating-value bold">{{ bargain.accommodation?.rating }}</span>
+            <br />
+            <span class="rating-text underline">{{ bargain.price }} €</span>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="margin">
-      <app-bargain-accordion></app-bargain-accordion>
-    </div>
   </div>
+  <app-bargain-accordion [bargain]="bargain"></app-bargain-accordion>
 </div>
+
+

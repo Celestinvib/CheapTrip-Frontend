@@ -46,7 +46,6 @@ import { BasicLoginComponent } from './components/access/basic-login/basic-login
 import { FeaturesListComponent } from './components/admin/feature/features-list/features-list.component';
 import { FeatureAddComponent } from './components/admin/feature/feature-add/feature-add.component';
 import { FeatureUpdateComponent } from './components/admin/feature/feature-update/feature-update.component';
-import { ProfileModule } from './components/page-bars/profile-nav-bar/profile.module';
 import { AccomomodationListComponent } from './components/admin/accommodation/accomomodation-list/accomomodation-list.component';
 import { AccomomodationAddComponent } from './components/admin/accommodation/accomomodation-add/accomomodation-add.component';
 import { AccomomodationUpdateComponent } from './components/admin/accommodation/accomomodation-update/accomomodation-update.component';
@@ -100,8 +99,7 @@ import { AccomomodationUpdateComponent } from './components/admin/accommodation/
     MatDividerModule,
     HttpClientModule,
     MatExpansionModule,
-    NgxPaginationModule,
-    ProfileModule
+    NgxPaginationModule
 
   ],
   providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
