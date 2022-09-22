@@ -48,3 +48,7 @@ label {
 .icheck-success {
   width: 300px;
 }
+
+#filter-title{
+  font-size: 2rem;
+}
