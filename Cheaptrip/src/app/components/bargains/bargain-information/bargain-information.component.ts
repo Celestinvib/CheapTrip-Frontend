@@ -2,6 +2,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Bargain } from '../../../models/bargain/bargain.model';
 import { BargainService } from '../../../services/bargain/bargain.service';
+import { TokenStorageService } from '../../../services/security/token-storage.service';
+import { AccountService } from '../../../services/account/account.service';
+import { AuthService } from '../../../services/security/auth.service';
+import { BargainsAccountsService } from '../../../services/bargains-accounts/bargains-accounts.service';
 
 @Component({
   selector: 'app-bargain-information',
@@ -10,15 +14,32 @@ import { BargainService } from '../../../services/bargain/bargain.service';
 })
 export class BargainInformationComponent implements OnInit {
 
+  form: any = {
+    email: null,
+    password: null
+  };
+
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
+  user = '';
+  userRole = '';
+
   id: number = 0;
 
   bargain: Bargain = {}
 
-  constructor(private activatedRoute: ActivatedRoute, private bargainService: BargainService, private router: Router) { }
+  constructor(private activatedRoute: ActivatedRoute, private bargainService: BargainService, private router: Router, private authService: AuthService,
+    private tokenStorage: TokenStorageService, private accountService: AccountService, private bargainsAccountsService: BargainsAccountsService) { }
 
   ngOnInit(): void {
     this.check();
     this.getBargains();
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorage.getUser().roles;
+    }
   }
 
   /**
@@ -42,6 +63,48 @@ export class BargainInformationComponent implements OnInit {
           console.log('Was impossible to take bargain info');
         }
       );
+  }
+
+  onSubmit(): void {
+    const { email, password } = this.form;
+    if (this.emailValid(email)) {
+      this.authService.login(email, password)
+        .subscribe(
+          data => {
+            this.tokenStorage.saveToken(JSON.stringify(data['token']).replace(/['"]+/g, ''));
+            this.tokenStorage.saveUser((this.form.email));
+            this.isLoginFailed = false;
+            this.isLoggedIn = true;
+            let userDetails = this.accountService.getAccountEmail(this.form.email)
+            this.reloadPage();
+
+            userDetails.subscribe(
+              result => {
+                this.tokenStorage.saveRole(result.role);
+              }
+            );
+
+          },
+          err => {
+            console.log('error')
+            this.errorMessage = err;
+            this.isLoginFailed = true;
+          }
+        );
+    }
+  }
+
+  reloadPage(): void {
+    window.location.reload();
+  }
+
+  emailValid(email: string): boolean {
+    const expression: RegExp = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/i;
+    if (expression.test(email)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }

@@ -7,15 +7,11 @@
         </p>
       </div>
       <div class="col text-start px-3">
-        <h1>{{ bargain.title }}</h1>
-        <button type="button" class="btn btn-outline-dark">
-          Reservar Chollo
-        </button>
-
+        <h1><strong>{{ bargain.title }}</strong></h1>
         <div
           class="hotel-summary-container group-module-container mb-5 pt-3 ps-2"
         >
-          <h2 class="group-module-title mb-3">¿Dónde te alojarás?</h2>
+          <h2 class="group-module-title mb-3"><strong>¿Dónde te alojarás?</strong></h2>
           <div
             class="hotel-summary centered-flex flex-wrap"
             data-action="showHotelModal"
@@ -32,9 +28,11 @@
                 <i class="fa fa-star" aria-hidden="true"></i>
                 <i class="fa fa-star" aria-hidden="true"></i>
               </span>
+            <br>
               <div class="summary-address color-secondary-medium">
-                {{ bargain.accommodation?.address }}
+                <span>{{ bargain.accommodation?.address }}</span>
               </div>
+
             </div>
             <div class="hotel-rating-container">
               <div
@@ -47,7 +45,26 @@
                 <br />
                 <span class="rating-text underline">{{ bargain.price }} €</span>
               </div>
+              <br>
+              <div class="row">
+                <div class="col-4">
+              <button
+              type="button"
+              class="btn btn-outline-dark"
+              data-bs-toggle="modal"
+              data-bs-target="#reservarModal"
+            >
+              Reservar Chollo
+            </button>
+          </div>
+            <div class="col">
+              <div class="d-flex">
+                <button type="button" class="btn btn-outline-danger" *ngIf="isLoggedIn">
+                  Añadir a favoritos
+                </button>
+              </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -55,3 +72,39 @@
   </div>
   <app-bargain-accordion [bargain]="bargain"></app-bargain-accordion>
 </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="reservarModal" tabindex="-1" aria-labelledby="reservarModalLabel" aria-hidden="true" *ngIf="isLoggedIn">
+      <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h5 class="modal-title" id="reservarModalLabel"><strong>Reserva del chollo</strong></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ¿Quieres reservar tu chollo?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-danger"  data-bs-dismiss="modal" >Reservar el chollo</button>
+          </div>
+      </div>
+      </div>
+  </div>
+  <div class="modal fade" id="reservarModal" tabindex="-1" aria-labelledby="reservarModalLabel" aria-hidden="true" *ngIf="!isLoggedIn">
+    <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h5 class="modal-title" id="reservarModalLabel"><strong>Reserva del chollo</strong></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Para reservar el chollo tienes qué haber iniciado sesión
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-danger"  data-bs-dismiss="modal" routerLink="/login">Iniciar Sesión</button>
+          </div>
+      </div>
+      </div>
+  </div>
