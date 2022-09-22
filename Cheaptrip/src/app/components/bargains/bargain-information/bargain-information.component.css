@@ -4,8 +4,7 @@
 .center {
   text-align: center;
 }
-.group-title-container {
-  height: 100vh;
+.main-content {
   min-height: 100vh;
-  margin-bottom: 150px;
+  margin-bottom: 5vh;
 }
