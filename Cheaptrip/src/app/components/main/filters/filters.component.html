@@ -15,13 +15,13 @@
         aria-expanded="false"
       >
         <i class="bi bi-tags fs-1"></i
-        ><span class="ms-1 d-none d-md-inline">Tematicos</span>
+        ><span class="ms-1 d-none d-md-inline">Temáticos</span>
       </button>
       <div class="collapse" id="theme-collapse">
         <ul
           class="btn-toggle-nav list-unstyled fw-normal pb-1 small text-start"
         >
-          <li class="form-check">
+          <li class="form-check" *ngFor="let feature of features">
             <input
               class="form-check-input"
               type="checkbox"
@@ -29,27 +29,7 @@
               id="flexCheckDefault"
             />
             <label class="form-check-label" for="flexCheckDefault">
-              Gimnasio
-            </label>
-          </li>
-          <li class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="flexCheckDefault"
-            />
-            <label class="form-check-label" for="flexCheckDefault"> Spa </label>
-          </li>
-          <li class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="flexCheckDefault"
-            />
-            <label class="form-check-label" for="flexCheckDefault">
-              Vistas al mar
+              {{ feature.name }}
             </label>
           </li>
         </ul>
@@ -69,7 +49,7 @@
         <ul
           class="btn-toggle-nav list-unstyled fw-normal pb-1 small text-start"
         >
-          <li class="form-check">
+          <li class="form-check" *ngFor="let city of cities">
             <input
               class="form-check-input"
               type="checkbox"
@@ -77,29 +57,7 @@
               id="flexCheckDefault"
             />
             <label class="form-check-label" for="flexCheckDefault">
-              Barcelona
-            </label>
-          </li>
-          <li class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="flexCheckDefault"
-            />
-            <label class="form-check-label" for="flexCheckDefault">
-              Lisboa
-            </label>
-          </li>
-          <li class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="flexCheckDefault"
-            />
-            <label class="form-check-label" for="flexCheckDefault">
-              Antananarivo
+              {{ city.name }}
             </label>
           </li>
         </ul>
