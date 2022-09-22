@@ -55,6 +55,11 @@ import { FlightUpdateComponent } from './components/admin/flight/flight-update/f
 import { AccountsListComponent } from './components/admin/account/accounts-list/accounts-list.component';
 import { AccountAddComponent } from './components/admin/account/account-add/account-add.component';
 import { AccountUpdateComponent } from './components/admin/account/account-update/account-update.component';
+import { BargainsListComponent } from './components/admin/bargain/bargains-list/bargains-list.component';
+import { BargainAddComponent } from './components/admin/bargain/bargain-add/bargain-add.component';
+import { BargainsUpdateComponent } from './components/admin/bargain/bargains-update/bargains-update.component';
+import { BookingsListComponent } from './components/admin/booking/bookings-list/bookings-list.component';
+import { BookingsAddComponent } from './components/admin/booking/bookings-add/bookings-add.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +100,12 @@ import { AccountUpdateComponent } from './components/admin/account/account-updat
     FlightUpdateComponent,
     AccountsListComponent,
     AccountAddComponent,
-    AccountUpdateComponent
+    AccountUpdateComponent,
+    BargainsListComponent,
+    BargainAddComponent,
+    BargainsUpdateComponent,
+    BookingsListComponent,
+    BookingsAddComponent
 
   ],
   imports: [

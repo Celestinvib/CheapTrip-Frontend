@@ -19,7 +19,7 @@ export class AccomomodationAddComponent implements OnInit {
     latitude: null,
 	  longitude: null,
     rating: null,
-    city_id: null
+    city: {}
   };
 
   accommodation: Accommodation = {
@@ -29,7 +29,7 @@ export class AccomomodationAddComponent implements OnInit {
     latitude: undefined,
 	  longitude: undefined,
     rating: undefined,
-    city_id: undefined
+    city: {}
   }
 
   cities:any = null;
@@ -52,6 +52,8 @@ export class AccomomodationAddComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkParams();
+    this.getCities();
+    this.getFeatures();
   }
 
   /**
@@ -91,24 +93,32 @@ export class AccomomodationAddComponent implements OnInit {
     /**
     * Get all the features
     */
-         getFeatures() {
-          this.featureService.getAll()
-          .subscribe(
-            (result) => {
-              this.features = result;
-            },
-            (error) => {
-              console.log('There has been a problem');
-            }
-          );
-        }
+    getFeatures() {
+    this.featureService.getAll()
+    .subscribe(
+      (result) => {
+        this.features = result;
+      },
+      (error) => {
+        console.log('There has been a problem');
+      }
+    );
+  }
 
   /**
   * When the form is submmited
   */
   onSubmit(): void {
 
-    if( this.accommodation.name != '') {
+    if(
+    this.accommodation.name != '' &&
+    this.accommodation.address != '' &&
+    this.accommodation.category != '' &&
+    this.accommodation.latitude != undefined &&
+	  this.accommodation.longitude!= undefined  &&
+    this.accommodation.rating != undefined &&
+    this.accommodation.city != undefined
+    ) {
       this.saveAccommodation();
     }
   }

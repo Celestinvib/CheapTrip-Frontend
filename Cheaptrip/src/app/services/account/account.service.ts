@@ -45,8 +45,8 @@ export class AccountService {
   /**
   * Save an account
   */
-   create(data: any):  Observable<any> {
-    return this.http.post(`${baseUrl}/cuentas/`,data);
+   createAdmin(data: any):  Observable<any> {
+    return this.http.post(`${baseUrl}/cuentas/admin`,data);
   }
 
   /**

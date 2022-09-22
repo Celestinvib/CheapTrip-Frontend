@@ -31,6 +31,11 @@ import { FlightUpdateComponent } from './components/admin/flight/flight-update/f
 import { AccountsListComponent } from './components/admin/account/accounts-list/accounts-list.component';
 import { AccountAddComponent } from './components/admin/account/account-add/account-add.component';
 import { AccountUpdateComponent } from './components/admin/account/account-update/account-update.component';
+import { BargainsListComponent } from './components/admin/bargain/bargains-list/bargains-list.component';
+import { BargainsUpdateComponent } from './components/admin/bargain/bargains-update/bargains-update.component';
+import { BargainAddComponent } from './components/admin/bargain/bargain-add/bargain-add.component';
+import { BookingsListComponent } from './components/admin/booking/bookings-list/bookings-list.component'
+import { BookingsAddComponent } from './components/admin/booking/bookings-add/bookings-add.component';
 
 const routes: Routes = [
   {
@@ -97,6 +102,26 @@ const routes: Routes = [
   {
     path:'site-admin/accounts/update/:id',
     component: AccountUpdateComponent
+  },
+  {
+    path:'site-admin/bargains',
+    component: BargainsListComponent
+  },
+  {
+    path:'site-admin/bargains/add',
+    component: BargainAddComponent
+  },
+  {
+    path:'site-admin/bargains/update/:id',
+    component:  BargainsUpdateComponent
+  },
+  {
+    path:'site-admin/bookings',
+    component: BookingsListComponent
+  },
+  {
+    path:'site-admin/bookings/add',
+    component: BookingsAddComponent
   },
   {
     path:'site-admin/home',

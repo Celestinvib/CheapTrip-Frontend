@@ -121,7 +121,7 @@ color: white;
 color: rgb(218, 214, 214);
 }
 
-:host ::ng-deep .nav-link:visited {
+:host ::ng-deep .nav-link:active {
   color: rgb(196, 195, 195);
  }
 

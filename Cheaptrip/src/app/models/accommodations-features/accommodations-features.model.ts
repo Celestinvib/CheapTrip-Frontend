@@ -1,5 +1,8 @@
+import { Accommodation } from "../accommodation/accommodation.model";
+import { Feature } from "../feature/feature.model";
+
 export class AccommodationsFeatures {
     id?: any;
-    accommodation_id?: number;
-    feature_id?: number;
+    accommodation?: Accommodation;
+    feature?: Feature;
 }

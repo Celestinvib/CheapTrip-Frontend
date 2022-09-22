@@ -1,3 +1,5 @@
+import { City } from "../city/city.model";
+
 export class Accommodation {
     id?: any;
     name?: string;
@@ -6,6 +8,6 @@ export class Accommodation {
     latitude?: number;
 	  longitude?: number;
     rating?: number;
-    city_id?: number;
+    city?: City;
     status?: number;
 }

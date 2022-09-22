@@ -24,35 +24,35 @@
         </div>
         <div class="col-12">
         <label for="ICAccommodationCategory" class="form-label">Categoría</label>
-        <input type="email" class="form-control" id="ICAccommodationCategory"required [(ngModel)]="accommodation.category" name="category" required #category="ngModel">
+        <input type="text" class="form-control" id="ICAccommodationCategory"required [(ngModel)]="accommodation.category" name="category" required #category="ngModel">
         <div class="mt-2 alert alert-danger" role="alert" *ngIf="category.errors && f.submitted">
           ¡Se requiere la categoría!
         </div>
         </div>
         <div class="col">
         <label for="ICAccommodationLatitude" class="form-label">Latitud</label>
-        <input type="password" class="form-control" id="ICAccommodationLatitude" required [(ngModel)]="accommodation.latitude" name="latitude" required #latitude="ngModel">
+        <input type="text" class="form-control" id="ICAccommodationLatitude" required [(ngModel)]="accommodation.latitude" name="latitude" required #latitude="ngModel">
         <div class="mt-2 alert alert-danger" role="alert" *ngIf="latitude.errors && f.submitted">
           ¡Se requiere la latitud!
         </div>
         </div>
         <div class="col">
             <label for="ICAccommodationLength" class="form-label">Longitud</label>
-            <input type="password" class="form-control" id="ICAccommodationLength" required [(ngModel)]="accommodation.longitude" name="longitude" required #longitude="ngModel">
+            <input type="text" class="form-control" id="ICAccommodationLength" required [(ngModel)]="accommodation.longitude" name="longitude" required #longitude="ngModel">
             <div class="mt-2 alert alert-danger" role="alert" *ngIf="longitude.errors && f.submitted">
               ¡Se requiere la longitud!
             </div>
             </div>
           <div class="col">
             <label for="ICAccommodationRating" class="form-label">Valoración</label>
-            <input type="password" class="form-control" id="ICAccommodationRating" required [(ngModel)]="accommodation.rating" name="rating" required #rating="ngModel">
+            <input type="text" class="form-control" id="ICAccommodationRating" required [(ngModel)]="accommodation.rating" name="rating" required #rating="ngModel">
             <div class="mt-2 alert alert-danger" role="alert" *ngIf="rating.errors && f.submitted">
               ¡Se requiere la valoración!
             </div>
         </div>
         <div class="col-12">
             <label for="ICAccommodationCity" class="form-label">Ciudad</label>
-            <select class="form-select" id="ICAccommodationCity" [(ngModel)]="accommodation.city_id" name="city_id" required #city_id="ngModel" >
+            <select class="form-select" id="ICAccommodationCity" [(ngModel)]="accommodation.city!.id" name="city_id" required #city_id="ngModel" >
               <option  *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</option>
           </select>
           <div class="mt-2 alert alert-danger" role="alert" *ngIf="city_id.errors && f.submitted">

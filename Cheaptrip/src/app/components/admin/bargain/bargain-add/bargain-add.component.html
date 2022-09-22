@@ -1,0 +1,77 @@
+<app-admin-nav></app-admin-nav>
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <div class="row">
+    <h1 class="heading1">Chollos</h1>
+  </div>
+  <a class=" btn btn-primary text-light" routerLink="/site-admin/bargains" [queryParams]="{lastPageActual: lastPage, lastItemsViewed: lastItemsViewed }" ><i class="bi bi-caret-left"></i></a>
+  <form class="row g-3 border border-dark rounded-2 p-3"  name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+
+      <div class="col">
+        <label for="ICBargainTitle" class="form-label">Título</label>
+        <input type="text" class="form-control" id="ICBargainTitle" required [(ngModel)]="bargain.title" name="title" required #title="ngModel">
+        <div class="mt-2 alert alert-danger" role="alert" *ngIf="title.errors && f.submitted">
+          Se requiere el título!
+        </div>
+      </div>
+      <div class="col-12">
+        <label for="ICBargainImageURL" class="form-label">Image Url</label>
+        <input type="text" class="form-control" id="ICBargainImageURL" required [(ngModel)]="bargain.image" name="image" required #image="ngModel">
+        <div class="mt-2 alert alert-danger" role="alert" *ngIf="image.errors && f.submitted">
+          Se requiere de una url de una imagen!
+        </div>
+      </div>
+      <div class="col-12">
+        <label for="ICBargainDescription" class="form-label">Descripción</label>
+        <input type="text" class="form-control" id="ICBargainDescription" required [(ngModel)]="bargain.description" name="description" required #description="ngModel">
+        <div class="mt-2 alert alert-danger" role="alert" *ngIf="description.errors && f.submitted">
+          Se requiere de una descripción!
+        </div>
+      </div>
+      <div class="col-6">
+        <label for="ICBargainPrice" class="form-label">Precio</label>
+        <input type="number" class="form-control" id="ICBargainPrice" required [(ngModel)]="bargain.price" name="price" required #price="ngModel">
+        <div class="mt-2 alert alert-danger" role="alert" *ngIf="price.errors && f.submitted">
+          Se requiere de un precio!
+        </div>
+      </div>
+      <div class="col-6">
+        <label for="ICBargainExpirationDate" class="form-label">Fecha de expiración</label>
+        <input type="datetime-local" class="form-control" id="ICBargainExpirationDate" required [(ngModel)]="bargain.expiration_date" name="expiration_date" required #expiration_date="ngModel">
+        <div class="mt-2 alert alert-danger" role="alert" *ngIf="expiration_date.errors && f.submitted">
+          Se requiere de una fecha de expiración!
+        </div>
+      </div>
+      <div class="col">
+        <label for="ICBargainAccommodation" class="form-label">Alojamiento</label>
+        <select class="form-select" id="ICBargainAccommodation" [(ngModel)]="bargain.accommodation!.id" required  #accommodation="ngModel" name="accommodation">
+            <option  *ngFor="let accommodation of accommodations"  value="{{accommodation.id}}" >{{accommodation.name}}</option>
+        </select>
+        <div class="mt-2 alert alert-danger" role="alert" *ngIf="accommodation.errors && f.submitted">
+            Se requiere un alojamiento!
+        </div>
+      </div>
+      <div class="col">
+        <label for="ICBargainOutboundFlight" class="form-label">VueloIda</label>
+        <select class="form-select" id="ICBargainOutboundFlight" [(ngModel)]="bargain.outbound_flight!.id"   #outbound_flight="ngModel" name="outbound_flight">
+          <option selected>Ninguno</option>
+          <option  *ngFor="let flight of flights"  value="{{flight.id}}">{{flight.id}}</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="ICBargainReturnFlight" class="form-label">VueloDestino</label>
+        <select class="form-select" id="ICBargainReturnFlight" [(ngModel)]="bargain.return_flight!.id"   #return_flight="ngModel" name="return_flight">
+          <option selected>Ninguno</option>
+          <option  *ngFor="let flight of flights"  value="{{flight.id}}">{{flight.id}}</option>
+      </select>
+      </div>
+      <div class="col-12">
+      <button type="submit" class="btn btn-primary">Crear</button>
+      </div>
+  </form>
+  <div class="mt-2 alert alert-success" *ngIf="itemAdded">
+    Chollo añadido correctamente!!
+  </div>
+</div>
