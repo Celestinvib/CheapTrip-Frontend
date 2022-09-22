@@ -19,7 +19,7 @@ export class BargainInformationComponent implements OnInit {
   ngOnInit(): void {
     this.check();
     this.getBargains();
-    }
+  }
 
   /**
 * Check the routes params

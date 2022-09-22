@@ -1,13 +1,13 @@
-footer{
+footer {
   background-color: #ee566f;
-  margin: 0px!important;
+  margin: 0px !important;
 }
 
 .text-muted {
   --bs-text-opacity: 1;
-  color: white!important;
+  color: white !important;
 }
 
-#logo{
+#logo {
   cursor: pointer;
 }
