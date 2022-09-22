@@ -16,7 +16,7 @@ import { Flight } from 'src/app/models/flight/flight.model';
 export class BargainAddComponent implements OnInit {
 
   form: any = {
-    title:undefined,
+    title: undefined,
     image: undefined,
     price: undefined,
     description: undefined,
@@ -26,16 +26,7 @@ export class BargainAddComponent implements OnInit {
     accommodation: Accommodation
     };
 
-  bargain: Bargain = {
-    title:undefined,
-    image: undefined,
-    price: undefined,
-    description: undefined,
-    expiration_date: undefined,
-    outbound_flight: {},
-    return_flight: {},
-    accommodation: {}
-  }
+  bargain: Bargain = {  }
 
   accommodations:Accommodation[] = [];
 
@@ -84,14 +75,17 @@ export class BargainAddComponent implements OnInit {
     */
      onSubmit(): void {
 
-      if( this.bargain.title != '' &&
-      this.bargain.image != undefined &&
-      this.bargain.price != undefined &&
-      this.bargain.description != undefined &&
-      this.bargain.expiration_date != undefined &&
-      this.bargain.accommodation != undefined
+      if( this.form.title != '' &&
+      this.form.image != undefined &&
+      this.form.price != undefined &&
+      this.form.description != undefined &&
+      this.form.expiration_date != undefined &&
+      this.form.accommodation != undefined
      ) {
-        this.saveBargain();
+        console.log(this.form.accommodation)
+        console.log(this.form.outbound_flight)
+        console.log(this.form.return_flight)
+      //this.saveBargain();
       }
     }
 
@@ -133,16 +127,15 @@ export class BargainAddComponent implements OnInit {
     saveBargain(): void {
 
       const data = {
-        title: this.bargain.title,
-        image: this.bargain.image,
-        price: this.bargain.price,
-        description: this.bargain.description,
-        expiration_date: this.bargain.expiration_date,
-        outbound_flight: this.bargain.outbound_flight,
-        return_flight: this.bargain.return_flight,
-        accommodation: this.bargain.accommodation
+        title: this.form.title,
+        image: this.form.image,
+        price: this.form.price,
+        description: this.form.description,
+        expiration_date: this.form.expiration_date,
+        outbound_flight: this.form.outbound_flight,
+        return_flight: this.form.return_flight,
+        accommodation: this.form.accommodation
       }
-
       this.bargainService.create(data)
        .subscribe(
          response => {
