@@ -33,9 +33,6 @@
                 <div>Email</div>
             </th>
             <th scope="col">
-                <div>Contraseña</div>
-            </th>
-            <th scope="col">
                 <div>Número tel</div>
             </th>
             <th scope="col">
@@ -53,9 +50,8 @@
               <tr *ngFor="let account of accounts | paginate: {itemsPerPage: ItemsViewed,currentPage: pageActual}; let i = index" >
                   <th scope="row">{{account.id}}</th>
                   <td>{{account.name}}</td>
-                  <td>{{account.lastnames}}</td>
+                  <td>{{account.surnames}}</td>
                   <td>{{account.email}}</td>
-                  <td>{{account.password}}</td>
                   <td>{{account.phone_number}}</td>
                   <td>{{account.birth_date}}</td>
                   <td>{{account.creation_date}}</td>

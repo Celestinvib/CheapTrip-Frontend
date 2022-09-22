@@ -95,7 +95,7 @@ export class AccountAddComponent implements OnInit {
         birth_date:  this.account.birth_date
       }
 
-       this.accountService.create(data)
+       this.accountService.createAdmin(data)
        .subscribe(
          response => {
            //If the items is added successfully

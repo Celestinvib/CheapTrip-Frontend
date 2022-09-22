@@ -16,8 +16,8 @@ export class AccountService {
   /**
   * Get all the accounts
   */
-  getAccounts(): Observable<any> {
-    return this.http.get(baseUrl + "cuentas",{ responseType: 'text'})
+   getAccounts(): Observable<Account[]> {
+    return this.http.get<Account[]>(baseUrl + "cuentas");
   }
 
   /**

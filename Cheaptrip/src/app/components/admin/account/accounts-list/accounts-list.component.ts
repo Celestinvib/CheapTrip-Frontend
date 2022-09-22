@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../../../../services/account/account.service';
 import {  ActivatedRoute } from '@angular/router';
+import { Account } from 'src/app/models/account/account.model';
 
 @Component({
   selector: 'app-accounts-list',
@@ -9,7 +10,7 @@ import {  ActivatedRoute } from '@angular/router';
 })
 export class AccountsListComponent implements OnInit {
 
-  accounts:any = null;
+  accounts:Account[] = [];
 
   idItemToDelete:number = 0;
 
@@ -57,6 +58,7 @@ getAccounts() {
   .subscribe(
     (result) => {
       this.accounts = result;
+      console.log(this.accounts);
     },
     (error) => {
       console.log('There has been a problem');
