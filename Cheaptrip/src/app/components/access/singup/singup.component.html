@@ -78,8 +78,14 @@
                 <div class="alert alert-danger" role="alert" *ngIf="name.errors && f.submitted">
                   Introduce un nombre.
                 </div>
-                <div class="alert alert-danger" role="alert" *ngIf="rpassword.errors && f.submitted">
-                  Las contraseñas no coinciden.
+                <div class="alert alert-danger" role="alert" *ngIf="phone_number.errors && f.submitted">
+                  Introduce un teléfono.
+                </div>
+                <div class="alert alert-danger" role="alert" *ngIf="birth_date.errors && f.submitted">
+                  Introduce tu fecha de nacimiento.
+                </div>
+                <div class="alert alert-success" role="alert" *ngIf="!isRegisterFailed && f.submitted">
+                  Registrado correctamente.
                 </div>
               </div>
             </form>
