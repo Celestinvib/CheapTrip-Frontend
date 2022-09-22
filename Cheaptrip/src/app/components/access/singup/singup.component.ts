@@ -21,6 +21,7 @@ export class SingupComponent implements OnInit {
 
   isLoggedIn = false;
   isRegisterFailed = false;
+  isRegisterSuccess = false;
   errorMessage = '';
   roles: string[] = [];
   user = '';
@@ -38,18 +39,21 @@ export class SingupComponent implements OnInit {
         .subscribe(
           data => {
             this.isRegisterFailed = false;
+            this.isRegisterSuccess = true;
 
             //Past 6 seconds the boolean is set to false therefore the item in the view disappear
             setTimeout(() => {
               console.log("Successfully registered!");
-            },
-              6000);
               this.router.navigate(['/login']);
+            },
+              4000);
+
           },
           err => {
             console.log('error')
             this.errorMessage = err;
             this.isRegisterFailed = true;
+            this.isRegisterSuccess = false;
           }
         );
     }

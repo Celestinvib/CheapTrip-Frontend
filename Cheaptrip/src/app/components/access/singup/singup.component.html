@@ -84,7 +84,7 @@
                 <div class="alert alert-danger" role="alert" *ngIf="birth_date.errors && f.submitted">
                   Introduce tu fecha de nacimiento.
                 </div>
-                <div class="alert alert-success" role="alert" *ngIf="!isRegisterFailed && f.submitted">
+                <div class="alert alert-success" role="alert" *ngIf="isRegisterSuccess && f.submitted">
                   Registrado correctamente.
                 </div>
               </div>
