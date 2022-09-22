@@ -73,13 +73,11 @@
               <a class="btn btn-primary text-light" routerLink="/site-admin/bookings/add"  [queryParams]="{lastPage: pageActual, lastItemsViewed:ItemsViewed}">Agregar Reserva</a>
           </div>
           <div *ngIf="bookings!=null;">
-
             <pagination-controls class="my-pagination"
             (pageChange)="pageActual = $event"
             (maxSize)="5"
             previousLabel="Anterior" nextLabel="Siguiente">
           </pagination-controls>
-
         </div>
       </div>
 

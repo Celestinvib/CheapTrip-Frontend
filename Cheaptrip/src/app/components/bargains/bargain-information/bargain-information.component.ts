@@ -6,6 +6,7 @@ import { TokenStorageService } from '../../../services/security/token-storage.se
 import { AccountService } from '../../../services/account/account.service';
 import { AuthService } from '../../../services/security/auth.service';
 import { BargainsAccountsService } from '../../../services/bargains-accounts/bargains-accounts.service';
+import { BargainsAccounts } from 'src/app/models/bargains-accounts/bargains-accounts.model';
 
 @Component({
   selector: 'app-bargain-information',
@@ -28,6 +29,8 @@ export class BargainInformationComponent implements OnInit {
 
   id: number = 0;
 
+  accountId = 0;
+
   bargain: Bargain = {}
 
   constructor(private activatedRoute: ActivatedRoute, private bargainService: BargainService, private router: Router, private authService: AuthService,
@@ -35,11 +38,13 @@ export class BargainInformationComponent implements OnInit {
 
   ngOnInit(): void {
     this.check();
+    this.getAccountId();
     this.getBargains();
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
     }
+
   }
 
   /**
@@ -63,6 +68,16 @@ export class BargainInformationComponent implements OnInit {
           console.log('Was impossible to take bargain info');
         }
       );
+  }
+
+  checkIfBooked() {
+    this.bargainsAccountsService.getBooking(this.accountId)
+    .subscribe(
+      (result) => {
+        let bookings = result;
+
+      }
+    )
   }
 
   onSubmit(): void {
@@ -105,6 +120,60 @@ export class BargainInformationComponent implements OnInit {
     } else {
       return false;
     }
+  }
+
+  getAccountId() {
+    this.accountService.getAccountEmail(this.tokenStorage.getUser())
+      .subscribe(
+        (result) => {
+           this.accountId =  result.id;
+          },
+        (error) => {
+          console.log('Was impossible to get the id of the account');
+        }
+      );
+  }
+
+  book() {
+      const data = {
+        bargain:  {
+          id: this.bargain.id
+        },
+        account: {
+          id: this.accountId
+        }
+    }
+
+      this.bargainsAccountsService.createBooking(data)
+      .subscribe(
+        (result) => {
+          console.log('Reservado: '+ result);
+        },
+        (error) => {
+          console.log('Was impossible to book the bargain');
+        }
+      )
+  }
+
+
+  bookmark() {
+    const data = {
+      bargain:  {
+        id: this.bargain.id
+      },
+      account: {
+        id: this.accountId
+      }
+    }
+      this.bargainsAccountsService.createBookmarked(data)
+      .subscribe(
+        (result) => {
+          console.log('Favorito: '+ result);
+        },
+        (error) => {
+          console.log('Was impossible to book the bargain');
+        }
+      )
   }
 
 }

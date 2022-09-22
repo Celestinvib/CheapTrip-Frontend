@@ -59,7 +59,10 @@
           </div>
             <div class="col">
               <div class="d-flex">
-                <button type="button" class="btn btn-outline-danger" *ngIf="isLoggedIn">
+                <button type="button" class="btn btn-outline-danger"
+                data-bs-toggle="modal"
+                data-bs-target="#bookmarkModal"
+                 *ngIf="isLoggedIn">
                   Añadir a favoritos
                 </button>
               </div>
@@ -73,7 +76,26 @@
   <app-bargain-accordion [bargain]="bargain"></app-bargain-accordion>
 </div>
 
-    <!-- Modal -->
+    <!-- Bookmark Modal -->
+    <div class="modal fade" id="bookmarkModal" tabindex="-1" aria-labelledby="reservarModalLabel" aria-hidden="true" *ngIf="isLoggedIn">
+      <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h5 class="modal-title" id="bookmarkModalLabel"><strong>Añadir a favoritos el chollo</strong></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ¿Quieres añadir a favoritos el chollo?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-danger"  data-bs-dismiss="modal" (click)="bookmark()">Añadir a favoritos</button>
+          </div>
+      </div>
+      </div>
+  </div>
+
+    <!-- Book Modal -->
     <div class="modal fade" id="reservarModal" tabindex="-1" aria-labelledby="reservarModalLabel" aria-hidden="true" *ngIf="isLoggedIn">
       <div class="modal-dialog">
       <div class="modal-content">
@@ -86,7 +108,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-danger"  data-bs-dismiss="modal" >Reservar el chollo</button>
+            <button type="button" class="btn btn-danger"  data-bs-dismiss="modal" (click)="book()">Reservar el chollo</button>
           </div>
       </div>
       </div>

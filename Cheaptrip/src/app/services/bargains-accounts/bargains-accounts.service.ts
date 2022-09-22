@@ -42,6 +42,14 @@ export class BargainsAccountsService {
     return this.http.get<BargainsAccounts[]>(`https://pcn-cheaptrip-api.herokuapp.com/chollos-favoritos/${id}`);
   }
 
+  createBooking(data: any):  Observable<any> {
+    return this.http.post('https://pcn-cheaptrip-api.herokuapp.com/reservas',data);
+  }
+
+  createBookmarked(data: any):  Observable<any> {
+    return this.http.post('https://pcn-cheaptrip-api.herokuapp.com/chollos-favoritos',data);
+  }
+
   //Status change
   updateBookedStatus(id: any): Observable<any> {
     return this.http.put(`https://pcn-cheaptrip-api.herokuapp.com/chollo-reservado/cambiar-estado/${id}`, null);
