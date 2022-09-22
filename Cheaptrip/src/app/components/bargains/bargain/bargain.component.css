@@ -27,10 +27,6 @@ a.btn:active {
   transition: all 0.025s 0s ease-out;
 }
 
-div.cards {
-  text-align: center;
-}
-
 div.card {
   background: #ffffff;
   margin: 8px;
@@ -38,7 +34,8 @@ div.card {
   position: relative;
   text-align: left;
   transition: all 0.3s 0s ease-in;
-  z-index: 1;
+  border: 3px solid #d3c3c6;
+  border-radius: 10px;
 }
 
 .card__image {
@@ -51,8 +48,7 @@ div.card img {
 
 div.card .card__image-holder {
   background: rgba(0, 0, 0, 0.1);
-  height: 0;
-  padding-bottom: 75%;
+
 }
 
 div.card div.card-title {

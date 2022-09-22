@@ -1,49 +1,51 @@
 <div class="group-title-container container">
   <div class="center">
-    <p>
-      <img
-        class="img-fluid"
-        src="https://images.unsplash.com/photo-1588535684923-900727736ac0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-        alt="card image"
-      />
-    </p>
+    <div class="row row-cols-1 row-cols-md-2 mt-5">
+      <div class="col">
+        <p>
+          <img class="img-fluid" src="{{ bargain.image }}" alt="card image" />
+        </p>
+      </div>
+      <div class="col text-start">
+        <h1>{{ bargain.title }}</h1>
+        <button type="button" class="btn btn-outline-dark">
+          Reservar Chollo
+        </button>
 
-    <div class="container">
-      <h1>{{ bargain.title }}</h1>
-
-      <button type="button" class="btn btn-outline-dark">
-        Reservar Chollo
-      </button>
-    </div>
-
-    <div class="hotel-summary-container group-module-container mb-5 pt-3">
-      <h2 class="group-module-title mb-3">¿Dónde te alojarás?</h2>
-      <div
-        class="hotel-summary centered-flex flex-wrap"
-        data-action="showHotelModal"
-        data-id="1968"
-      >
-        <div class="summary-name-container">
-          <span class="summary-name">{{ bargain.accommodation?.name }}</span>
-          <span class="summary-stars-keys inline-flex">
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-          </span>
-          <div class="summary-address color-secondary-medium">
-            {{ bargain.accommodation?.address }}
-          </div>
-        </div>
-        <div class="hotel-rating-container">
+        <div class="hotel-summary-container group-module-container mb-5 pt-3">
+          <h2 class="group-module-title mb-3">¿Dónde te alojarás?</h2>
           <div
-            class="rating-content rounded-container-secondary-lighter width-max-content centered-flex"
-            data-entity="ratingContainer"
+            class="hotel-summary centered-flex flex-wrap"
+            data-action="showHotelModal"
+            data-id="1968"
           >
-            <span class="rating-value bold">{{ bargain.accommodation?.rating }}</span>
-            <br />
-            <span class="rating-text underline">{{ bargain.price }} €</span>
+            <div class="summary-name-container">
+              <span class="summary-name">{{
+                bargain.accommodation?.name
+              }}</span>
+              <span class="summary-stars-keys inline-flex">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              </span>
+              <div class="summary-address color-secondary-medium">
+                {{ bargain.accommodation?.address }}
+              </div>
+            </div>
+            <div class="hotel-rating-container">
+              <div
+                class="rating-content rounded-container-secondary-lighter width-max-content centered-flex"
+                data-entity="ratingContainer"
+              >
+                <span class="rating-value bold">{{
+                  bargain.accommodation?.rating
+                }}</span>
+                <br />
+                <span class="rating-text underline">{{ bargain.price }} €</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -51,5 +53,3 @@
   </div>
   <app-bargain-accordion [bargain]="bargain"></app-bargain-accordion>
 </div>
-
-

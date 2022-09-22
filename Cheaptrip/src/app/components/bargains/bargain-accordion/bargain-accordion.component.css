@@ -1,18 +1,20 @@
-div, h2 {
-
-  background: linear-gradient(to right, #EE566F, #FEB36F);
-
+.accordion-body {
+  color: white;
 }
 
 .col-4, .accordion, .accordion-item, .accordion-header, .accordion-button {
 
-  background: linear-gradient(to right, #EE566F, #FEB36F);
+  background: #a1374b;
+
 
 }
 
 .accordion-button {
   color: white;
-  border: 0px;
+  border: 1px;
 }
 
+.accordion-item {
+  border-radius: 1px;
+}
 

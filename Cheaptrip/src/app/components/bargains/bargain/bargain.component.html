@@ -1,26 +1,23 @@
-<div class="cards">
-  <div class="card">
-    <div class="card__image-holder">
-      <img
-        class="card__image img-fluid"
-        src="{{ bargain.image }}"
-        alt="wave"
-      />
-    </div>
-    <div class="card-title">
-      <div class="row">
-        <div class="col-10">
-          <h2 routerLink="/bargains/{{bargain.id}}">
-            {{ bargain.title }}
-            <small>En {{bargain.accommodation?.name}} </small>
-          </h2>
-        </div>
-        <div class="col-1">
-          <div class="d-flex justify-content-end">
-            <button type="button" class="btn btn-outline-danger">
-              <i class="bi bi-bookmark-heart-fill"></i>
-            </button>
-          </div>
+<div class="card">
+  <div class="card__image-holder">
+    <img
+    class="card__image img-fluid"
+    src="{{ bargain.image }}"
+    alt="" />
+  </div>
+  <div class="card-title">
+    <div class="row">
+      <div class="col-10">
+        <h2 routerLink="/bargains/{{ bargain.id }}">
+          {{ bargain.title }}
+          <small>En {{ bargain.accommodation?.name }} </small>
+        </h2>
+      </div>
+      <div class="col">
+        <div class="d-flex justify-content-end">
+          <button type="button" class="btn btn-outline-danger">
+            <i class="bi bi-bookmark-heart-fill"></i>
+          </button>
         </div>
       </div>
     </div>

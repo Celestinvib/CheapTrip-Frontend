@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from "../../../services/security/token-storage.service";
 import { AuthService } from '../../../services/security/auth.service';
 import { AccountService } from '../../../services/account/account.service';
-import { isEmpty } from 'rxjs';
 
 @Component({
   selector: 'app-singup',

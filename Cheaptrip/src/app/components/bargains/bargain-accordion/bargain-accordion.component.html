@@ -1,12 +1,12 @@
 <div>
-<div class="accordion" id="accordionExample">
+<div class="accordion" id="accordionInfo">
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
         Descripción
       </button>
     </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionInfo">
       <div class="accordion-body">
           {{bargain.description}}
       </div>
@@ -18,7 +18,7 @@
         Vuelo
       </button>
     </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionInfo">
       <div class="accordion-body">
           <strong>Ciudad de salida: </strong>   {{bargain.outbound_flight?.origin?.name}} <br>
           <strong>Ciudad de llegada: </strong>  {{bargain.outbound_flight?.destination?.name}} <br>
@@ -33,7 +33,7 @@
         Más información
       </button>
     </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionInfo">
       <div class="accordion-body">
       </div>
     </div>
