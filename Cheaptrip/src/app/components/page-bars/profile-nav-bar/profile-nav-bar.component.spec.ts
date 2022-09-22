@@ -8,9 +8,9 @@ describe('ProfileNavBarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProfileNavBarComponent ]
+      declarations: [ProfileNavBarComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ProfileNavBarComponent);
     component = fixture.componentInstance;

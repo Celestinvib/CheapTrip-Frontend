@@ -8,30 +8,31 @@ import { ProfileComponent } from '../../profile/profile.component';
 
 const routes: Routes = [
   {
-    path:'',
+    path: '',
     component: ProfileComponent,
 
     children: [
-    { path:'',
-    redirectTo:'mydata',
-    pathMatch: 'full'
-  },
-  {
-    path:'mydata',
-    component: PersonalDataComponent
-  },
-  {
-    path:'bookmarked',
-    component: BargainsBookmarkedComponent
-  },
-  {
-    path:'booked',
-    component: BargainsBookedComponent
-  },
-  {
-    path: '**',
-    redirectTo: 'mydata'
-  }
+      {
+        path: '',
+        redirectTo: 'mydata',
+        pathMatch: 'full'
+      },
+      {
+        path: 'mydata',
+        component: PersonalDataComponent
+      },
+      {
+        path: 'bookmarked',
+        component: BargainsBookmarkedComponent
+      },
+      {
+        path: 'booked',
+        component: BargainsBookedComponent
+      },
+      {
+        path: '**',
+        redirectTo: 'mydata'
+      }
     ]
   }
 ];

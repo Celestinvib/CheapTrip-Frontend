@@ -9,7 +9,7 @@ import { Bargain } from '../../../models/bargain/bargain.model';
 })
 export class BargainAccordionComponent implements OnInit {
 
-  @Input() bargain: Bargain = { }
+  @Input() bargain: Bargain = {}
 
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router) { }
