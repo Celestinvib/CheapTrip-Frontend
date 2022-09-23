@@ -42,6 +42,32 @@ export class BargainsBookedComponent implements OnInit {
       )
   }
 
+  /**
+  * Unbook a bargain
+  * @param bargainId id of the bargain that will be unbooked
+  */
+  unbook(bargainId:any) {
+    this.bargainsAccountsService.getBookingsAccount(this.accountId)
+    .subscribe(
+      (result) => {
+          let bookingsAndBookmarks = result;
+          for (let i = 0; i < bookingsAndBookmarks.length; i++) {
+            if(bookingsAndBookmarks[i].bargain?.id == bargainId){
+              this.bargainsAccountsService.updateBookedStatus(bookingsAndBookmarks[i].id,bookingsAndBookmarks[i]) //Unbooks the bargain for the account
+                .subscribe(
+                (result) => {
+                  this.getBookeds();
+                }
+                )
+            }
+          }
+      },
+      (error) => {
+        console.log('There has been an error unbooking this bargain');
+      }
+    );
+  }
+
 }
 
 
