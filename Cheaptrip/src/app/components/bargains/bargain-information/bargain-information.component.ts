@@ -154,7 +154,7 @@ export class BargainInformationComponent implements OnInit {
 
   checkIfBookmarked(){
     let relations:BargainsAccounts[];
-    this.bargainsAccountsService.getFavsAccount(this.accountId)
+    this.bargainsAccountsService.getBookmarkedsAccount(this.accountId)
     .subscribe(
       (result) => {
           relations = result;
