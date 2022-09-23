@@ -1,7 +1,7 @@
-import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-
-import { BargainService } from '../../../../services/bargain/bargain.service';
+import { BargainsAccountsService } from 'src/app/services/bargains-accounts/bargains-accounts.service';
+import { TokenStorageService } from 'src/app/services/security/token-storage.service';
+import { AccountService } from 'src/app/services/account/account.service';
 
 @Component({
   selector: 'app-bargains-bookmarked',
@@ -10,25 +10,35 @@ import { BargainService } from '../../../../services/bargain/bargain.service';
 })
 export class BargainsBookmarkedComponent implements OnInit {
 
-  bargains: any = null
+  bookmarkeds: any = null
 
-  constructor(private activatedRoute: ActivatedRoute, private bargainService: BargainService, private router: Router) { }
+  accountId = 0;
+
+  constructor(
+    private bargainsAccountsService: BargainsAccountsService,
+    private tokenStorage: TokenStorageService,
+    private accountService: AccountService
+  ) { }
 
   ngOnInit(): void {
-    this.getBargains();
+    this.getBookmarkeds();
 
   }
 
-  getBargains() {
-    this.bargainService.getAll()
+  getBookmarkeds() {
+    this.accountService.getAccountEmail(this.tokenStorage.getUser())
       .subscribe(
         (result) => {
-          this.bargains = result;
-
-        },
+           this.accountId =  result.id;
+           this.bargainsAccountsService.getBookmarkedsAccount(this.accountId)
+            .subscribe(
+              (result) => {
+                this.bookmarkeds = result;
+              }
+        )},
         (error) => {
-          console.log('Was impossible to take bargain info');
+          console.log('Was impossible to get the bookmarkeds bargains');
         }
-      );
+      )
   }
 }
