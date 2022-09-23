@@ -38,7 +38,7 @@ export class AccountService {
   /**
   * Get an account role
   */
-  getAccontRole(): Observable<any> {
+  getAccountRole(): Observable<any> {
     return this.http.get(baseUrl + "obtener-rol",{ responseType: 'json'})
   }
 

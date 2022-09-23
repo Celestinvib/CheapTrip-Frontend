@@ -5,7 +5,7 @@
         <img
           class="rounded-circle mt-5"
           width="150px"
-          src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+          src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
         /><span class="font-weight-bold">{{account.name}}</span>
         <span class="text-black-50">{{account.email}}</span><span> </span>
       </div>
@@ -19,6 +19,8 @@
           <div class="col-md-6">
             <label class="labels">Nombre</label
             ><input
+              #name
+              disabled
               type="text"
               placeholder="{{account.name}}"
               class="form-control"
@@ -28,7 +30,7 @@
           <div class="col-md-6">
             <label class="labels">Apellidos</label
             ><input
-
+              #surname
               disabled
               type="text"
               class="form-control"
@@ -41,7 +43,7 @@
           <div class="col-md-12">
             <label class="labels">Email</label
             ><input
-
+              #email
               disabled
               type="text"
               class="form-control"
@@ -52,7 +54,7 @@
           <div class="col-md-12">
             <label class="labels">Número de teléfono</label
             ><input
-
+              #phonenumber
               disabled
               type="text"
               class="form-control"
@@ -63,9 +65,9 @@
           <div class="col-md-12">
             <label class="labels">Fecha de nacimiento</label
             ><input
-
+              #birthdate
               disabled
-              type="text"
+              type="date"
               class="form-control"
               placeholder="{{account.birth_date}}"
               value=""
@@ -73,17 +75,18 @@
           </div>
           <div class="mt-5 text-center">
             <button
-              disabled
               class="btn btn-primary profile-button"
-              type="button"
-
+              type="submit"
+              #update
+              (click)="onSubmit()"
             >
               Actualizar información
             </button>
           </div>
         </div>
         <div class="mt-5 text-center">
-          <button class="btn btn-primary profile-button" type="button">
+          <button class="btn btn-primary profile-button" type="button" #modify (click)="isDisabledButton($event); update.disabled= false; birthdate.disabled= false;
+          phonenumber.disabled=false; email.disabled=false; surname.disabled=false; name.disabled=false;">
             Modificar Perfil
           </button>
         </div>

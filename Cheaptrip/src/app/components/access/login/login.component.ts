@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
             this.isLoginFailed = false;
             this.isLoggedIn = true;
 
-            this.accountService.getAccontRole().subscribe( //Get the roles of the current account
+            this.accountService.getAccountRole().subscribe( //Get the roles of the current account
               result => {
                 this.tokenStorage.saveRole(result.roles); //Saves them/it in the token
                 this.reloadPage();
