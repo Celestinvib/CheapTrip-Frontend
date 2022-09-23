@@ -42,7 +42,6 @@ import { CityUpdateComponent } from './components/admin/city/city-update/city-up
 import { AdminNavComponent } from './components/admin/admin-nav/admin-nav.component';
 import { HomeComponent } from './components/admin/home/home.component';
 import { NewpasswordComponent } from './components/access/newpassword/newpassword.component';
-import { BasicLoginComponent } from './components/access/basic-login/basic-login.component';
 import { FeaturesListComponent } from './components/admin/feature/features-list/features-list.component';
 import { FeatureAddComponent } from './components/admin/feature/feature-add/feature-add.component';
 import { FeatureUpdateComponent } from './components/admin/feature/feature-update/feature-update.component';
@@ -88,7 +87,6 @@ import { BookingsAddComponent } from './components/admin/booking/bookings-add/bo
     AdminNavComponent,
     HomeComponent,
     NewpasswordComponent,
-    BasicLoginComponent,
     FeaturesListComponent,
     FeatureAddComponent,
     FeatureUpdateComponent,
