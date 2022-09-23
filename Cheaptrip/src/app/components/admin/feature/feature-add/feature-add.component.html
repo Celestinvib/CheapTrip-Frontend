@@ -1,0 +1,26 @@
+<app-admin-nav></app-admin-nav>
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <div class="row">
+    <h1 class="heading1">Rasgos</h1>
+  </div>
+  <a class=" btn btn-primary text-light" routerLink="/site-admin/features" [queryParams]="{lastPageActual: lastPage, lastItemsViewed: lastItemsViewed }" ><i class="bi bi-caret-left"></i></a>
+  <form class="row g-3 border border-dark rounded-2 p-3"  name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+
+      <div class="col">
+      <label for="ICCityName" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="ICCityName" required [(ngModel)]="feature.name" name="name" required #name="ngModel">
+      <div class="mt-2 alert alert-danger" role="alert" *ngIf="name.errors && f.submitted">
+        ¡Se requiere el nombre!
+      </div>
+      </div>
+      <div class="col-12">
+      <button type="submit" class="btn btn-primary">Crear</button>
+      </div>
+  </form>
+  <div class="mt-2 alert alert-success" *ngIf="itemAdded">
+    Rasgo añadido correctamente!!
+  </div>
+</div>

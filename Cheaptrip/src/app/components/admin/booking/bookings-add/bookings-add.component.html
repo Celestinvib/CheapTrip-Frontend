@@ -1,0 +1,39 @@
+<app-admin-nav></app-admin-nav>
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <div class="row">
+    <h1 class="heading1">Reservas</h1>
+  </div>
+  <a class=" btn btn-primary text-light" routerLink="/site-admin/flights" [queryParams]="{lastPageActual: lastPage, lastItemsViewed: lastItemsViewed }" ><i class="bi bi-caret-left"></i></a>
+  <form class="row g-3 border border-dark rounded-2 p-3"  name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+
+      <div class="col">
+        <label for="ICBookingAccount" class="form-label">Cuenta</label>
+        <select class="form-select" id="ICBookingAccount" [(ngModel)]="booking.account" required  #account="ngModel" name="account">
+          <option  *ngFor="let account of accounts"  value="{{account.id}}">{{account.email}}</option>
+        </select>
+        <div class="mt-2 alert alert-danger" role="alert" *ngIf="account.errors && f.submitted">
+          Se requiere una Cuenta!
+        </div>
+      </div>
+
+      <div class="col-6">
+        <label for="ICBookingBargain" class="form-label">Chollo</label>
+        <select class="form-select" id="ICBookingBargain" [(ngModel)]="booking.bargain" required  #bargain="ngModel" name="bargain">
+          <option  *ngFor="let bargain of bargains"  value="{{bargain.id}}">{{bargain.title}}</option>
+        </select>
+        <div class="mt-2 alert alert-danger" role="alert" *ngIf="bargain.errors && f.submitted">
+          Se requiere un Chollo!
+        </div>
+      </div>
+
+      <div class="col-12">
+      <button type="submit" class="btn btn-primary">Crear</button>
+      </div>
+  </form>
+  <div class="mt-2 alert alert-success" *ngIf="itemAdded">
+    Reserva añadida correctamente!!
+  </div>
+</div>

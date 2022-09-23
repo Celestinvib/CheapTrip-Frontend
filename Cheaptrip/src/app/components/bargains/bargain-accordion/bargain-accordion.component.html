@@ -1,0 +1,81 @@
+<div>
+  <div class="accordion" id="accordionInfo">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button
+          class="accordion-button"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseOne"
+          aria-expanded="true"
+          aria-controls="collapseOne"
+        >
+          Descripción
+        </button>
+      </h2>
+      <div
+        id="collapseOne"
+        class="accordion-collapse collapse show"
+        aria-labelledby="headingOne"
+        data-bs-parent="#accordionInfo"
+      >
+        <div class="accordion-body">
+          {{ bargain.description }}
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseTwo"
+          aria-expanded="false"
+          aria-controls="collapseTwo"
+        >
+          Vuelo
+        </button>
+      </h2>
+      <div
+        id="collapseTwo"
+        class="accordion-collapse collapse"
+        aria-labelledby="headingTwo"
+        data-bs-parent="#accordionInfo"
+      >
+        <div class="accordion-body">
+          <strong>Ciudad de salida: </strong>
+          {{ bargain.outbound_flight?.origin?.name }} <br />
+          <strong>Ciudad de llegada: </strong>
+          {{ bargain.outbound_flight?.destination?.name }} <br />
+          <strong>Fecha de ida: </strong>
+          {{ bargain.outbound_flight?.departure_date }} <br />
+          <strong>Fecha de vuelta: </strong>
+          {{ bargain.return_flight?.arrival_date }} <br />
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseThree"
+          aria-expanded="false"
+          aria-controls="collapseThree"
+        >
+          Más información
+        </button>
+      </h2>
+      <div
+        id="collapseThree"
+        class="accordion-collapse collapse"
+        aria-labelledby="headingThree"
+        data-bs-parent="#accordionInfo"
+      >
+        <div class="accordion-body"></div>
+      </div>
+    </div>
+  </div>
+</div>

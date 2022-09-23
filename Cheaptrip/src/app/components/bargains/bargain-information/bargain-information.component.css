@@ -1,0 +1,12 @@
+.img-fluid {
+  border-radius: 10px;
+}
+
+.main-content {
+  min-height: 100vh;
+  margin-bottom: 5vh;
+}
+
+span {
+  font-size: 20px;
+}

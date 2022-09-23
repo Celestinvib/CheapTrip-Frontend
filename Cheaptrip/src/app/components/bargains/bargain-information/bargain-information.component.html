@@ -1,0 +1,132 @@
+<div class="group-title-container container main-content">
+  <div class="center">
+    <div class="row row-cols-1 row-cols-md-2 mt-5">
+      <div class="col">
+        <p>
+          <img class="img-fluid" src="{{ bargain.image }}" alt="card image" />
+        </p>
+      </div>
+      <div class="col text-start px-3">
+        <h1><strong>{{ bargain.title }}</strong></h1>
+        <div
+          class="hotel-summary-container group-module-container mb-5 pt-3 ps-2"
+        >
+          <h2 class="group-module-title mb-3"><strong>¿Dónde te alojarás?</strong></h2>
+          <div
+            class="hotel-summary centered-flex flex-wrap"
+            data-action="showHotelModal"
+            data-id="1968"
+          >
+            <div class="summary-name-container">
+              <span class="summary-name">{{
+                bargain.accommodation?.name
+              }}</span>
+              <span class="summary-stars-keys inline-flex">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              </span>
+            <br>
+              <div class="summary-address color-secondary-medium">
+                <span>{{ bargain.accommodation?.address }}</span>
+              </div>
+
+            </div>
+            <div class="hotel-rating-container">
+              <div
+                class="rating-content rounded-container-secondary-lighter width-max-content centered-flex"
+                data-entity="ratingContainer"
+              >
+                <span class="rating-value bold">{{
+                  bargain.accommodation?.rating
+                }}</span>
+                <br />
+                <span class="rating-text underline">{{ bargain.price }} €</span>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-4">
+              <button
+              type="button"
+              class="btn btn-outline-dark"
+              data-bs-toggle="modal"
+              data-bs-target="#reservarModal"
+            >
+              Reservar Chollo
+            </button>
+          </div>
+            <div class="col">
+              <div class="d-flex">
+                <button type="button" class="btn btn-outline-danger"
+                data-bs-toggle="modal"
+                data-bs-target="#bookmarkModal"
+                 *ngIf="isLoggedIn">
+                  Añadir a favoritos
+                </button>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-bargain-accordion [bargain]="bargain"></app-bargain-accordion>
+</div>
+
+    <!-- Bookmark Modal -->
+    <div class="modal fade" id="bookmarkModal" tabindex="-1" aria-labelledby="reservarModalLabel" aria-hidden="true" *ngIf="isLoggedIn">
+      <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h5 class="modal-title" id="bookmarkModalLabel"><strong>Añadir a favoritos el chollo</strong></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ¿Quieres añadir a favoritos el chollo?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-danger"  data-bs-dismiss="modal" (click)="bookmark()">Añadir a favoritos</button>
+          </div>
+      </div>
+      </div>
+  </div>
+
+    <!-- Book Modal -->
+    <div class="modal fade" id="reservarModal" tabindex="-1" aria-labelledby="reservarModalLabel" aria-hidden="true" *ngIf="isLoggedIn">
+      <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h5 class="modal-title" id="reservarModalLabel"><strong>Reserva del chollo</strong></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ¿Quieres reservar tu chollo?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-danger"  data-bs-dismiss="modal" (click)="book()">Reservar el chollo</button>
+          </div>
+      </div>
+      </div>
+  </div>
+  <div class="modal fade" id="reservarModal" tabindex="-1" aria-labelledby="reservarModalLabel" aria-hidden="true" *ngIf="!isLoggedIn">
+    <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h5 class="modal-title" id="reservarModalLabel"><strong>Reserva del chollo</strong></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Para reservar el chollo tienes qué haber iniciado sesión
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-danger"  data-bs-dismiss="modal" routerLink="/login">Iniciar Sesión</button>
+          </div>
+      </div>
+      </div>
+  </div>

@@ -1,0 +1,23 @@
+.accordion-body {
+  color: white;
+}
+
+.col-4,
+.accordion,
+.accordion-item,
+.accordion-header,
+.accordion-button {
+
+  background: #a1374b;
+
+
+}
+
+.accordion-button {
+  color: white;
+  border: 1px;
+}
+
+.accordion-item {
+  border-radius: 1px;
+}

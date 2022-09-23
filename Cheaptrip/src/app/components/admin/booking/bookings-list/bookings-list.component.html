@@ -1,0 +1,86 @@
+<app-admin-nav></app-admin-nav>
+<div class="container">
+  <br>
+  <div class="row">
+      <h1 class="heading1">Reservas</h1>
+  </div>
+  <div class="row mt-4" *ngIf="bookings!=null; else wait">
+      <div class="d-flex">
+          <div>
+              Mostrar:
+              <select name="registers" id="registers" [(ngModel)]="ItemsViewed">
+                  <option value="5" selected>5</option>
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+              </select>
+          </div>
+      </div>
+  </div>
+  <br>
+  <div class="row" *ngIf="bookings!=null;">
+    <table class="table table-bordered table-hover">
+      <thead class="table-dark">
+        <tr>
+            <th scope="col">
+                <div>Id</div>
+            <th scope="col">
+                <div>Cuenta</div>
+            </th>
+            <th scope="col">
+              <div>Chollo</div>
+            </th>
+            <th scope="col">
+                <div>Acciones</div>
+            </th>
+        </tr>
+        </thead>
+          <tbody>
+              <tr *ngFor="let booking of bookings | paginate: {itemsPerPage: ItemsViewed,currentPage: pageActual}; let i = index" >
+                  <th scope="row">{{booking.id}}</th>
+                  <td>{{booking.account.email}}</td>
+                  <td>{{booking.bargain.title}}</td>
+                  <td>
+                      <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="MaybeDeleteThisBooking(booking.id)">
+                          <i class="bi bi-trash"></i>
+                      </button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+      <!-- Delete Modal -->
+      <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">¿Eliminar Registro?</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+              ¿Estas seguro que quieres borrar el registro, se borrará definiticamente?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-danger"  data-bs-dismiss="modal" (click)="deleteBooking()">Eliminar registro</button>
+              </div>
+          </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="row">
+      <div class="d-flex justify-content-between">
+          <div>
+              <a class="btn btn-primary text-light" routerLink="/site-admin/bookings/add"  [queryParams]="{lastPage: pageActual, lastItemsViewed:ItemsViewed}">Agregar Reserva</a>
+          </div>
+          <div *ngIf="bookings!=null;">
+            <pagination-controls class="my-pagination"
+            (pageChange)="pageActual = $event"
+            (maxSize)="5"
+            previousLabel="Anterior" nextLabel="Siguiente">
+          </pagination-controls>
+        </div>
+      </div>
+
+  </div>
+<ng-template #wait>Esperando los datos, esto puede tardar un par de segundos...</ng-template>
+

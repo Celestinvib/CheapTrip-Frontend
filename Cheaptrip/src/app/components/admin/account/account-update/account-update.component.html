@@ -1,0 +1,89 @@
+<app-admin-nav></app-admin-nav>
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <div class="row">
+    <h1 class="heading1">Cuentas</h1>
+  </div>
+  <a class=" btn btn-primary text-light" routerLink="/site-admin/accounts" [queryParams]="{lastPageActual: lastPage, lastItemsViewed: lastItemsViewed }" ><i class="bi bi-caret-left"></i></a>
+  <form class="row g-3 border border-dark rounded-2 p-3"  name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+
+      <div class="col">
+        <label for="ICAccountName" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="ICAccountName" required value="{{account.name}}" [(ngModel)]="account.name" name="name" required #name="ngModel">
+        <div class="mt-2 alert alert-danger" role="alert" *ngIf="name.errors && f.submitted">
+        Se requiere el nombre!
+        </div>
+      </div>
+
+      <div class="col">
+        <label for="ICAccountLastanames" class="form-label">Apellidos</label>
+        <input type="text" class="form-control" id="ICAccountLastanames" required value="{{account.surnames}}" [(ngModel)]="account.surnames" name="surnames" required #surnames="ngModel">
+        <div class="mt-2 alert alert-danger" role="alert" *ngIf="surnames.errors && f.submitted">
+          Se requiere el apellido!
+        </div>
+      </div>
+
+      <div class="col">
+        <label for="ICAccountAddress" class="form-label">Email</label>
+        <input type="email" class="form-control" id="ICAccountAddress" value="{{account.email}}" [(ngModel)]="account.email" required  #email="ngModel" name="email">
+        <div class="mt-2 alert alert-danger" role="alert" *ngIf="email.errors && f.submitted">
+          Se requiere email!
+        </div>
+      </div>
+      <div class="col">
+        <label for="ICAccountPassword" class="form-label">Contraseña</label>
+        <input type="password" class="form-control" id="ICAccountPassword" value="{{account.password}}" [(ngModel)]="account.password" required  #password="ngModel" name="password">
+        <div class="mt-2 alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">
+          Se requiere contraseña!
+        </div>
+      </div>
+      <div class="col">
+        <label for="ICAccountTel" class="form-label">Número tel</label>
+        <input type="number" class="form-control" id="ICAccountTel" value="{{account.phone_number}}" [(ngModel)]="account.phone_number" required  #phone_number="ngModel" name="phone_number">
+        <div class="mt-2 alert alert-danger" role="alert" *ngIf="phone_number.errors && f.submitted">
+          Se requiere número de teléfono!
+        </div>
+      </div>
+      <div class="col">
+        <label for="ICAccountBirthDate" class="form-label">Fecha de Nacimiento</label>
+        <input type="date" class="form-control" id="ICAccountBirthDate" value="{{account.birth_date}}" [(ngModel)]="account.birth_date" required  #birth_date="ngModel" name="birth_date">
+        <div class="mt-2 alert alert-danger" role="alert" *ngIf="birth_date.errors && f.submitted">
+          Se requiere fecha de nacimiento!
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="d-flex justify-content-between">
+          <div>
+              <button type="submit" class="btn btn-success" (click)="onSubmit()">Actualizar</button>
+          </div>
+          <div>
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+              Eliminar
+          </button>
+        </div>
+      </div>      </div>
+  </form>
+  <div class="mt-2 alert alert-success" *ngIf="itemUpdated">
+    Cuenta actualizada correctamente!!
+  </div>
+</div>
+      <!-- Modal -->
+      <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">¿Eliminar Registro?</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+              ¿Estas seguro que quieres borrar el registro, se borrará definiticamente?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-danger"  data-bs-dismiss="modal"  (click)="deleteAccount()">Eliminar registro</button>
+              </div>
+          </div>
+      </div>
+    </div>
