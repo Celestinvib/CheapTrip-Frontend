@@ -52,7 +52,7 @@ export class BargainsListComponent implements OnInit {
     * Get all the bargains
     */
     getBargains() {
-      this.bargainService.getAll()
+      this.bargainService.getReallyAll()
       .subscribe(
         (result) => {
 

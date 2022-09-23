@@ -36,6 +36,7 @@ export class BargainComponent implements OnInit {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
     }
+
   }
 
   reloadPage(): void {

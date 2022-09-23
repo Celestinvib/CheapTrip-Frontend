@@ -36,9 +36,9 @@ export class BargainsAccountsService {
 
   //Account related
   getBookingsAccount(id: number): Observable<BargainsAccounts[]> {
-    return this.http.get<BargainsAccounts[]>(`https://pcn-cheaptrip-api.herokuapp.com/chollos-reservados/${id}`);
+    return this.http.get<BargainsAccounts[]>(`https://pcn-cheaptrip-api.herokuapp.com/reservas/${id}`);
   }
-  getFavsAccount(id: number): Observable<BargainsAccounts[]> {
+  getBookmarkedsAccount(id: number): Observable<BargainsAccounts[]> {
     return this.http.get<BargainsAccounts[]>(`https://pcn-cheaptrip-api.herokuapp.com/chollos-favoritos/${id}`);
   }
 

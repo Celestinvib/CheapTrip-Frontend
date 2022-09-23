@@ -13,11 +13,18 @@ export class BargainService {
 
 
   /**
-  * Get all the bargains
+  * Get all the bargains displayed
   */
   getAll(): Observable<Bargain[]> {
     return this.http.get<Bargain[]>(baseUrl);
   }
+
+  /**
+  * Get all the bargains (hidden and displayed ones)
+  */
+     getReallyAll(): Observable<Bargain[]> {
+      return this.http.get<Bargain[]>('https://pcn-cheaptrip-api.herokuapp.com/todos/chollos');
+    }
 
   /**
   * Get all the bargains with the selected max price

@@ -5,8 +5,8 @@
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
         <app-bargain
           class="col mt-4"
-          *ngFor="let bargain of bargains"
-          [bargain]="bargain"
+          *ngFor="let bookmarked of bookmarkeds"
+          [bargain]="bookmarked.bargain"
         ></app-bargain>
       </div>
     </div>

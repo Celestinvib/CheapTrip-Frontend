@@ -64,16 +64,14 @@
     </div>
     <div class="col">
       <label for="ICBargainOutboundFlight" class="form-label">VueloIda</label>
-      <select class="form-select" id="ICBargainOutboundFlight" [(ngModel)]="form.outbound_flight!.id"
-        #outbound_flight="ngModel" name="outbound_flight">
+      <select class="form-select" id="ICBargainOutboundFlight" [(ngModel)]="form.outbound_flight.id" #outbound_flight="ngModel" name="outbound_flight">
         <option selected>Ninguno</option>
         <option *ngFor="let flight of flights" value="{{flight.id}}">{{flight.id}}</option>
       </select>
     </div>
     <div class="col">
       <label for="ICBargainReturnFlight" class="form-label">VueloDestino</label>
-      <select class="form-select" id="ICBargainReturnFlight" [(ngModel)]="form.return_flight!.id"
-        #return_flight="ngModel" name="return_flight">
+      <select class="form-select" id="ICBargainReturnFlight" [(ngModel)]="form.return_flight.id" #return_flight="ngModel" name="return_flight">
         <option selected>Ninguno</option>
         <option *ngFor="let flight of flights" value="{{flight.id}}">{{flight.id}}</option>
       </select>
