@@ -41,4 +41,29 @@ export class BargainsBookmarkedComponent implements OnInit {
         }
       )
   }
+
+    /**
+  * Unbookmarked a bargain
+  */
+     unbookmark(bargainId:any) {
+      this.bargainsAccountsService.getBookmarkedsAccount(this.accountId)
+      .subscribe(
+        (result) => {
+            let bookingsAndBookmarks = result;
+            for (let i = 0; i < bookingsAndBookmarks.length; i++) {
+              if(bookingsAndBookmarks[i].bargain?.id == bargainId){
+                this.bargainsAccountsService.updateBookmarkedStatus(bookingsAndBookmarks[i].id,bookingsAndBookmarks[i]) //Unmarked the bargain for the account
+                  .subscribe(
+                  (result) => {
+                    this.getBookmarkeds();
+                  }
+                  )
+              }
+            }
+        },
+        (error) => {
+          console.log('There has been an error unbooking this bargain');
+        }
+      );
+    }
 }

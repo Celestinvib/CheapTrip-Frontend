@@ -2,15 +2,35 @@
   <h1>Tus chollos favoritos</h1>
   <div class="row">
     <div class="col-md p-3 min-vh-100">
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-        <app-bargain
-          class="col mt-4"
-          *ngFor="let bookmarked of bookmarkeds"
-          [bargain]="bookmarked.bargain"
-        ></app-bargain>
-      </div>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+            <div class="col mt-4" *ngFor="let bookmarked of bookmarkeds">
+              <div class="card">
+                <div class="card__image-holder">
+                  <img class="card__image img-fluid" src="{{ bookmarked.bargain.image }}" alt="" />
+                </div>
+                <div class="card-title">
+                  <div class="row">
+                    <div class="col-10">
+                      <h2 routerLink="/bargains/{{ bookmarked.bargain.id }}">
+                        {{ bookmarked.bargain.title }}
+                        <small>En {{ bookmarked.bargain.accommodation?.name }} </small>
+                      </h2>
+                    </div>
+                    <div class="col">
+                      <div class="d-flex justify-content-end">
+                        <button type="button"
+                        class="btn btn-danger"
+                        (click)="unbookmark(bookmarked.bargain.id)">
+                          <i class="bi bi-bookmark-heart-fill"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
 </div>
 
 

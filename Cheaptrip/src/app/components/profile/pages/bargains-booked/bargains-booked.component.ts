@@ -14,6 +14,8 @@ export class BargainsBookedComponent implements OnInit {
 
   accountId = 0;
 
+  idBookingMaybeUnbook = 0;
+
   constructor(
     private bargainsAccountsService: BargainsAccountsService,
     private tokenStorage: TokenStorageService,
@@ -42,9 +44,12 @@ export class BargainsBookedComponent implements OnInit {
       )
   }
 
+  setBookingIdThatMaybeisUnbook(id:any){
+    this.idBookingMaybeUnbook = id;
+  }
+
   /**
   * Unbook a bargain
-  * @param bargainId id of the bargain that will be unbooked
   */
   unbook(bargainId:any) {
     this.bargainsAccountsService.getBookingsAccount(this.accountId)

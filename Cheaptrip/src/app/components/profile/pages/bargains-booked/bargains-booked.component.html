@@ -1,16 +1,63 @@
 <div class="container-fluid">
-  <h1>Tus chollos reservados</h1>
-  <div class="row">
-    <div class="col-md p-3 min-vh-100">
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-        <app-bargain
-          class="col mt-4"
-          *ngFor="let booking of bookings"
-          [bargain]="booking.bargain"
-        ></app-bargain>
-      </div>
+    <h1>Tus chollos reservados</h1>
+    <div class="row">
+        <div class="col-md p-3 min-vh-100">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+                <div class="col mt-4" *ngFor="let booking of bookings">
+                  <div class="card">
+                    <div class="card__image-holder">
+                      <img class="card__image img-fluid" src="{{ booking.bargain.image }}" alt="" />
+                    </div>
+                    <div class="card-title">
+                      <div class="row">
+                        <div class="col-10">
+                          <h2 routerLink="/bargains/{{ booking.bargain.id }}">
+                            {{ booking.bargain.title }}
+                            <small>En {{ booking.bargain.accommodation?.name }} </small>
+                          </h2>
+                        </div>
+                        <div class="col">
+                          <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-outline-danger" >
+                              <i class="bi bi-bookmark-heart-fill"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <button
+                      type="button"
+                      class="btn btn-outline-dark"
+                      data-bs-toggle="modal"
+                      data-bs-target="#unbookModal"
+                      (click)="unbook(booking.bargain.id)"
+                      >
+                      Cancelar Reserva
+                    </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 
+ <!-- UnBook Modal -->
+ <!-- <div class="modal fade" id="unbookModal" tabindex="-1" aria-labelledby="unbookModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+  <div class="modal-content">
+      <div class="modal-header">
+      <h5 class="modal-title" id="unbookModalLabel"><strong>Cancelar la reserva del chollo</strong></h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Quieres cancelar la reservar tu chollo?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-danger"  data-bs-dismiss="modal" (click)="unbook()">Cancelar reserva</button>
+      </div>
+  </div>
+  </div>
+</div> -->
