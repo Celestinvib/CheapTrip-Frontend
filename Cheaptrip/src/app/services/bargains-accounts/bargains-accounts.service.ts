@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BargainsAccounts } from '../../models/bargains-accounts/bargains-accounts.model';
 import { Observable } from 'rxjs';
+import { data } from 'jquery';
 
 
 const resUrl = 'https://pcn-cheaptrip-api.herokuapp.com/reservas';
@@ -51,8 +52,8 @@ export class BargainsAccountsService {
   }
 
   //Status change
-  updateBookedStatus(id: any): Observable<any> {
-    return this.http.put(`https://pcn-cheaptrip-api.herokuapp.com/chollo-reservado/cambiar-estado/${id}`, null);
+  updateBookedStatus(id: any, data: any): Observable<any> {
+    return this.http.put(`https://pcn-cheaptrip-api.herokuapp.com/chollo-reservado/cambiar-estado/${id}`, data);
   }
   updateBookmarkedStatus(id: any, data: any): Observable<any> {
     return this.http.put(`https://pcn-cheaptrip-api.herokuapp.com/chollo-favorito/cambiar-estado/${id}`, data);
