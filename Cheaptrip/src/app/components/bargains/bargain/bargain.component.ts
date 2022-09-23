@@ -37,34 +37,7 @@ export class BargainComponent implements OnInit {
       this.roles = this.tokenStorage.getUser().roles;
     }
   }
-  onSubmit(): void {
-    const { email, password } = this.form;
-    if (this.emailValid(email)) {
-      this.authService.login(email, password)
-        .subscribe(
-          data => {
-            this.tokenStorage.saveToken(JSON.stringify(data['token']).replace(/['"]+/g, ''));
-            this.tokenStorage.saveUser((this.form.email));
-            this.isLoginFailed = false;
-            this.isLoggedIn = true;
-            let userDetails = this.accountService.getAccountEmail(this.form.email)
-            this.reloadPage();
 
-            userDetails.subscribe(
-              result => {
-                this.tokenStorage.saveRole(result.role);
-              }
-            );
-
-          },
-          err => {
-            console.log('error')
-            this.errorMessage = err;
-            this.isLoginFailed = true;
-          }
-        );
-    }
-  }
   reloadPage(): void {
     window.location.reload();
   }
