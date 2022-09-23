@@ -13,6 +13,16 @@ export class PersonalDataComponent implements OnInit {
 
   itemUpdated: boolean = false;
 
+  form: any = {
+    name:'',
+    surnames:'',
+    email:'',
+    password:'',
+    phone_number:'',
+    birth_date :undefined
+    };
+
+
   account: Account = {
     name:'',
     surnames:'',
@@ -48,45 +58,47 @@ export class PersonalDataComponent implements OnInit {
     * When the form is submmited
     */
     onSubmit(): void {
-      console.log('hola');
       if(
         this.account.name != '',
         this.account.surnames != '',
         this.account.email != '',
         this.account.phone_number !=''
-        ) console.log('if'); {
+        ) {
         this.updateAccount();
-      } console.log('update');
+      }
     }
 
-    /**
-    * Update an account
-    */
-     updateAccount(): void {
+     /**
+      * Update an account
+      */
+      updateAccount(): void {
 
-      const data = {
-        name:  this.account.name,
-        surnames:  this.account.surnames,
-        email:  this.account.email,
-        phone_number:  this.account.phone_number
+        const data = {
+          name:  this.form.name,
+          surnames:  this.form.surnames,
+          email:  this.account.email,
+          password:  this.account.password,
+          phone_number:  this.form.phone_number,
+          birth_date:  this.account.birth_date
+        }
+
+        // this.accountService.update(this.account.id, data)
+        //  .subscribe(
+        //    response => {
+        //      //If the items is updated successfully
+        //     this.itemUpdated= true; //it indicate it in the view with a popUp thanks to this var
+
+        //     //Past 6 seconds the boolean is set to false therefore the item in the view disappear
+        //      setTimeout(() =>
+        //      {
+        //        this.itemUpdated= false;
+        //      },
+        //      6000);
+        //    },
+        //    error => {
+        //      console.log(error);
+        //    }
+        //  )
       }
 
-      this.accountService.update(this.account.id, data)
-       .subscribe(
-         response => {
-           //If the items is updated successfully
-          this.itemUpdated= true; //it indicate it in the view with a popUp thanks to this var
-          console.log('itemupdated');
-          //Past 6 seconds the boolean is set to false therefore the item in the view disappear
-           setTimeout(() =>
-           {
-             this.itemUpdated= false; console.log('false');
-           },
-           6000);
-         },
-         error => {
-           console.log(error);
-         }
-       )
-    }
 }

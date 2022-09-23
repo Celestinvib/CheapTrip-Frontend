@@ -22,9 +22,8 @@
               #name
               disabled
               type="text"
-              placeholder="{{account.name}}"
+              value="{{account.name}}"
               class="form-control"
-              value=""
             />
           </div>
           <div class="col-md-6">
@@ -34,8 +33,7 @@
               disabled
               type="text"
               class="form-control"
-              value=""
-              placeholder="{{account.surnames}}"
+              value="{{account.surnames}}"
             />
           </div>
         </div>
@@ -47,8 +45,7 @@
               disabled
               type="text"
               class="form-control"
-              placeholder="{{account.email}}"
-              value=""
+              value="{{account.email}}"
             />
           </div>
           <div class="col-md-12">
@@ -58,8 +55,7 @@
               disabled
               type="text"
               class="form-control"
-              placeholder="{{account.phone_number}}"
-              value=""
+              value="{{account.phone_number}}"
             />
           </div>
           <div class="col-md-12">
@@ -69,8 +65,7 @@
               disabled
               type="date"
               class="form-control"
-              placeholder="{{account.birth_date}}"
-              value=""
+              value="{{account.birth_date}}"
             />
           </div>
           <div class="mt-5 text-center">
@@ -88,7 +83,9 @@
           <button class="btn btn-primary profile-button" type="button" #modify (click)="isDisabledButton($event); update.disabled= false; birthdate.disabled= false;
           phonenumber.disabled=false; email.disabled=false; surname.disabled=false; name.disabled=false;">
             Modificar Perfil
-          </button>
+          </button><br><br>
+          <a href="/password_reset">Cambiar Contraseña</a>
+          <a>Eliminar Cuenta</a>
         </div>
       </div>
     </div>
