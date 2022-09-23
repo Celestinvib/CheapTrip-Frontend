@@ -20,6 +20,7 @@ export class BargainInformationComponent implements OnInit {
     password: null
   };
 
+  isBookmarked = false;
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
@@ -38,12 +39,14 @@ export class BargainInformationComponent implements OnInit {
 
   ngOnInit(): void {
     this.check();
-    this.getAccountId();
-    this.getBargains();
+
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
+      this.getAccountId();
     }
+    this.getBargain();
+
 
   }
 
@@ -56,13 +59,12 @@ export class BargainInformationComponent implements OnInit {
     this.id = parseInt(this.activatedRoute.snapshot.paramMap.get('id') || '[]')
   }
 
-  getBargains() {
+  getBargain() {
     this.bargainService.get(this.id)
       .subscribe(
         (result) => {
           this.bargain = result;
-          console.log('result ->' + result);
-
+          this.checkIfBookmarked();
         },
         (error) => {
           console.log('Was impossible to take bargain info');
@@ -78,35 +80,6 @@ export class BargainInformationComponent implements OnInit {
 
       }
     )
-  }
-
-  onSubmit(): void {
-    const { email, password } = this.form;
-    if (this.emailValid(email)) {
-      this.authService.login(email, password)
-        .subscribe(
-          data => {
-            this.tokenStorage.saveToken(JSON.stringify(data['token']).replace(/['"]+/g, ''));
-            this.tokenStorage.saveUser((this.form.email));
-            this.isLoginFailed = false;
-            this.isLoggedIn = true;
-            let userDetails = this.accountService.getAccountEmail(this.form.email)
-            this.reloadPage();
-
-            userDetails.subscribe(
-              result => {
-                this.tokenStorage.saveRole(result.role);
-              }
-            );
-
-          },
-          err => {
-            console.log('error')
-            this.errorMessage = err;
-            this.isLoginFailed = true;
-          }
-        );
-    }
   }
 
   reloadPage(): void {
@@ -127,6 +100,7 @@ export class BargainInformationComponent implements OnInit {
       .subscribe(
         (result) => {
            this.accountId =  result.id;
+
           },
         (error) => {
           console.log('Was impossible to get the id of the account');
@@ -169,6 +143,7 @@ export class BargainInformationComponent implements OnInit {
       .subscribe(
         (result) => {
           console.log('Favorito: '+ result);
+          this.reloadPage();
         },
         (error) => {
           console.log('Was impossible to book the bargain');
@@ -176,4 +151,23 @@ export class BargainInformationComponent implements OnInit {
       )
   }
 
+
+  checkIfBookmarked(){
+    let relations:BargainsAccounts[];
+    this.bargainsAccountsService.getBookmarkedsAccount(this.accountId)
+    .subscribe(
+      (result) => {
+          relations = result;
+          for (let index = 0; index < relations.length; index++) {
+            if(relations[index].bargain?.id == this.bargain.id){
+
+              this.isBookmarked = true;
+            }
+          }
+      },
+      (error) => {
+        console.log('Error');
+      }
+    );
+  }
 }
