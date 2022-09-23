@@ -24,7 +24,7 @@ export class AccountService {
   * Get an account
   */
     get(id:number): Observable<Account>  {
-      return this.http.get(`${baseUrl}/cuenta/${id}`)
+      return this.http.get(`${baseUrl}cuenta/${id}`)
     }
 
   /**
@@ -46,29 +46,29 @@ export class AccountService {
   * Save an account
   */
    createAdmin(data: any):  Observable<any> {
-    return this.http.post(`${baseUrl}/cuentas/admin`,data);
+    return this.http.post(`${baseUrl}cuentas/admin`,data);
   }
 
   /**
   * Update an account
   */
   update(id: any, data: any): Observable<any> {
-    return this.http.put(`${baseUrl}/cuentas/${id}`,data);
+    return this.http.put(`${baseUrl}cuentas/${id}`,data);
   }
 
   /**
   * Change the status of an account
   */
-     changeStatus(id:number,data: any): Observable<any> {
-      return this.http.put(`${baseUrl}/cuentas/cambiar-estado/${id}`,data);
-    }
+  changeStatus(id:number,data: any): Observable<any> {
+    return this.http.put(`${baseUrl}cuentas/cambiar-estado/${id}`,data);
+  }
 
 
   /**
   * Delete an account
   */
   delete(id: any): Observable<any> {
-    return this.http.delete(`${baseUrl}/cuentas/${id}`);
+    return this.http.delete(`${baseUrl}cuentas/${id}`);
   }
 
 
