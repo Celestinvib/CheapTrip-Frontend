@@ -12,6 +12,7 @@ import { CityService } from '../../../../services/city/city.service';
 export class FlightAddComponent implements OnInit {
 
   form: any = {
+    id:undefined,
     origin:undefined,
     destination:undefined,
     departure_date: undefined,
@@ -19,8 +20,9 @@ export class FlightAddComponent implements OnInit {
     };
 
   flight: Flight = {
-    origin:undefined,
-    destination:undefined,
+    id:undefined,
+    origin:{},
+    destination:{},
     departure_date: undefined,
     arrival_date: undefined
   }
@@ -86,8 +88,9 @@ export class FlightAddComponent implements OnInit {
     onSubmit(): void {
 
       if(
-        this.flight.origin != undefined &&
-        this.flight.destination != undefined &&
+        this.flight.id != undefined &&
+        this.flight.origin!.id != undefined &&
+        this.flight.destination!.id != undefined &&
         this.flight.departure_date != undefined &&
         this.flight.arrival_date != undefined  &&
         this.flight.arrival_date > this.flight.departure_date
@@ -102,28 +105,33 @@ export class FlightAddComponent implements OnInit {
     saveFlight(): void {
 
       const data = {
+        id: this.flight.id,
         origin: this.flight.origin,
         destination: this.flight.destination,
         departure_date: this.flight.departure_date,
         arrival_date: this.flight.arrival_date
       }
-       this.flightService.create(data)
-       .subscribe(
-         response => {
-           //If the items is added successfully
-          this.itemAdded= true; //it indicate it in the view with a popUp thanks to this var
 
-          //Past 6 seconds the boolean is set to false therefore the item in the view disappear
-           setTimeout(() =>
-           {
-             this.itemAdded= false;
-           },
-           6000);
-         },
-         error => {
-           console.log(error);
-         }
-       )
+       this.flightService.create(data)
+        .subscribe(
+          response => {
+            //If the items is added successfully
+           this.itemAdded= true; //it indicate it in the view with a popUp thanks to this var
+
+           //Past 6 seconds the boolean is set to false therefore the item in the view disappear
+            setTimeout(() =>
+            {
+              this.itemAdded= false;
+            },
+            6000);
+          },
+          error => {
+            console.log(error);
+          }
+        )
+
+
     }
+
 
 }
