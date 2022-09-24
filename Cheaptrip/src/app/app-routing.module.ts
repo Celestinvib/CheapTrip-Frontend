@@ -38,6 +38,7 @@ import { BookingsAddComponent } from './components/admin/booking/bookings-add/bo
 
 import { AuthGuardService } from "./services/auth-guard/auth-guard.service";
 import { AdminAuthGuardService } from "./services/auth-guard/admin-auth-guard.service";
+import { ExpireSoonComponent } from './components/expire-soon/expire-soon.component';
 
 const routes: Routes = [
   {
@@ -177,6 +178,10 @@ const routes: Routes = [
   {
     path: 'bargains',
     component: MainComponent
+  },
+  {
+    path: 'bargains/all/expiring-soon',
+    component: ExpireSoonComponent
   },
   {
     path: 'profile',

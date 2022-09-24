@@ -59,6 +59,7 @@ import { BargainAddComponent } from './components/admin/bargain/bargain-add/barg
 import { BargainsUpdateComponent } from './components/admin/bargain/bargains-update/bargains-update.component';
 import { BookingsListComponent } from './components/admin/booking/bookings-list/bookings-list.component';
 import { BookingsAddComponent } from './components/admin/booking/bookings-add/bookings-add.component';
+import { ExpireSoonComponent } from './components/expire-soon/expire-soon.component';
 
 @NgModule({
   declarations: [
@@ -103,7 +104,8 @@ import { BookingsAddComponent } from './components/admin/booking/bookings-add/bo
     BargainAddComponent,
     BargainsUpdateComponent,
     BookingsListComponent,
-    BookingsAddComponent
+    BookingsAddComponent,
+    ExpireSoonComponent
 
   ],
   imports: [
