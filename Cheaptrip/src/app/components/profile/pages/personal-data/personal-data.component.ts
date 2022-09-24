@@ -3,6 +3,9 @@ import { AccountService } from '../../../../services/account/account.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Account } from '../../../../models/account/account.model';
 import { TokenStorageService } from '../../../../services/security/token-storage.service';
+import { DialogDeleteProfileComponent } from '../../../dialogs/dialog-delete-profile/dialog-delete-profile.component';
+
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-personal-data',
@@ -32,7 +35,8 @@ export class PersonalDataComponent implements OnInit {
     birth_date :undefined
   }
 
-  constructor(private activatedRoute: ActivatedRoute, private accountService: AccountService, private tokenStorage: TokenStorageService, private router: Router) { }
+  constructor(private activatedRoute: ActivatedRoute, private accountService: AccountService, private tokenStorage: TokenStorageService, private router: Router,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getAccount();
@@ -84,6 +88,13 @@ export class PersonalDataComponent implements OnInit {
       )
     }
 
+    openDialog() {
+      let dialogRef = this.dialog.open(DialogDeleteProfileComponent);
 
-
+      dialogRef.afterClosed().subscribe(result => {
+        if (result == 'true') {
+          this.deleteAccount()
+        }
+      })
+    }
 }

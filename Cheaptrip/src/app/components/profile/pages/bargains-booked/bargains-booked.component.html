@@ -29,9 +29,7 @@
                       <button
                       type="button"
                       class="btn btn-outline-dark"
-                      data-bs-toggle="modal"
-                      data-bs-target="#unbookModal"
-                      (click)="unbook(booking.bargain.id)"
+                      (click)="openDialog(booking.bargain.id)"
                       >
                       Cancelar Reserva
                     </button>
@@ -43,21 +41,3 @@
 </div>
 
 
- <!-- UnBook Modal -->
- <!-- <div class="modal fade" id="unbookModal" tabindex="-1" aria-labelledby="unbookModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-  <div class="modal-content">
-      <div class="modal-header">
-      <h5 class="modal-title" id="unbookModalLabel"><strong>Cancelar la reserva del chollo</strong></h5>
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ¿Quieres cancelar la reservar tu chollo?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-danger"  data-bs-dismiss="modal" (click)="unbook()">Cancelar reserva</button>
-      </div>
-  </div>
-  </div>
-</div> -->

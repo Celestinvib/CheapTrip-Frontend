@@ -38,6 +38,7 @@ import { BookingsAddComponent } from './components/admin/booking/bookings-add/bo
 
 import { AuthGuardService } from "./services/auth-guard/auth-guard.service";
 import { AdminAuthGuardService } from "./services/auth-guard/admin-auth-guard.service";
+import { GoodByeComponent } from '../app/components/access/good-bye/good-bye.component';
 
 const routes: Routes = [
   {
@@ -182,6 +183,10 @@ const routes: Routes = [
     path: 'profile',
     canActivate:[AuthGuardService],
     loadChildren: () => import('./components/page-bars/profile-nav-bar/profile-nav-bar.routing.module').then( m => ProfileModule )
+  },
+  {
+    path: 'goodbye',
+    component: GoodByeComponent
   }
 
 

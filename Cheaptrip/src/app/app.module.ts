@@ -59,6 +59,11 @@ import { BargainAddComponent } from './components/admin/bargain/bargain-add/barg
 import { BargainsUpdateComponent } from './components/admin/bargain/bargains-update/bargains-update.component';
 import { BookingsListComponent } from './components/admin/booking/bookings-list/bookings-list.component';
 import { BookingsAddComponent } from './components/admin/booking/bookings-add/bookings-add.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogBookedComponent } from './components/dialogs/dialog-booked/dialog-booked.component';
+import { DialogBookmarkedComponent } from './components/dialogs/dialog-bookmarked/dialog-bookmarked.component';
+import { DialogDeleteProfileComponent } from './components/dialogs/dialog-delete-profile/dialog-delete-profile.component';
+import { GoodByeComponent } from './components/access/good-bye/good-bye.component';
 
 @NgModule({
   declarations: [
@@ -103,7 +108,11 @@ import { BookingsAddComponent } from './components/admin/booking/bookings-add/bo
     BargainAddComponent,
     BargainsUpdateComponent,
     BookingsListComponent,
-    BookingsAddComponent
+    BookingsAddComponent,
+    DialogBookedComponent,
+    DialogBookmarkedComponent,
+    DialogDeleteProfileComponent,
+    GoodByeComponent
 
   ],
   imports: [
@@ -119,10 +128,13 @@ import { BookingsAddComponent } from './components/admin/booking/bookings-add/bo
     MatDividerModule,
     HttpClientModule,
     MatExpansionModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatDialogModule
 
   ],
   providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
+
 })
 export class AppModule { }

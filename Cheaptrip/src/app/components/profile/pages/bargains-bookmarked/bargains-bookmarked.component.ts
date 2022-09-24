@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BargainsAccountsService } from 'src/app/services/bargains-accounts/bargains-accounts.service';
 import { TokenStorageService } from 'src/app/services/security/token-storage.service';
 import { AccountService } from 'src/app/services/account/account.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogBookmarkedComponent } from '../../../dialogs/dialog-bookmarked/dialog-bookmarked.component';
 
 @Component({
   selector: 'app-bargains-bookmarked',
@@ -17,7 +19,8 @@ export class BargainsBookmarkedComponent implements OnInit {
   constructor(
     private bargainsAccountsService: BargainsAccountsService,
     private tokenStorage: TokenStorageService,
-    private accountService: AccountService
+    private accountService: AccountService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -65,5 +68,17 @@ export class BargainsBookmarkedComponent implements OnInit {
           console.log('There has been an error unbooking this bargain');
         }
       );
+    }
+
+    openDialog(bargainId:any) {
+      let dialogRef = this.dialog.open(DialogBookmarkedComponent);
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result == 'true') {
+          this.unbookmark(bargainId)
+        }
+      })
+
+
     }
 }
