@@ -45,7 +45,7 @@
     </div>
     <div class="col-6">
       <label for="ICBargainExpirationDate" class="form-label">Fecha de expiración</label>
-      <input type="datetime-local" class="form-control" id="ICBargainExpirationDate" required
+      <input type="date" class="form-control" id="ICBargainExpirationDate" required
         [(ngModel)]="form.expiration_date" name="expiration_date" required #expiration_date="ngModel">
       <div class="mt-2 alert alert-danger" role="alert" *ngIf="expiration_date.errors && f.submitted">
         Se requiere de una fecha de expiración!
@@ -65,14 +65,14 @@
     <div class="col">
       <label for="ICBargainOutboundFlight" class="form-label">VueloIda</label>
       <select class="form-select" id="ICBargainOutboundFlight" [(ngModel)]="form.outbound_flight.id" #outbound_flight="ngModel" name="outbound_flight">
-        <option selected>Ninguno</option>
+        <option selected value="undefined">Ninguno</option>
         <option *ngFor="let flight of flights" value="{{flight.id}}">{{flight.id}}</option>
       </select>
     </div>
     <div class="col">
       <label for="ICBargainReturnFlight" class="form-label">VueloDestino</label>
       <select class="form-select" id="ICBargainReturnFlight" [(ngModel)]="form.return_flight.id" #return_flight="ngModel" name="return_flight">
-        <option selected>Ninguno</option>
+        <option selected value="undefined">Ninguno</option>
         <option *ngFor="let flight of flights" value="{{flight.id}}">{{flight.id}}</option>
       </select>
     </div>

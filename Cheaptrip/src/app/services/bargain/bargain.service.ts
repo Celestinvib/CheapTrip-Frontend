@@ -27,6 +27,14 @@ export class BargainService {
     }
 
   /**
+  * Get all the bargains that expires soon
+  */
+    getExpiringSoon(): Observable<Bargain[]> {
+      return this.http.get<Bargain[]>(baseUrl+'/expiran-pronto');
+    }
+
+
+  /**
   * Get all the bargains with the selected max price
   */
   getAllWithSelectedMaxPrice(maxPrice:number): Observable<Bargain[]> {
