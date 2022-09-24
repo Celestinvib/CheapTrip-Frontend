@@ -106,13 +106,19 @@ export class FiltersComponent implements OnInit {
 
   //Asigns a list of accommodations to a feature
   getAccomomdationsWithFeature(feature: Feature){
+    let accFea:AccommodationsFeatures[];
+    let accommodations:Accommodation[];
     this.accommodationsFeaturesService.getAccommodationsFeature(feature.id)
     .subscribe(
       (result) => {
-        /*
-        result
-        this.featuresMap.set(feature.id, result);
-        */
+        //gets accommodation features
+        accFea = result;
+        //gets accommodations from accommodation features
+        for (let i = 0; i < accFea.length; i++) {
+          accommodations[i] = accFea[i].accommodation || {};
+        }
+        //saves accommodation list in a map
+        this.featuresMap.set(feature.id, accommodations);
       },
       (error) => {
         console.log('Was impossible to take city info');
