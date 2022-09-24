@@ -10,8 +10,7 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
   private roles: string[] = [];
   isLoggedIn = false;
-  showAdminBoard = false;
-  username?: string;
+  isAdmin = false;
 
   constructor(private tokenStorageService: TokenStorageService, private router: Router) { }
 
@@ -20,11 +19,7 @@ export class NavbarComponent implements OnInit {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
     if (this.isLoggedIn) {
-      const user = this.tokenStorageService.getUser();
-      this.roles = user.roles;
-
-      this.showAdminBoard = this.roles.includes('Admin');
-      this.username = user.username;
+      this.isAdmin = this.checkIfAdmin();
     }
   }
 
@@ -34,4 +29,13 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/bargains']);
   }
 
+  checkIfAdmin(): boolean {
+
+    if(this.tokenStorageService.getRole() == 'ROLE_ADMIN'){
+      return true;
+    }else{
+      return false;
+    }
+
+  }
 }

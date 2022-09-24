@@ -77,13 +77,13 @@
             <li>
               <a class="dropdown-item" href="#" (click)="logout()">Log out</a>
             </li>
-            <div class="dropdown-divider" *ngIf="showAdminBoard"></div>
+            <div class="dropdown-divider" *ngIf="isAdmin"></div>
             <li>
               <a
                 class="dropdown-item"
                 href="#"
                 routerLink="/site-admin/home"
-                *ngIf="showAdminBoard"
+                *ngIf="isAdmin"
                 >Administrador</a
               >
             </li>
