@@ -64,41 +64,26 @@ export class PersonalDataComponent implements OnInit {
         this.account.email != '',
         this.account.phone_number !=''
         ) {
-        this.updateAccount();
+        this.deleteAccount();
       }
     }
 
-     /**
-      * Update an account
-      */
-      updateAccount(): void {
-
-        const data = {
-          name:  this.form.name,
-          surnames:  this.form.surnames,
-          email:  this.account.email,
-          password:  this.account.password,
-          phone_number:  this.form.phone_number,
-          birth_date:  this.account.birth_date
+   /**
+    * When the form is submmited
+    */
+    deleteAccount() {
+      this.accountService.delete(this.account.id)
+      .subscribe(
+        (result) => {
+          this.tokenStorage.signOut();
+          this.router.navigate(['/login']);
+        },
+        (error) => {
+          console.log('Was impossible to delete the account');
         }
+      )
+    }
 
-        // this.accountService.update(this.account.id, data)
-        //  .subscribe(
-        //    response => {
-        //      //If the items is updated successfully
-        //     this.itemUpdated= true; //it indicate it in the view with a popUp thanks to this var
 
-        //     //Past 6 seconds the boolean is set to false therefore the item in the view disappear
-        //      setTimeout(() =>
-        //      {
-        //        this.itemUpdated= false;
-        //      },
-        //      6000);
-        //    },
-        //    error => {
-        //      console.log(error);
-        //    }
-        //  )
-      }
 
 }
