@@ -72,20 +72,16 @@
             <button
               class="btn btn-primary profile-button"
               type="submit"
-              #update
-              (click)="onSubmit()"
+              [routerLink]="['/password_reset']"
             >
-              Actualizar información
+              Cambiar Contraseña
             </button>
           </div>
         </div>
         <div class="mt-5 text-center">
-          <button class="btn btn-primary profile-button" type="button" #modify (click)="isDisabledButton($event); update.disabled= false; birthdate.disabled= false;
-          phonenumber.disabled=false; email.disabled=false; surname.disabled=false; name.disabled=false;">
-            Modificar Perfil
-          </button><br><br>
-          <a href="/password_reset">Cambiar Contraseña</a>
-          <a>Eliminar Cuenta</a>
+          <button class="btn btn-primary profile-button" type="button">
+          Eliminar Cuenta
+          </button>
         </div>
       </div>
     </div>
