@@ -21,6 +21,7 @@ export class BargainInformationComponent implements OnInit {
   };
 
   isBookmarked = false;
+  isBooked = false;
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
@@ -65,21 +66,12 @@ export class BargainInformationComponent implements OnInit {
         (result) => {
           this.bargain = result;
           this.checkIfBookmarked();
+          this.checkIfBooked();
         },
         (error) => {
           console.log('Was impossible to take bargain info');
         }
       );
-  }
-
-  checkIfBooked() {
-    this.bargainsAccountsService.getBooking(this.accountId)
-    .subscribe(
-      (result) => {
-        let bookings = result;
-
-      }
-    )
   }
 
   reloadPage(): void {
@@ -121,7 +113,6 @@ export class BargainInformationComponent implements OnInit {
       this.bargainsAccountsService.createBooking(data)
       .subscribe(
         (result) => {
-          console.log('Reservado: '+ result);
         },
         (error) => {
           console.log('Was impossible to book the bargain');
@@ -142,7 +133,6 @@ export class BargainInformationComponent implements OnInit {
       this.bargainsAccountsService.createBookmarked(data)
       .subscribe(
         (result) => {
-          console.log('Favorito: '+ result);
           this.reloadPage();
         },
         (error) => {
@@ -151,22 +141,129 @@ export class BargainInformationComponent implements OnInit {
       )
   }
 
-
-  checkIfBookmarked(){
-    let relations:BargainsAccounts[];
-    this.bargainsAccountsService.getBookmarkedsAccount(this.accountId)
+  checkIfBooked(){
+    let bookings:BargainsAccounts[];
+    this.bargainsAccountsService.getBookingsAccount(this.accountId)
     .subscribe(
       (result) => {
-          relations = result;
-          for (let index = 0; index < relations.length; index++) {
-            if(relations[index].bargain?.id == this.bargain.id){
+          bookings = result;
+          for (let i = 0; i < bookings.length; i++) {
+            if(bookings[i].bargain?.id == this.bargain.id){
 
-              this.isBookmarked = true;
+              if(bookings[i].booked == 1) { //If it's booked
+                this.isBooked = true;
+              }
             }
           }
       },
       (error) => {
         console.log('Error');
+      }
+    );
+  }
+
+  checkIfBookmarked(){
+    let bookmarkeds:BargainsAccounts[];
+    this.bargainsAccountsService.getBookmarkedsAccount(this.accountId)
+    .subscribe(
+      (result) => {
+          bookmarkeds = result;
+          for (let i = 0; i < bookmarkeds.length; i++) {
+            if(bookmarkeds[i].bargain?.id == this.bargain.id){
+
+              if(bookmarkeds[i].bookmarked == 1) { //If it's bookmarked
+                this.isBookmarked = true;
+              }
+            }
+          }
+      },
+      (error) => {
+        console.log('Error');
+      }
+    );
+  }
+
+  /**
+  * Book and unbook a bargain
+  */
+  bookAndUnbook() {
+
+    let bookingsAndBookmarks:BargainsAccounts[];
+
+    let bookedOrBookmarked = false;
+
+    this.bargainsAccountsService.getBookingsAccount(this.accountId)
+    .subscribe(
+      (result) => {
+          bookingsAndBookmarks = result;
+          for (let i = 0; i < bookingsAndBookmarks.length; i++) {
+            if(bookingsAndBookmarks[i].bargain?.id == this.bargain.id){ //If the bargain id has been found that means that a booking or bookmarked has been done with this bargain and this account
+
+              bookedOrBookmarked = true;
+
+              this.bargainsAccountsService.updateBookedStatus(bookingsAndBookmarks[i].id,bookingsAndBookmarks[i]) //Books or unbooks the bargain for the account
+                .subscribe(
+                (result) => {
+                  if(result[i]?.booked == 1) {
+                    this.isBooked = true;
+                  }else {
+                    this.isBooked = false;
+                  }
+                }
+                )
+            }
+          }
+
+          if(!bookedOrBookmarked) {
+            this.book();
+            this.isBooked = true;
+          }
+      },
+      (error) => {
+        console.log('There has been an error');
+      }
+    );
+  }
+
+
+  /**
+  * Bookmark and unbookmark a bargain
+  */
+  bookmarkAndUnbookmark() {
+
+    let bookingsAndBookmarks:BargainsAccounts[];
+
+    let bookedOrBookmarked = false;
+
+    this.bargainsAccountsService.getBookmarkedsAccount(this.accountId)
+    .subscribe(
+      (result) => {
+          bookingsAndBookmarks = result;
+          for (let i = 0; i < bookingsAndBookmarks.length; i++) {
+            if(bookingsAndBookmarks[i].bargain?.id == this.bargain.id){ //If the bargain id has been found that means that a booking or bookmarked has been done with this bargain and this account
+
+              bookedOrBookmarked = true;
+
+              this.bargainsAccountsService.updateBookmarkedStatus(bookingsAndBookmarks[i].id,bookingsAndBookmarks[i]) //Books or unbooks the bargain for the account
+                .subscribe(
+                (result) => {
+                  if(result[i]?.bookmarked == 1) {
+                    this.isBookmarked = true;
+                  }else {
+                    this.isBookmarked = false;
+                  }
+                }
+                )
+            }
+          }
+
+          if(!bookedOrBookmarked) {
+            this.bookmark();
+            this.isBookmarked = true;
+          }
+      },
+      (error) => {
+        console.log('There has been an error');
       }
     );
   }

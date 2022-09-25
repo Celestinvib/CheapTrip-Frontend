@@ -36,7 +36,7 @@
             <a
               href="#"
               class="nav-link px-2 text-white"
-              routerLink="/bargains/favorites"
+              routerLink="/bargains/all/favorites"
               *ngIf="isLoggedIn"
               >Chollos favoritos</a
             >
@@ -45,7 +45,7 @@
             <a
               href="#"
               class="nav-link px-2 text-white"
-              routerLink="/bargains/expirating-soon"
+              routerLink="/bargains/all/expiring-soon"
               >Expiran pronto</a
             >
           </li>
@@ -77,13 +77,13 @@
             <li>
               <a class="dropdown-item" href="#" (click)="logout()">Log out</a>
             </li>
-            <div class="dropdown-divider" *ngIf="showAdminBoard"></div>
+            <div class="dropdown-divider" *ngIf="isAdmin"></div>
             <li>
               <a
                 class="dropdown-item"
                 href="#"
                 routerLink="/site-admin/home"
-                *ngIf="showAdminBoard"
+                *ngIf="isAdmin"
                 >Administrador</a
               >
             </li>

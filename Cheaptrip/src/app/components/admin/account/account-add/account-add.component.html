@@ -8,7 +8,13 @@
   </div>
   <a class=" btn btn-primary text-light" routerLink="/site-admin/accounts" [queryParams]="{lastPageActual: lastPage, lastItemsViewed: lastItemsViewed }" ><i class="bi bi-caret-left"></i></a>
   <form class="row g-3 border border-dark rounded-2 p-3"  name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-
+      <div class="col-12">
+        <input type="radio" id="admin" name="account" value="admin"  [(ngModel)]="form.account">
+          <label for="admin">Admin</label>
+          <input type="radio" id="user" name="account" value="user"  [(ngModel)]="form.account" checked>
+          <label for="user">Usuario</label><br>
+          <br>
+      </div>
       <div class="col">
         <label for="ICAccountName" class="form-label">Nombre</label>
         <input type="text" class="form-control" id="ICAccountName required" [(ngModel)]="account.name" name="name" required #name="ngModel">
@@ -25,7 +31,7 @@
         </div>
       </div>
 
-      <div class="col">
+      <div class="col-12">
         <label for="ICAccountAddress" class="form-label">Email</label>
         <input type="email" class="form-control" id="ICAccountAddress" [(ngModel)]="account.email" required  #email="ngModel" name="email">
         <div class="mt-2 alert alert-danger" role="alert" *ngIf="email.errors && f.submitted">

@@ -18,19 +18,15 @@
             data-id="1968"
           >
             <div class="summary-name-container">
-              <span class="summary-name">{{
+              <span class="summary-name">
+                <strong>Nombre del hotel:</strong>
+                {{
                 bargain.accommodation?.name
               }}</span>
-              <span class="summary-stars-keys inline-flex">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-              </span>
+
             <br>
               <div class="summary-address color-secondary-medium">
-                <span>{{ bargain.accommodation?.address }}</span>
+                <span><strong>Dirección:</strong> {{ bargain.accommodation?.address }}</span>
               </div>
 
             </div>
@@ -39,11 +35,15 @@
                 class="rating-content rounded-container-secondary-lighter width-max-content centered-flex"
                 data-entity="ratingContainer"
               >
-                <span class="rating-value bold">{{
+                <span class="rating-value bold"><strong>Valoración:</strong> {{
                   bargain.accommodation?.rating
                 }}</span>
                 <br />
-                <span class="rating-text underline">{{ bargain.price }} €</span>
+                <span class="rating-text underline"><strong>Precio:</strong> {{ bargain.price }} €</span>
+                <br />
+                <span class="rating-value bold"><strong>Fecha de expiración:</strong> {{
+                  bargain.expiration_date
+                }} &nbsp; </span> <i class="bi bi-clock-history"></i>
               </div>
               <br>
               <div class="row">
@@ -53,9 +53,19 @@
               class="btn btn-outline-dark"
               data-bs-toggle="modal"
               data-bs-target="#reservarModal"
+              *ngIf="!isBooked"
             >
               Reservar Chollo
             </button>
+            <button
+            type="button"
+            class="btn btn-outline-dark"
+            data-bs-toggle="modal"
+            data-bs-target="#unbookModal"
+            *ngIf="isBooked"
+          >
+            Cancelar Reserva
+          </button>
           </div>
             <div class="col">
               <div class="d-flex">
@@ -64,6 +74,12 @@
                 data-bs-target="#bookmarkModal"
                  *ngIf="isLoggedIn && !isBookmarked">
                   Añadir a favoritos
+                </button>
+                <button type="button" class="btn btn-danger"
+                data-bs-toggle="modal"
+                data-bs-target="#unbookmarkModal"
+                 *ngIf="isLoggedIn && isBookmarked">
+                  Quitar de favoritos
                 </button>
               </div>
             </div>
@@ -89,10 +105,29 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-danger"  data-bs-dismiss="modal" (click)="bookmark()">Añadir a favoritos</button>
+            <button type="button" class="btn btn-danger"  data-bs-dismiss="modal" (click)="bookmarkAndUnbookmark()">Añadir a favoritos</button>
           </div>
       </div>
       </div>
+  </div>
+
+  <!-- Unbookmark Modal -->
+  <div class="modal fade" id="unbookmarkModal" tabindex="-1" aria-labelledby="reservarModalLabel" aria-hidden="true" *ngIf="isLoggedIn">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="unbookmarkModalLabel"><strong>Quitar el chollo de favoritos</strong></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ¿Quieres quitar el chollo de favoritos?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-danger"  data-bs-dismiss="modal" (click)="bookmarkAndUnbookmark()">Quitar de favoritos</button>
+        </div>
+    </div>
+    </div>
   </div>
 
     <!-- Book Modal -->
@@ -108,7 +143,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-danger"  data-bs-dismiss="modal" (click)="book()">Reservar el chollo</button>
+            <button type="button" class="btn btn-danger"  data-bs-dismiss="modal" (click)="bookAndUnbook()">Reservar el chollo</button>
           </div>
       </div>
       </div>
@@ -126,6 +161,24 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             <button type="button" class="btn btn-danger"  data-bs-dismiss="modal" routerLink="/login">Iniciar Sesión</button>
+          </div>
+      </div>
+      </div>
+  </div>
+    <!-- UnBook Modal -->
+    <div class="modal fade" id="unbookModal" tabindex="-1" aria-labelledby="unbookModalLabel" aria-hidden="true" *ngIf="isLoggedIn">
+      <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h5 class="modal-title" id="unbookModalLabel"><strong>Cancelar la reserva del chollo</strong></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ¿Quieres cancelar la reservar tu chollo?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-danger"  data-bs-dismiss="modal" (click)="bookAndUnbook()">Cancelar reserva</button>
           </div>
       </div>
       </div>

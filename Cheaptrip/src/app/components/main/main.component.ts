@@ -1,7 +1,16 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
+import { FeatureService } from "../../services/feature/feature.service";
+import { CityService } from "../../services/city/city.service";
+import { City } from "../../models/city/city.model";
+import { Feature } from "../../models/feature/feature.model";
 import { BargainService } from '../../services/bargain/bargain.service';
+import { Bargain } from '../../models/bargain/bargain.model';
+import { AccommodationsFeaturesService } from '../../services/accommodations-features/accommodations-features.service';
+import { AccommodationsFeatures } from 'src/app/models/accommodations-features/accommodations-features.model';
+import { AccommodationService } from 'src/app/services/accommodation/accommodation.service';
+import { Accommodation } from 'src/app/models/accommodation/accommodation.model';
 
 @Component({
   selector: 'app-main',
@@ -10,15 +19,32 @@ import { BargainService } from '../../services/bargain/bargain.service';
 })
 export class MainComponent implements OnInit {
 
-  bargains: any = null
+  cities: City[] = [];
+  features: Feature[] = [];
+  maxPrice: number = 0;
+  bargains: Bargain[] = [];
+  filteredBargains: Bargain[] = [];
+  filteredBargainsCity: Bargain[] = [];
+  filteredBargainsPrice: Bargain[] = [];
+  filteredBargainsCategory: Bargain[] = [];
+  isEmpty:boolean = false;
+  citySelected: any = 0;
+  categorySelected: any = "";
 
-  constructor(private activatedRoute: ActivatedRoute, private bargainService: BargainService, private router: Router) { }
+  priceRange = 500;
+
+
+
+  constructor(private activatedRoute: ActivatedRoute, private bargainService: BargainService, private router: Router, private featureService: FeatureService, private cityService: CityService, private accommodationsService: AccommodationService, private accommodationsFeaturesService: AccommodationsFeaturesService) { }
 
   ngOnInit(): void {
+    this.getCities();
     this.getBargains();
-
   }
 
+  /*
+  /   Gets for bargains and cities
+  */
   getBargains() {
     this.bargainService.getAll()
       .subscribe(
@@ -30,5 +56,132 @@ export class MainComponent implements OnInit {
           console.log('Was impossible to take bargain info');
         }
       );
+  }
+  getCities() {
+    this.cityService.getAll()
+      .subscribe(
+        (result) => {
+          this.cities = result;
+        },
+        (error) => {
+          console.log('Was impossible to take cities info');
+        }
+      );
+  }
+
+
+  /*
+  / Filter Queries
+  */
+  getBargainsMaxPrice() {
+    this.bargainService.getAllWithSelectedMaxPrice(this.priceRange)
+      .subscribe(
+          (result) => {
+            this.filteredBargainsPrice = result;
+
+            this.filteredBargains = this.filteredBargainsPrice;
+            //next filter
+            console.log(this.citySelected + ' city selected')
+            if (this.citySelected != 0) {
+              this.getBargainsCity();
+            }else{
+              console.log(this.categorySelected)
+              if (this.categorySelected != "") {
+                this.getBargainsCategory();
+              }else{
+                this.bargains = this.filteredBargains;
+                if(this.bargains.length === 0){
+                  this.isEmpty=true;
+                }else{
+                  this.isEmpty=false;
+                }
+              }
+            }
+          },
+          (error) => {
+            console.log('Was impossible to take maxPrice Bargain info');
+          }
+        );
+  }
+  getBargainsCity() {
+    this.bargainService.getAllWithCity(this.citySelected)
+      .subscribe(
+          (result) => {
+            this.filteredBargainsCity = result;
+            if(this.filteredBargainsCity.length != 0){
+              this.filteredBargains = this.filteredBargains.filter(o1 => this.filteredBargainsCity.some(o2 => o1.id === o2.id));
+              this.isEmpty=false;
+            }else{
+              this.filteredBargains = [];
+            }
+            //next filter
+            if (this.categorySelected != "") {
+              this.getBargainsCategory();
+            }else{
+              this.bargains = this.filteredBargains;
+              if(this.bargains.length === 0){
+                this.isEmpty=true;
+              }else{
+                this.isEmpty=false;
+              }
+            }
+
+          },
+          (error) => {
+            console.log('Was impossible to take city Bargain info');
+          }
+        );
+  }
+  getBargainsCategory() {
+    console.log(this.categorySelected)
+    this.bargainService.getAllWithCategory(this.categorySelected)
+      .subscribe(
+          (result) => {
+            this.filteredBargainsCategory= result;
+            console.log(this.filteredBargainsCategory)
+            if(this.filteredBargainsCategory.length != 0){
+              this.filteredBargains = this.filteredBargains.filter(o1 => this.filteredBargainsCategory.some(o2 => o1.id === o2.id));
+              this.isEmpty=false;
+            }else{
+              this.filteredBargains = [];
+            }
+            //Result of the filter
+            this.bargains = this.filteredBargains;
+            if(this.bargains.length === 0){
+              this.isEmpty=true;
+            }else{
+              this.isEmpty=false;
+            }
+          },
+          (error) => {
+            console.log('Was impossible to take category Bargain info');
+          }
+        );
+  }
+
+  priceChanged(e:any) {
+    this.priceRange = e.target.value;
+  }
+
+  applyFilters(){
+    //price
+    this.getBargainsMaxPrice();
+
+  }
+
+  citySelectedChange(e: any){
+    this.citySelected = e.target.value;
+  }
+
+  categorySelectedChange(e: any){
+    this.categorySelected = e.target.value;
+    console.log(this.categorySelected)
+  }
+
+  reloadPage(): void {
+    this.citySelected=0;
+    this.categorySelected="";
+    this.getBargains();
+    //window.location.reload();
   }
 }

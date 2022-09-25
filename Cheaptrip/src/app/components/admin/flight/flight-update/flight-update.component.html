@@ -13,7 +13,7 @@
       </div>
       <div class="col">
         <label for="ICFlightDepartureDate" class="form-label">Fecha Salida</label>
-        <input type="datetime-local" class="form-control" id="ICFlightDepartureDate" required [(ngModel)]="flight.departure_date" value="{{flight.departure_date}}" name="departure_date" required #departure_date="ngModel">
+        <input type="date" class="form-control" id="ICFlightDepartureDate" required [(ngModel)]="flight.departure_date" value="{{flight.departure_date}} | date:'yyyy-MM-dd'"  name="departure_date" required #departure_date="ngModel">
         <div class="mt-2 alert alert-danger" role="alert" *ngIf="departure_date.errors && f.submitted">
         ¡Se requiere el fecha de salida!
         </div>
@@ -21,12 +21,11 @@
 
       <div class="col-6">
         <label for="ICFlightArrivalDate" class="form-label">Fecha Llegada</label>
-        <input type="datetime-local" class="form-control" id="ICFlightArrivalDate" required [(ngModel)]="flight.arrival_date" value="{{flight.arrival_date}}"  name="arrival_date" required #arrival_date="ngModel">
+        <input type="date" class="form-control" id="ICFlightArrivalDate" required [(ngModel)]="flight.arrival_date" value="{{flight.arrival_date}} | date:'yyyy-MM-dd'"  name="arrival_date" required #arrival_date="ngModel">
         <div class="mt-2 alert alert-danger" role="alert" *ngIf="arrival_date.errors && f.submitted">
         ¡Se requiere el fecha de llegada!
         </div>
       </div>
-
       <div class="col-12">
         <label for="ICFlightOrigin" class="form-label">Ciudad Origen</label>
         <select class="form-select" id="ICFlightOrigin" [(ngModel)]="flight.origin!.id" required  #origin="ngModel" name="origin">

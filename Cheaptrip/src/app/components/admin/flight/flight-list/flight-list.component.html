@@ -45,8 +45,8 @@
                   <th scope="row">{{flight.id}}</th>
                   <td>{{flight.departure_date}}</td>
                   <td>{{flight.arrival_date}}</td>
-                  <td>{{flight.origin.name}}</td>
-                  <td>{{flight.destination.name}}</td>
+                  <td>{{flight.origin?.name}}</td>
+                  <td>{{flight.destination?.name}}</td>
                   <td>
                       <a class="btn btn-success btn-sm" routerLink="/site-admin/flights/update/show" [queryParams]="{id: flight.id,lastPage: pageActual, lastItemsViewed:ItemsViewed}">
                         <i class="bi bi-pencil-square" ></i>

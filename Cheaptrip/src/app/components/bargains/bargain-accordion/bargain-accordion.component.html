@@ -10,7 +10,7 @@
           aria-expanded="true"
           aria-controls="collapseOne"
         >
-          Descripción
+          Descripción &nbsp; <i class="bi bi-card-text fs-5"></i>
         </button>
       </h2>
       <div
@@ -34,7 +34,7 @@
           aria-expanded="false"
           aria-controls="collapseTwo"
         >
-          Vuelo
+          Vuelo &nbsp; <i class="bi bi-airplane-engines fs-5"></i>
         </button>
       </h2>
       <div
@@ -48,9 +48,9 @@
           {{ bargain.outbound_flight?.origin?.name }} <br />
           <strong>Ciudad de llegada: </strong>
           {{ bargain.outbound_flight?.destination?.name }} <br />
-          <strong>Fecha de ida: </strong>
+          <strong>Fecha de ida: </strong> &nbsp;<i class="bi bi-calendar"></i>&nbsp;
           {{ bargain.outbound_flight?.departure_date }} <br />
-          <strong>Fecha de vuelta: </strong>
+          <strong>Fecha de vuelta: </strong> &nbsp;<i class="bi bi-calendar"></i>&nbsp;
           {{ bargain.return_flight?.arrival_date }} <br />
         </div>
       </div>
@@ -65,7 +65,7 @@
           aria-expanded="false"
           aria-controls="collapseThree"
         >
-          Más información
+          Más información &nbsp; <i class="bi bi-info-circle fs-5"></i>
         </button>
       </h2>
       <div
@@ -74,7 +74,22 @@
         aria-labelledby="headingThree"
         data-bs-parent="#accordionInfo"
       >
-        <div class="accordion-body"></div>
+      <div class="row">
+        <strong class="ms-4">Este alojamiento tiene: </strong>
+        <div class="d-inline ms-3">
+          <span class="badge text-bg-light ms-2"  *ngFor="let feature of features ; let i = index">{{feature.feature.name}}</span>
+        </div>
+      </div>
+        <div class="accordion-body">
+          <iframe
+            width="300"
+            height="170"
+            frameborder="0"
+            scrolling="no"
+            marginheight="0"
+            marginwidth="0"
+            src="https://maps.google.com/maps?q=38.70919,-9.13596&hl=es;z=14&output=embed">
+          </iframe>
       </div>
     </div>
   </div>

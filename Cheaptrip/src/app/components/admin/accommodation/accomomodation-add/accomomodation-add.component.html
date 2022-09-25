@@ -61,7 +61,7 @@
          </div>
          <div class="col-12">
             <label for="ICAccommodationFeatures" class="form-label">Rasgos</label>
-            <select class="form-select" id="ICAccommodationCity" multiple>
+            <select class="form-select" id="ICAccommodationCity" multiple name="features" [(ngModel)]="form.features">
               <option *ngFor="let feature of features" value="{{feature.id}}">{{feature.name}}</option>
           </select>
          </div>

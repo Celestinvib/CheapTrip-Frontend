@@ -40,6 +40,9 @@
                 <div class="mt-2 alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
                   Error de inicio de sesion...
                 </div>
+                <div class="alert alert-danger" role="alert" *ngIf="accountBanned">
+                  Esta cuenta está suspendida
+                </div>
                 <div class="alert alert-danger" role="alert" *ngIf="email.errors && f.submitted">
                   Revisa el email.
                 </div>
@@ -54,10 +57,11 @@
       </div>
       <div class="card card2">
         <div class="my-auto mx-md-5 px-md-5 right">
-          <h3 class="text-white">Lorem ipsum dolor sit amet</h3>
-          <small class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-            laboris nisi ut aliquip ex ea commodo consequat.</small>
+          <h3 class="text-white">Inicio de sesión</h3>
+          <small class="text-white">
+            ¿Ya te has registrado? <br> ¡Perfecto! <br>
+            ¡Ahora sólo hace falta qué inicies sesión y podrás reservar todos los chollos de los qué quieras disfrutar!
+          </small>
         </div>
       </div>
     </div>

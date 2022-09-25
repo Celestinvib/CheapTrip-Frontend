@@ -3,6 +3,9 @@ import { AccountService } from '../../../../services/account/account.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Account } from '../../../../models/account/account.model';
 import { TokenStorageService } from '../../../../services/security/token-storage.service';
+import { DialogDeleteProfileComponent } from '../../../dialogs/dialog-delete-profile/dialog-delete-profile.component';
+
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-personal-data',
@@ -11,9 +14,29 @@ import { TokenStorageService } from '../../../../services/security/token-storage
 })
 export class PersonalDataComponent implements OnInit {
 
-  account: Account = { }
+  itemUpdated: boolean = false;
 
-  constructor(private activatedRoute: ActivatedRoute, private accountService: AccountService, private tokenStorage: TokenStorageService, private router: Router ) { }
+  form: any = {
+    name:'',
+    surnames:'',
+    email:'',
+    password:'',
+    phone_number:'',
+    birth_date :undefined
+    };
+
+
+  account: Account = {
+    name:'',
+    surnames:'',
+    email:'',
+    password:'',
+    phone_number:'',
+    birth_date :undefined
+  }
+
+  constructor(private activatedRoute: ActivatedRoute, private accountService: AccountService, private tokenStorage: TokenStorageService, private router: Router,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getAccount();
@@ -24,12 +47,54 @@ export class PersonalDataComponent implements OnInit {
       .subscribe(
         (result) => {
           this.account = result;
-          console.log('result ->' + result);
-
         },
         (error) => {
           console.log('Was impossible to take account info');
         }
       );
   }
+
+  isDisabledButton(event: any) {
+
+  }
+
+   /**
+    * When the form is submmited
+    */
+    onSubmit(): void {
+      if(
+        this.account.name != '',
+        this.account.surnames != '',
+        this.account.email != '',
+        this.account.phone_number !=''
+        ) {
+        this.deleteAccount();
+      }
+    }
+
+   /**
+    * When the form is submmited
+    */
+    deleteAccount() {
+      this.accountService.delete(this.account.id)
+      .subscribe(
+        (result) => {
+          this.tokenStorage.signOut();
+          this.router.navigate(['/goodbye']);
+        },
+        (error) => {
+          console.log('Was impossible to delete the account');
+        }
+      )
+    }
+
+    openDialog() {
+      let dialogRef = this.dialog.open(DialogDeleteProfileComponent);
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result == 'true') {
+          this.deleteAccount()
+        }
+      })
+    }
 }

@@ -4,6 +4,7 @@ import { AccommodationService } from '../../../../services/accommodation/accommo
 import { Accommodation } from '../../../../models/accommodation/accommodation.model';
 import { CityService } from '../../../../services/city/city.service';
 import { FeatureService } from '../../../../services/feature/feature.service';
+import { AccommodationsFeaturesService } from '../../../../services/accommodations-features/accommodations-features.service';
 
 @Component({
   selector: 'app-accomomodation-add',
@@ -19,7 +20,8 @@ export class AccomomodationAddComponent implements OnInit {
     latitude: null,
 	  longitude: null,
     rating: null,
-    city: {}
+    city: {},
+    features: []
   };
 
   accommodation: Accommodation = {
@@ -47,6 +49,7 @@ export class AccomomodationAddComponent implements OnInit {
     private accommodationService: AccommodationService,
     private cityService: CityService,
     private featureService: FeatureService,
+    private accommodationsFeaturesService: AccommodationsFeaturesService,
     private route: ActivatedRoute
     ) { }
 
@@ -117,7 +120,7 @@ export class AccomomodationAddComponent implements OnInit {
     this.accommodation.latitude != undefined &&
 	  this.accommodation.longitude!= undefined  &&
     this.accommodation.rating != undefined &&
-    this.accommodation.city != undefined
+    this.accommodation.city!.id != undefined
     ) {
       this.saveAccommodation();
     }
@@ -129,13 +132,44 @@ export class AccomomodationAddComponent implements OnInit {
   saveAccommodation(): void {
 
     const data = {
-      name: this.accommodation.name
+      name: this.accommodation.name,
+      address: this.accommodation.address,
+      category: this.accommodation.category,
+      latitude: this.accommodation.latitude,
+      longitude: this.accommodation.longitude,
+      rating: this.accommodation.rating,
+      city:  this.accommodation.city
     }
+
+
+
      this.accommodationService.create(data)
      .subscribe(
        response => {
          //If the items is added successfully
         this.itemAdded= true; //it indicate it in the view with a popUp thanks to this var
+
+        for (let i = 0; i < this.form.features.length; i++) {  //create the relationship between the accommodation created and the features selected
+
+          let data2 = {
+            accommodation: {
+              id: response.id //id of the accommodation added
+            },
+            feature: {
+              id: this.form.features[i]  //get the current feature id of the loop
+            }
+          }
+
+
+          this.accommodationsFeaturesService.create(data2) //Adds the features to the accommodaton
+          .subscribe(response => {
+          },error => {
+            console.log(error);
+
+          })
+
+        }
+
 
         //Past 6 seconds the boolean is set to false therefore the item in the view disappear
          setTimeout(() =>
@@ -149,6 +183,7 @@ export class AccomomodationAddComponent implements OnInit {
          console.log(error);
        }
      )
+
   }
 
 }

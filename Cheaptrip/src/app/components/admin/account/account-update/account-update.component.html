@@ -48,7 +48,7 @@
       </div>
       <div class="col">
         <label for="ICAccountBirthDate" class="form-label">Fecha de Nacimiento</label>
-        <input type="date" class="form-control" id="ICAccountBirthDate" value="{{account.birth_date}}" [(ngModel)]="account.birth_date" required  #birth_date="ngModel" name="birth_date">
+        <input type="datetime" class="form-control" id="ICAccountBirthDate" value="{{account.birth_date}}" [(ngModel)]="account.birth_date" required  #birth_date="ngModel" name="birth_date">
         <div class="mt-2 alert alert-danger" role="alert" *ngIf="birth_date.errors && f.submitted">
           Se requiere fecha de nacimiento!
         </div>

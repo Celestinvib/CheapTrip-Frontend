@@ -1,16 +1,43 @@
 <div class="container-fluid">
-  <h1>Tus chollos reservados</h1>
-  <div class="row">
-    <div class="col-md p-3 min-vh-100">
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-        <app-bargain
-          class="col mt-4"
-          *ngFor="let booking of bookings"
-          [bargain]="booking.bargain"
-        ></app-bargain>
-      </div>
+    <h1>Tus chollos reservados</h1>
+    <div class="row">
+        <div class="col-md p-3 min-vh-100">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+                <div class="col mt-4" *ngFor="let booking of bookings">
+                  <div class="card">
+                    <div class="card__image-holder">
+                      <img class="card__image img-fluid" src="{{ booking.bargain.image }}" alt="" />
+                    </div>
+                    <div class="card-title">
+                      <div class="row">
+                        <div class="col-10">
+                          <h2 routerLink="/bargains/{{ booking.bargain.id }}">
+                            {{ booking.bargain.title }}
+                            <small>En {{ booking.bargain.accommodation?.name }} </small>
+                          </h2>
+                        </div>
+                        <div class="col">
+                          <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-outline-danger" >
+                              <i class="bi bi-bookmark-heart-fill"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <button
+                      type="button"
+                      class="btn btn-outline-dark"
+                      (click)="openDialog(booking.bargain.id)"
+                      >
+                      Cancelar Reserva
+                    </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 
