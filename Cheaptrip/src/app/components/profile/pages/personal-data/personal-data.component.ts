@@ -80,7 +80,7 @@ export class PersonalDataComponent implements OnInit {
       .subscribe(
         (result) => {
           this.tokenStorage.signOut();
-          this.router.navigate(['/login']);
+          this.router.navigate(['/goodbye']);
         },
         (error) => {
           console.log('Was impossible to delete the account');
