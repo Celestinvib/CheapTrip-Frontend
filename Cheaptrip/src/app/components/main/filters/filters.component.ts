@@ -82,10 +82,11 @@ export class FiltersComponent implements OnInit {
   }
 
   getBargainsMaxPrice() {
-    this.bargainService.getAllWithSelectedMaxPrice(this.maxPrice)
+    this.bargainService.getAllWithSelectedMaxPrice(this.priceRange)
       .subscribe(
           (result) => {
             this.priceBargains = result;
+            console.log(this.priceBargains);
           },
           (error) => {
             console.log('Was impossible to take maxPrice Bargain info');
@@ -165,7 +166,7 @@ export class FiltersComponent implements OnInit {
   }
 
   getBargainsWithAccommodation(accommodation: Accommodation){
-    let bargains:Accommodation[];
+    let bargains:Bargain[];
     this.bargainService.getAllWithAccommodation(accommodation.id)
     .subscribe(
       (result) => {
@@ -177,7 +178,7 @@ export class FiltersComponent implements OnInit {
     );
   }
 
-  getBargainsa(){
+  getBargainsToList(){
     let accmmList = Array.from(this.accommodations.values())
     for (let i = 0; i < accmmList.length; i++) {
       const element = accmmList[i];
@@ -189,11 +190,10 @@ export class FiltersComponent implements OnInit {
     this.priceRange = e.target.value;
   }
 
-  applyPrice(){
+  applyFilters(){
+    alert('Check log');
     this.getBargainsMaxPrice();
+    this.bargains = this.bargains.concat(this.priceBargains);
   }
 
-  applyFilters(){
-    alert('Borrando aplicación...');
-  }
 }

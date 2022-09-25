@@ -36,6 +36,7 @@ div.card {
   transition: all 0.3s 0s ease-in;
   border: 3px solid #d3c3c6;
   border-radius: 10px;
+  height: 100%;
 }
 
 .card__image {
@@ -143,4 +144,6 @@ h2 {
     color:white;
   }
 
-
+.timeNPrice{
+  font-size: 1rem;
+}
