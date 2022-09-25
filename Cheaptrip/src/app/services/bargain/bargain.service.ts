@@ -42,12 +42,26 @@ export class BargainService {
   }
 
 
-   /**
+  /**
+  * Get all the bargains with the selected city
+  */
+  getAllWithAccommodation(accommodation_id:number): Observable<Bargain[]> {
+    return this.http.get<Bargain[]>(`${baseUrl}/alojamiento/${accommodation_id}`);
+  }
+
+  /**
+  * Get all the bargains with the selected category
+  */
+   getAllWithCity(city_id:number): Observable<Bargain[]> {
+     return this.http.get<Bargain[]>(`${baseUrl}/ciudad/${city_id}`);
+   }
+
+  /**
   * Get all the bargains with the selected accommodation
   */
-    getAllWithAccommodation(accommodation_id:number): Observable<Bargain[]> {
-      return this.http.get<Bargain[]>(`${baseUrl}/alojamiento/${accommodation_id}`);
-    }
+    getAllWithCategory(category:string): Observable<Bargain[]> {
+     return this.http.get<Bargain[]>(`${baseUrl}/alojamientos/categoria/${category}`);
+  }
 
   /**
   * Get a bargain

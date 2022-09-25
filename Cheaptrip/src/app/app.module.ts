@@ -64,6 +64,7 @@ import { DialogBookmarkedComponent } from './components/dialogs/dialog-bookmarke
 import { DialogDeleteProfileComponent } from './components/dialogs/dialog-delete-profile/dialog-delete-profile.component';
 import { GoodByeComponent } from './components/access/good-bye/good-bye.component';
 import { ExpireSoonComponent } from './components/expire-soon/expire-soon.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 
 @NgModule({
   declarations: [
@@ -112,7 +113,10 @@ import { ExpireSoonComponent } from './components/expire-soon/expire-soon.compon
     DialogBookmarkedComponent,
     DialogDeleteProfileComponent,
     GoodByeComponent,
-    ExpireSoonComponent
+    ExpireSoonComponent,
+    FavoritesComponent
+
+
   ],
   imports: [
     BrowserModule,

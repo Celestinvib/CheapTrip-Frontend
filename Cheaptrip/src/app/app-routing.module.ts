@@ -40,6 +40,7 @@ import { AuthGuardService } from "./services/auth-guard/auth-guard.service";
 import { AdminAuthGuardService } from "./services/auth-guard/admin-auth-guard.service";
 import { GoodByeComponent } from '../app/components/access/good-bye/good-bye.component';
 import { ExpireSoonComponent } from './components/expire-soon/expire-soon.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 
 const routes: Routes = [
   {
@@ -183,6 +184,11 @@ const routes: Routes = [
   {
     path: 'bargains/all/expiring-soon',
     component: ExpireSoonComponent
+  },
+  {
+    path: 'bargains/all/favorites',
+    canActivate:[AuthGuardService],
+    component: FavoritesComponent
   },
   {
     path: 'profile',

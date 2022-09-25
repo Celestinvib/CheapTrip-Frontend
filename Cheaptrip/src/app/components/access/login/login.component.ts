@@ -21,6 +21,8 @@ export class LoginComponent implements OnInit {
   user = '';
   userRole = '';
 
+  accountBanned = false;
+
   constructor(private authService: AuthService,
     private tokenStorage: TokenStorageService,
     private accountService: AccountService,
@@ -58,9 +60,10 @@ export class LoginComponent implements OnInit {
                   //Indicates that the account has been succesfully log in
                   this.isLoginFailed = false;
                   this.isLoggedIn = true;
-
+                  this.accountBanned = false;
                   this.reloadPage();
                 }else {
+                  this.accountBanned = true;
                   this.tokenStorage.signOut();
                 }
 
