@@ -23,9 +23,11 @@ export class FiltersComponent implements OnInit {
 
   priceRange = 500;
 
+  accommodations: Map<number, Accommodation[]> = new Map;
   priceBargains: Bargain[] = [];
   featuresMap: Map<number, Accommodation[]> = new Map;
   citiesMap: Map<number, Accommodation[]> = new Map;
+  categoriesMap: Map<string, Accommodation[]> = new Map;
   bargainsMap: Map<number, Bargain[]> = new Map;
 
 
@@ -121,9 +123,66 @@ export class FiltersComponent implements OnInit {
         this.featuresMap.set(feature.id, accommodations);
       },
       (error) => {
+        console.log('Was impossible to take Feature info');
+      }
+    );
+  }
+
+  //Asigns a list of accommodations to a category
+  getAccomomdationsWithCategory(category: string){
+    let accommodations:Accommodation[];
+    this.accommodationsService.getAllWithThisCategory(category)
+    .subscribe(
+      (result) => {
+        accommodations = result;
+
+        //saves accommodation list in a map
+        this.categoriesMap.set(category, accommodations);
+      },
+      (error) => {
         console.log('Was impossible to take city info');
       }
     );
+  }
+
+  //Creates an array for every available filter
+  createAccommodationMaps(){
+    let accmList: Map<number, Accommodation[]> = new Map;
+    for (let i = 0; i < this.features.length; i++) {
+      this.getAccomomdationsWithFeature(this.features[i]);
+    }
+
+    for (let i = 0; i < this.cities.length; i++) {
+      this.getAccomomdationsWithCity(this.cities[i]);
+    }
+
+    //categories added manually
+      this.getAccomomdationsWithCategory('Hostal o apartamento');
+      this.getAccomomdationsWithCategory('Hotel 2');
+      this.getAccomomdationsWithCategory('Hotel 3');
+      this.getAccomomdationsWithCategory('Hotel 4');
+      this.getAccomomdationsWithCategory('Hotel 5');
+  }
+
+  getBargainsWithAccommodation(accommodation: Accommodation){
+    let bargains:Accommodation[];
+    this.bargainService.getAllWithAccommodation(accommodation.id)
+    .subscribe(
+      (result) => {
+        bargains = result;
+      },
+      (error) => {
+        console.log('Was impossible to take city info');
+      }
+    );
+  }
+
+  getBargainsa(){
+    let accmmList = Array.from(this.accommodations.values())
+    for (let i = 0; i < accmmList.length; i++) {
+      const element = accmmList[i];
+
+    }
   }
 
   priceChanged(e:any) {

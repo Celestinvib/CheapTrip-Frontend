@@ -153,10 +153,18 @@ export class BargainAddComponent implements OnInit {
           outbound_flight: this.form.outbound_flight,
           accommodation: this.form.accommodation
         }
+      }else { //If the return flight and the outbound flight is set
+        data = {
+          title: this.form.title,
+          image: this.form.image,
+          price: this.form.price,
+          description: this.form.description,
+          expiration_date: this.form.expiration_date,
+          accommodation: this.form.accommodation,
+          outbound_flight: this.form.outbound_flight,
+          return_flight: this.form.return_flight,
+        }
       }
-
-      console.log(data);
-
 
       this.bargainService.create(data)
        .subscribe(

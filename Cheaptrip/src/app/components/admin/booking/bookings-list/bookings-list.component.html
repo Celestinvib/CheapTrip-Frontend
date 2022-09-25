@@ -37,8 +37,8 @@
           <tbody>
               <tr *ngFor="let booking of bookings | paginate: {itemsPerPage: ItemsViewed,currentPage: pageActual}; let i = index" >
                   <th scope="row">{{booking.id}}</th>
-                  <td>{{booking.account.email}}</td>
-                  <td>{{booking.bargain.title}}</td>
+                  <td>{{booking.account?.email}}</td>
+                  <td>{{booking.bargain?.title}}</td>
                   <td>
                       <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="MaybeDeleteThisBooking(booking.id)">
                           <i class="bi bi-trash"></i>

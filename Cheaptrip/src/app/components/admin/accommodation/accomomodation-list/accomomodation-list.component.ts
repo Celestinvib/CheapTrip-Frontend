@@ -138,12 +138,4 @@ export class AccomomodationListComponent implements OnInit {
   reloadPage(): void {
     window.location.reload();
   }
-
-  /**
-  * Change the items viewed on the list (5,10 or 20)
-  */
-  changeItemsViewed(items:number): void {
-    this.ItemsViewed = items;
-  }
-
 }
