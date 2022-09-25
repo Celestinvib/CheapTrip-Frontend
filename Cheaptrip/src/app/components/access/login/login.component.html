@@ -40,6 +40,9 @@
                 <div class="mt-2 alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
                   Error de inicio de sesion...
                 </div>
+                <div class="alert alert-danger" role="alert" *ngIf="accountBanned">
+                  Esta cuenta está suspendida
+                </div>
                 <div class="alert alert-danger" role="alert" *ngIf="email.errors && f.submitted">
                   Revisa el email.
                 </div>
