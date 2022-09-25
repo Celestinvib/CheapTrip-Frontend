@@ -74,7 +74,12 @@
         aria-labelledby="headingThree"
         data-bs-parent="#accordionInfo"
       >
-      <strong>Este alojamiento tiene: </strong>
+      <div class="row">
+        <strong class="ms-4">Este alojamiento tiene: </strong>
+        <div class="d-inline ms-3">
+          <span class="badge text-bg-light ms-2"  *ngFor="let feature of features ; let i = index">{{feature.feature.name}}</span>
+        </div>
+      </div>
         <div class="accordion-body">
           <iframe
             width="300"
