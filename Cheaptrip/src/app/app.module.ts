@@ -29,7 +29,6 @@ import { TermsAndConditionsComponent } from './components/politycs/terms-and-con
 import { BargainComponent } from './components/bargains/bargain/bargain.component';
 import { BargainInformationComponent } from './components/bargains/bargain-information/bargain-information.component';
 import { BargainAccordionComponent } from './components/bargains/bargain-accordion/bargain-accordion.component';
-import { BargainCountdownComponent } from './components/bargains/bargain-countdown/bargain-countdown.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProfileNavBarComponent } from './components/page-bars/profile-nav-bar/profile-nav-bar.component';
 import { BargainsBookedComponent } from './components/profile/pages/bargains-booked/bargains-booked.component';
@@ -81,7 +80,6 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
     BargainComponent,
     BargainInformationComponent,
     BargainAccordionComponent,
-    BargainCountdownComponent,
     ProfileComponent,
     ProfileNavBarComponent,
     BargainsBookedComponent,

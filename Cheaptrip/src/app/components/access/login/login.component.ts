@@ -45,16 +45,28 @@ export class LoginComponent implements OnInit {
             this.tokenStorage.saveToken(JSON.stringify(data['token']).replace(/['"]+/g, '')); //Save a new token in the session storage
             this.tokenStorage.saveUser((this.form.email));//Save the email of the account as the 'user'
 
-            //Indicates that the account has been succesfully log in
-            this.isLoginFailed = false;
-            this.isLoggedIn = true;
-
             this.accountService.getAccountRole().subscribe( //Get the roles of the current account
-              result => {
-                this.tokenStorage.saveRole(result.roles); //Saves them/it in the token
-                this.reloadPage();
+            result => {
+              this.tokenStorage.saveRole(result.roles); //Saves them/it in the token
+            }
+          );
+
+            this.accountService.getAccountEmail(email).subscribe(
+              account => {
+                if(account.status == 1) { //If the account is active
+
+                  //Indicates that the account has been succesfully log in
+                  this.isLoginFailed = false;
+                  this.isLoggedIn = true;
+
+                  this.reloadPage();
+                }else {
+                  this.tokenStorage.signOut();
+                }
+
               }
-            );
+            )
+
           },
           err => {
             console.log('error')

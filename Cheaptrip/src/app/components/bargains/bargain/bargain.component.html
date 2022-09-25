@@ -4,10 +4,14 @@
   </div>
   <div class="group-label d-flex popover-left popover-no-arrow pointer m-3">
     <div class="hovered-dropdown dropdown dropdown-default">
-  <div>
-  <i class="bi bi-clock-history"></i> Expira el: {{bargain.expiration_date}}
-  </div>
-  </div>
+      <div>
+        <i class="bi bi-clock-history"></i> Expira el:
+        {{ bargain.expiration_date }} &nbsp;&nbsp;&nbsp;
+        <span class="badge rounded-pill text-bg-danger">
+          Este Chollo cuesta solo {{ bargain.price }} €</span
+        >
+      </div>
+    </div>
   </div>
   <div class="card-title">
     <div class="row">
@@ -20,5 +24,3 @@
     </div>
   </div>
 </div>
-
-

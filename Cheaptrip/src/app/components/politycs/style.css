@@ -101,3 +101,11 @@ h3 {
 :root {
   --spacer: 30px;
 }
+
+ul {
+  margin-right: 50px;
+}
+
+br {
+  margin-top: -40px;
+}
