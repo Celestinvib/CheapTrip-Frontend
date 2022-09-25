@@ -21,3 +21,7 @@
 .accordion-item {
   border-radius: 1px;
 }
+
+.accordion-collapse {
+  color: white;
+}

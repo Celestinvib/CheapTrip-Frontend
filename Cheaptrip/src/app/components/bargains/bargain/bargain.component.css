@@ -58,8 +58,6 @@ div.card div.card-title {
   z-index: 0;
 }
 
-
-
 div.card div.card-title h2 {
   font-size: 24px;
   font-weight: 700;
@@ -138,3 +136,11 @@ div.card.show div.flap2 {
 h2 {
   cursor: pointer;
 }
+
+
+  .badge {
+    font-size: 15px;
+    color:white;
+  }
+
+
