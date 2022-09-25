@@ -28,7 +28,7 @@ export class MainComponent implements OnInit {
   filteredBargainsPrice: Bargain[] = [];
   filteredBargainsCategory: Bargain[] = [];
   isEmpty:boolean = false;
-  citySelected: any = 1;
+  citySelected: any = 0;
   categorySelected: any = "";
 
   priceRange = 500;
@@ -62,7 +62,6 @@ export class MainComponent implements OnInit {
       .subscribe(
         (result) => {
           this.cities = result;
-          this.citySelected = this.cities[1].id;
         },
         (error) => {
           console.log('Was impossible to take cities info');
@@ -82,7 +81,22 @@ export class MainComponent implements OnInit {
 
             this.filteredBargains = this.filteredBargainsPrice;
             //next filter
-            this.getBargainsCity();
+            console.log(this.citySelected + ' city selected')
+            if (this.citySelected != 0) {
+              this.getBargainsCity();
+            }else{
+              console.log(this.categorySelected)
+              if (this.categorySelected != "") {
+                this.getBargainsCategory();
+              }else{
+                this.bargains = this.filteredBargains;
+                if(this.bargains.length === 0){
+                  this.isEmpty=true;
+                }else{
+                  this.isEmpty=false;
+                }
+              }
+            }
           },
           (error) => {
             console.log('Was impossible to take maxPrice Bargain info');
@@ -96,7 +110,9 @@ export class MainComponent implements OnInit {
             this.filteredBargainsCity = result;
             if(this.filteredBargainsCity.length != 0){
               this.filteredBargains = this.filteredBargains.filter(o1 => this.filteredBargainsCity.some(o2 => o1.id === o2.id));
-
+              this.isEmpty=false;
+            }else{
+              this.filteredBargains = [];
             }
             //next filter
             if (this.categorySelected != "") {
@@ -117,12 +133,17 @@ export class MainComponent implements OnInit {
         );
   }
   getBargainsCategory() {
+    console.log(this.categorySelected)
     this.bargainService.getAllWithCategory(this.categorySelected)
       .subscribe(
           (result) => {
             this.filteredBargainsCategory= result;
+            console.log(this.filteredBargainsCategory)
             if(this.filteredBargainsCategory.length != 0){
               this.filteredBargains = this.filteredBargains.filter(o1 => this.filteredBargainsCategory.some(o2 => o1.id === o2.id));
+              this.isEmpty=false;
+            }else{
+              this.filteredBargains = [];
             }
             //Result of the filter
             this.bargains = this.filteredBargains;
@@ -155,5 +176,12 @@ export class MainComponent implements OnInit {
   categorySelectedChange(e: any){
     this.categorySelected = e.target.value;
     console.log(this.categorySelected)
+  }
+
+  reloadPage(): void {
+    this.citySelected=0;
+    this.categorySelected="";
+    this.getBargains();
+    //window.location.reload();
   }
 }

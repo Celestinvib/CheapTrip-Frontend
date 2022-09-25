@@ -10,38 +10,6 @@
   <ul
     class="nav nav-pills nav-flush flex-lg-column flex-row flex-nowrap mb-auto mx-auto text-start align-items-start"
   >
-  <!--
-    <li class="nav-item d-grid">
-      <button
-        class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-        data-bs-toggle="collapse"
-        data-bs-target="#theme-collapse"
-        aria-expanded="false"
-      >
-        <i class="bi bi-tags fs-1"></i
-        ><span class="ms-1 d-none d-lg-inline">Temáticos</span>
-      </button>
-
-      <div class="collapse" id="theme-collapse">
-        <ul
-          class="btn-toggle-nav list-unstyled fw-normal pb-1 small text-start"
-        >
-          <li class="form-check" *ngFor="let feature of features">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="flexCheckDefault"
-            />
-            <label class="form-check-label" for="flexCheckDefault">
-              {{ feature.name }}
-            </label>
-          </li>
-        </ul>
-      </div>
-
-    </li>
-    -->
     <li>
       <button
         class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
@@ -87,11 +55,11 @@
         <ul
           class="btn-toggle-nav list-unstyled fw-normal pb-1 small text-start"
         >
-          <li class="form-radio">
+          <li class="form-check">
             <input
               class="form-radio-input"
               type="radio"
-              value="Hotel 5"
+              value="Hotel5"
               id="flexRadioDefault"
               name="category"
               (change)="categorySelectedChange($event)"
@@ -106,7 +74,7 @@
             <input
               class="form-radio-input"
               type="radio"
-              value="Hotel 4"
+              value="Hotel4"
               id="flexRadioDefault"
               name="category"
               (change)="categorySelectedChange($event)"
@@ -120,7 +88,7 @@
             <input
               class="form-radio-input"
               type="radio"
-              value="Hotel 3"
+              value="Hotel3"
               id="flexRadioDefault"
               name="category"
               (change)="categorySelectedChange($event)"
@@ -134,7 +102,7 @@
             <input
               class="form-radio-input"
               type="radio"
-              value="Hotel 2"
+              value="Hotel2"
               id="flexRadioDefault"
               name="category"
               (change)="categorySelectedChange($event)"
@@ -182,18 +150,27 @@
         />
       </div>
     </li>
-    <li>
+    <li class="button-filter">
       <button
-        class="btn btn-toggle d-inline-flex align-items-center rounded border-0 btn-primary"
+        class="btn btn-toggle d-inline-flex align-items-center rounded border-0 btn-primary button-filter"
         (click)="applyFilters()"
       >
-      <i class="bi bi-search fs-3"></i><span class="ms-1 d-none d-lg-inline">Aplicar</span>
+       <i class="bi bi-search fs-3"></i><span class="ms-1 d-none d-lg-inline">Aplicar</span>
+      </button>
+    </li>
+    <li class="button-filter">
+      <button
+        class="btn btn-toggle d-inline-flex align-items-center rounded border-0 btn-danger button-filter"
+        (click)="reloadPage()"
+      >
+      <i class="bi bi-x-circle fs-3"></i><span class="ms-1 d-none d-lg-inline">Quitar Filtros</span>
+      <span class="ms-1 d-none d-lg-inline">Quitar Filtros</span>
       </button>
     </li>
   </ul>
 </div>
     </div>
-    <h1 *ngIf="isEmpty" class="text-center mt-4">No se encotraron chollos</h1>
+    <h1 *ngIf="isEmpty" class="text-center">No se encotraron chollos</h1>
     <div class="col-md p-3 min-vh-100">
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
         <app-bargain
