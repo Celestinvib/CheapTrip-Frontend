@@ -113,7 +113,6 @@ export class BargainInformationComponent implements OnInit {
       this.bargainsAccountsService.createBooking(data)
       .subscribe(
         (result) => {
-          console.log('Reservado: '+ result);
         },
         (error) => {
           console.log('Was impossible to book the bargain');
@@ -134,7 +133,6 @@ export class BargainInformationComponent implements OnInit {
       this.bargainsAccountsService.createBookmarked(data)
       .subscribe(
         (result) => {
-          console.log('Favorito: '+ result);
           this.reloadPage();
         },
         (error) => {
@@ -219,6 +217,49 @@ export class BargainInformationComponent implements OnInit {
           if(!bookedOrBookmarked) {
             this.book();
             this.isBooked = true;
+          }
+      },
+      (error) => {
+        console.log('There has been an error');
+      }
+    );
+  }
+
+
+  /**
+  * Bookmark and unbookmark a bargain
+  */
+  bookmarkAndUnbookmark() {
+
+    let bookingsAndBookmarks:BargainsAccounts[];
+
+    let bookedOrBookmarked = false;
+
+    this.bargainsAccountsService.getBookmarkedsAccount(this.accountId)
+    .subscribe(
+      (result) => {
+          bookingsAndBookmarks = result;
+          for (let i = 0; i < bookingsAndBookmarks.length; i++) {
+            if(bookingsAndBookmarks[i].bargain?.id == this.bargain.id){ //If the bargain id has been found that means that a booking or bookmarked has been done with this bargain and this account
+
+              bookedOrBookmarked = true;
+
+              this.bargainsAccountsService.updateBookmarkedStatus(bookingsAndBookmarks[i].id,bookingsAndBookmarks[i]) //Books or unbooks the bargain for the account
+                .subscribe(
+                (result) => {
+                  if(result[i]?.bookmarked == 1) {
+                    this.isBookmarked = true;
+                  }else {
+                    this.isBookmarked = false;
+                  }
+                }
+                )
+            }
+          }
+
+          if(!bookedOrBookmarked) {
+            this.bookmark();
+            this.isBookmarked = true;
           }
       },
       (error) => {

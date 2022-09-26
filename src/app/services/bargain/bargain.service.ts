@@ -27,10 +27,40 @@ export class BargainService {
     }
 
   /**
+  * Get all the bargains that expires soon
+  */
+    getExpiringSoon(): Observable<Bargain[]> {
+      return this.http.get<Bargain[]>(baseUrl+'/expiran-pronto');
+    }
+
+
+  /**
   * Get all the bargains with the selected max price
   */
   getAllWithSelectedMaxPrice(maxPrice:number): Observable<Bargain[]> {
     return this.http.get<Bargain[]>(`${baseUrl}/maxprecio/${maxPrice}`);
+  }
+
+
+  /**
+  * Get all the bargains with the selected city
+  */
+  getAllWithAccommodation(accommodation_id:number): Observable<Bargain[]> {
+    return this.http.get<Bargain[]>(`${baseUrl}/alojamiento/${accommodation_id}`);
+  }
+
+  /**
+  * Get all the bargains with the selected category
+  */
+   getAllWithCity(city_id:number): Observable<Bargain[]> {
+     return this.http.get<Bargain[]>(`${baseUrl}/ciudad/${city_id}`);
+   }
+
+  /**
+  * Get all the bargains with the selected accommodation
+  */
+    getAllWithCategory(category:string): Observable<Bargain[]> {
+     return this.http.get<Bargain[]>(`${baseUrl}/alojamientos/categoria/${category}`);
   }
 
   /**

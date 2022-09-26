@@ -25,7 +25,7 @@
       </div>
       <div class="col-12">
         <label for="ICBargainDescription" class="form-label">Descripción</label>
-                <input type="text" class="form-control" id="ICBargainDescription" value="{{bargain.description}}" required [(ngModel)]="bargain.description" name="description" required #description="ngModel">
+        <input type="text" class="form-control" id="ICBargainDescription" value="{{bargain.description}}" required [(ngModel)]="bargain.description" name="description" required #description="ngModel">
         <div class="mt-2 alert alert-danger" role="alert" *ngIf="description.errors && f.submitted">
           Se requiere de una descripción!
         </div>
@@ -39,7 +39,7 @@
       </div>
       <div class="col-6">
         <label for="ICBargainExpirationDate" class="form-label">Fecha de expiración</label>
-        <input type="datetime-local" class="form-control" id="ICBargainExpirationDate" value="{{bargain.expiration_date}}" required [(ngModel)]="bargain.expiration_date" name="expiration_date" required #expiration_date="ngModel">
+        <input type="date" class="form-control" id="ICBargainExpirationDate" value="{{bargain.expiration_date}}" required [(ngModel)]="bargain.expiration_date" name="expiration_date" required #expiration_date="ngModel">
         <div class="mt-2 alert alert-danger" role="alert" *ngIf="expiration_date.errors && f.submitted">
           Se requiere de una fecha de expiración!
         </div>
@@ -54,17 +54,17 @@
         </div>
       </div>
       <div class="col">
-        <label for="ICBargainOutboundFlight" class="form-label">VueloIda</label>
+        <label for="ICBargainOutboundFlight" class="form-label">Vuelo de Ida</label>
         <select class="form-select" id="ICBargainOutboundFlight" [(ngModel)]="bargain.outbound_flight!.id"   #outbound_flight="ngModel" name="outbound_flight">
-            <option>Ninguno</option>
+          <option value="undefined">Ninguno</option>
             <option  *ngFor="let flight of flights"  value="{{flight.id}}" [selected]="bargain.outbound_flight?.id == flight.id">{{flight.id}}</option>
         </select>
       </div>
       <div class="col">
-        <label for="ICBargainReturnFlight" class="form-label">VueloDestino</label>
+        <label for="ICBargainReturnFlight" class="form-label">Vuelo de Vuelta</label>
         <select class="form-select" id="ICBargainReturnFlight" [(ngModel)]="bargain.return_flight!.id"   #return_flight="ngModel" name="return_flight">
-          <option>Ninguno</option>
-          <option  *ngFor="let flight of flights"  value="{{flight.id}}" [selected]="bargain.outbound_flight?.id == flight.id">{{flight.id}}</option>
+          <option value="undefined">Ninguno</option>
+          <option  *ngFor="let flight of flights"  value="{{flight.id}}" [selected]="bargain.return_flight?.id == flight.id">{{flight.id}}</option>
       </select>
       </div>
       <div class="row mt-4">

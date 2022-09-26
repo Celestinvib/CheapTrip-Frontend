@@ -20,6 +20,10 @@ export class AccommodationsFeaturesService {
     return this.http.get(`https://pcn-cheaptrip-api.herokuapp.com/rasgos-alojamiento/${idAlojamiento}`)
   }
 
+  getAccommodationsFeature(idFeature:number): Observable<AccommodationsFeatures[]>  {
+    return this.http.get<AccommodationsFeatures[]>(`https://pcn-cheaptrip-api.herokuapp.com/rasgo-alojamientos/${idFeature}`)
+  }
+
   get(id:number): Observable<AccommodationsFeatures>  {
     return this.http.get(`${baseUrl}/${id}`)
   }

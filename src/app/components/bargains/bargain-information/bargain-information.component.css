@@ -7,6 +7,14 @@
   margin-bottom: 5vh;
 }
 
-span {
-  font-size: 20px;
+.summary-name-container {
+  font-size: 17px;
+}
+
+.summary-address {
+  font-size: 17px;
+}
+
+.rating-value, .rating-text {
+  font-size: 17px;
 }

@@ -21,9 +21,9 @@ export class BargainAddComponent implements OnInit {
     price: undefined,
     description: undefined,
     expiration_date: undefined,
-    outbound_flight: Flight,
-    return_flight: Flight,
-    accommodation: Accommodation
+    outbound_flight: {},
+    return_flight: {},
+    accommodation: {}
     };
 
   bargain: Bargain = {  }
@@ -80,12 +80,9 @@ export class BargainAddComponent implements OnInit {
       this.form.price != undefined &&
       this.form.description != undefined &&
       this.form.expiration_date != undefined &&
-      this.form.accommodation != undefined
+      this.form.accommodation.id != undefined
      ) {
-        console.log(this.form.accommodation)
-        console.log(this.form.outbound_flight)
-        console.log(this.form.return_flight)
-      //this.saveBargain();
+      this.saveBargain();
       }
     }
 
@@ -126,16 +123,49 @@ export class BargainAddComponent implements OnInit {
     */
     saveBargain(): void {
 
-      const data = {
-        title: this.form.title,
-        image: this.form.image,
-        price: this.form.price,
-        description: this.form.description,
-        expiration_date: this.form.expiration_date,
-        outbound_flight: this.form.outbound_flight,
-        return_flight: this.form.return_flight,
-        accommodation: this.form.accommodation
+      let data = null;
+      if(this.form.outbound_flight.id == undefined && this.form.return_flight.id == undefined) {
+        data = {
+          title: this.form.title,
+          image: this.form.image,
+          price: this.form.price,
+          description: this.form.description,
+          expiration_date: this.form.expiration_date,
+          accommodation: this.form.accommodation
+        }
+      }else if (this.form.outbound_flight.id == undefined && this.form.return_flight.id != undefined) {
+        data = {
+          title: this.form.title,
+          image: this.form.image,
+          price: this.form.price,
+          description: this.form.description,
+          expiration_date: this.form.expiration_date,
+          return_flight: this.form.return_flight,
+          accommodation: this.form.accommodation
+        }
+      }else if (this.form.outbound_flight.id != undefined && this.form.return_flight.id == undefined) {
+        data = {
+          title: this.form.title,
+          image: this.form.image,
+          price: this.form.price,
+          description: this.form.description,
+          expiration_date: this.form.expiration_date,
+          outbound_flight: this.form.outbound_flight,
+          accommodation: this.form.accommodation
+        }
+      }else { //If the return flight and the outbound flight is set
+        data = {
+          title: this.form.title,
+          image: this.form.image,
+          price: this.form.price,
+          description: this.form.description,
+          expiration_date: this.form.expiration_date,
+          accommodation: this.form.accommodation,
+          outbound_flight: this.form.outbound_flight,
+          return_flight: this.form.return_flight,
+        }
       }
+
       this.bargainService.create(data)
        .subscribe(
          response => {
@@ -154,6 +184,8 @@ export class BargainAddComponent implements OnInit {
            console.log(error);
          }
        )
+
     }
+
 
 }

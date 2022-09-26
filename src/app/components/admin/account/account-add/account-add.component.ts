@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {  ActivatedRoute } from '@angular/router';
 import { AccountService } from '../../../../services/account/account.service';
 import { Account } from '../../../../models/account/account.model';
-
+import { AuthService } from '../../../../services/security/auth.service';
 
 @Component({
   selector: 'app-account-add',
@@ -12,6 +12,7 @@ import { Account } from '../../../../models/account/account.model';
 export class AccountAddComponent implements OnInit {
 
   form: any = {
+    account: 'user',
     name:'',
     surnames:'',
     email:'',
@@ -39,6 +40,7 @@ export class AccountAddComponent implements OnInit {
 
   constructor(
     private accountService: AccountService,
+    private authService: AuthService,
     private route: ActivatedRoute
   ) { }
 
@@ -95,6 +97,8 @@ export class AccountAddComponent implements OnInit {
         birth_date:  this.account.birth_date
       }
 
+      if(this.form.account == 'admin')
+      {
        this.accountService.createAdmin(data)
        .subscribe(
          response => {
@@ -112,6 +116,25 @@ export class AccountAddComponent implements OnInit {
            console.log(error);
          }
        )
+      }else {
+        this.authService.register(this.account.name!, this.account.surnames!, this.account.email!, this.account.password!, this.account.phone_number!, this.account.birth_date!)
+        .subscribe(
+          response => {
+            //If the items is added successfully
+           this.itemAdded= true; //it indicate it in the view with a popUp thanks to this var
+
+           //Past 6 seconds the boolean is set to false therefore the item in the view disappear
+            setTimeout(() =>
+            {
+              this.itemAdded= false;
+            },
+            6000);
+          },
+          error => {
+            console.log(error);
+          }
+        )
+      }
     }
 
 }

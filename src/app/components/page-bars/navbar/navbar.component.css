@@ -42,3 +42,7 @@ button {
 #btn-menu {
   color: white;
 }
+
+.dropdown-menu{
+  z-index: 1300;
+}

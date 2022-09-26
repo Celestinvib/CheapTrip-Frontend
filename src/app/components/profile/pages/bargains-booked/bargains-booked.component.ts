@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BargainsAccountsService } from 'src/app/services/bargains-accounts/bargains-accounts.service';
 import { TokenStorageService } from 'src/app/services/security/token-storage.service';
 import { AccountService } from 'src/app/services/account/account.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogBookedComponent } from '../../../dialogs/dialog-booked/dialog-booked.component';
 
 @Component({
   selector: 'app-bargains-booked',
@@ -14,10 +16,13 @@ export class BargainsBookedComponent implements OnInit {
 
   accountId = 0;
 
+  idBookingMaybeUnbook = 0;
+
   constructor(
     private bargainsAccountsService: BargainsAccountsService,
     private tokenStorage: TokenStorageService,
-    private accountService: AccountService
+    private accountService: AccountService,
+    public dialog: MatDialog
     ) { }
 
   ngOnInit(): void {
@@ -42,9 +47,12 @@ export class BargainsBookedComponent implements OnInit {
       )
   }
 
+  setBookingIdThatMaybeisUnbook(id:any){
+    this.idBookingMaybeUnbook = id;
+  }
+
   /**
   * Unbook a bargain
-  * @param bargainId id of the bargain that will be unbooked
   */
   unbook(bargainId:any) {
     this.bargainsAccountsService.getBookingsAccount(this.accountId)
@@ -66,6 +74,18 @@ export class BargainsBookedComponent implements OnInit {
         console.log('There has been an error unbooking this bargain');
       }
     );
+  }
+
+  openDialog(bargainId:any) {
+    let dialogRef = this.dialog.open(DialogBookedComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result == 'true') {
+        this.unbook(bargainId)
+      }
+    })
+
+
   }
 
 }

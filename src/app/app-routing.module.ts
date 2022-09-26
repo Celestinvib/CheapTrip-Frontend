@@ -36,6 +36,12 @@ import { BargainAddComponent } from './components/admin/bargain/bargain-add/barg
 import { BookingsListComponent } from './components/admin/booking/bookings-list/bookings-list.component'
 import { BookingsAddComponent } from './components/admin/booking/bookings-add/bookings-add.component';
 
+import { AuthGuardService } from "./services/auth-guard/auth-guard.service";
+import { AdminAuthGuardService } from "./services/auth-guard/admin-auth-guard.service";
+import { GoodByeComponent } from '../app/components/access/good-bye/good-bye.component';
+import { ExpireSoonComponent } from './components/expire-soon/expire-soon.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
+
 const routes: Routes = [
   {
     path:'',
@@ -44,86 +50,107 @@ const routes: Routes = [
   },
   {
     path:'site-admin/cities',
+    canActivate:[AdminAuthGuardService],
     component: CitiesListComponent
   },
   {
     path:'site-admin/cities/add',
+    canActivate:[AdminAuthGuardService],
     component: CityAddComponent
   },
   {
     path:'site-admin/cities/update/:id',
+    canActivate:[AdminAuthGuardService],
     component: CityUpdateComponent
   },
   {
     path:'site-admin/features',
+    canActivate:[AdminAuthGuardService],
     component: FeaturesListComponent
   },
   {
     path:'site-admin/features/add',
+    canActivate:[AdminAuthGuardService],
     component: FeatureAddComponent
   },
   {
     path:'site-admin/features/update/:id',
+    canActivate:[AdminAuthGuardService],
     component: FeatureUpdateComponent
   },
   {
     path:'site-admin/accommodations',
+    canActivate:[AdminAuthGuardService],
     component: AccomomodationListComponent
   },
   {
     path:'site-admin/accommodations/add',
+    canActivate:[AdminAuthGuardService],
     component: AccomomodationAddComponent
   },
   {
     path:'site-admin/accommodations/update/:id',
+    canActivate:[AdminAuthGuardService],
     component: AccomomodationUpdateComponent
   },
   {
     path:'site-admin/flights',
+    canActivate:[AdminAuthGuardService],
     component: FlightListComponent
   },
   {
     path:'site-admin/flights/add',
+    canActivate:[AdminAuthGuardService],
     component: FlightAddComponent
   },
   {
     path:'site-admin/flights/update/:id',
+    canActivate:[AdminAuthGuardService],
     component: FlightUpdateComponent
   },
   {
     path:'site-admin/accounts',
+    canActivate:[AdminAuthGuardService],
     component: AccountsListComponent
   },
   {
     path:'site-admin/accounts/add',
+    canActivate:[AdminAuthGuardService],
     component: AccountAddComponent
   },
   {
     path:'site-admin/accounts/update/:id',
+    canActivate:[AdminAuthGuardService],
     component: AccountUpdateComponent
   },
   {
     path:'site-admin/bargains',
+    canActivate:[AdminAuthGuardService],
     component: BargainsListComponent
   },
   {
     path:'site-admin/bargains/add',
+    canActivate:[AdminAuthGuardService],
     component: BargainAddComponent
   },
   {
     path:'site-admin/bargains/update/:id',
+    canActivate:[AdminAuthGuardService],
     component:  BargainsUpdateComponent
   },
   {
     path:'site-admin/bookings',
+    canActivate:[AdminAuthGuardService],
     component: BookingsListComponent
   },
   {
     path:'site-admin/bookings/add',
+    canActivate:[AdminAuthGuardService],
     component: BookingsAddComponent
   },
   {
     path:'site-admin/home',
+    canActivate:[AdminAuthGuardService],
     component: HomeComponent
   },
   {
@@ -155,8 +182,22 @@ const routes: Routes = [
     component: MainComponent
   },
   {
+    path: 'bargains/all/expiring-soon',
+    component: ExpireSoonComponent
+  },
+  {
+    path: 'bargains/all/favorites',
+    canActivate:[AuthGuardService],
+    component: FavoritesComponent
+  },
+  {
     path: 'profile',
+    canActivate:[AuthGuardService],
     loadChildren: () => import('./components/page-bars/profile-nav-bar/profile-nav-bar.routing.module').then( m => ProfileModule )
+  },
+  {
+    path: 'goodbye',
+    component: GoodByeComponent
   }
 
 

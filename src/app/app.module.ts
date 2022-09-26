@@ -29,7 +29,6 @@ import { TermsAndConditionsComponent } from './components/politycs/terms-and-con
 import { BargainComponent } from './components/bargains/bargain/bargain.component';
 import { BargainInformationComponent } from './components/bargains/bargain-information/bargain-information.component';
 import { BargainAccordionComponent } from './components/bargains/bargain-accordion/bargain-accordion.component';
-import { BargainCountdownComponent } from './components/bargains/bargain-countdown/bargain-countdown.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProfileNavBarComponent } from './components/page-bars/profile-nav-bar/profile-nav-bar.component';
 import { BargainsBookedComponent } from './components/profile/pages/bargains-booked/bargains-booked.component';
@@ -59,6 +58,13 @@ import { BargainAddComponent } from './components/admin/bargain/bargain-add/barg
 import { BargainsUpdateComponent } from './components/admin/bargain/bargains-update/bargains-update.component';
 import { BookingsListComponent } from './components/admin/booking/bookings-list/bookings-list.component';
 import { BookingsAddComponent } from './components/admin/booking/bookings-add/bookings-add.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogBookedComponent } from './components/dialogs/dialog-booked/dialog-booked.component';
+import { DialogBookmarkedComponent } from './components/dialogs/dialog-bookmarked/dialog-bookmarked.component';
+import { DialogDeleteProfileComponent } from './components/dialogs/dialog-delete-profile/dialog-delete-profile.component';
+import { GoodByeComponent } from './components/access/good-bye/good-bye.component';
+import { ExpireSoonComponent } from './components/expire-soon/expire-soon.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +80,6 @@ import { BookingsAddComponent } from './components/admin/booking/bookings-add/bo
     BargainComponent,
     BargainInformationComponent,
     BargainAccordionComponent,
-    BargainCountdownComponent,
     ProfileComponent,
     ProfileNavBarComponent,
     BargainsBookedComponent,
@@ -103,7 +108,14 @@ import { BookingsAddComponent } from './components/admin/booking/bookings-add/bo
     BargainAddComponent,
     BargainsUpdateComponent,
     BookingsListComponent,
-    BookingsAddComponent
+    BookingsAddComponent,
+    DialogBookedComponent,
+    DialogBookmarkedComponent,
+    DialogDeleteProfileComponent,
+    GoodByeComponent,
+    ExpireSoonComponent,
+    FavoritesComponent
+
 
   ],
   imports: [
@@ -119,10 +131,13 @@ import { BookingsAddComponent } from './components/admin/booking/bookings-add/bo
     MatDividerModule,
     HttpClientModule,
     MatExpansionModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatDialogModule
 
   ],
   providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
+
 })
 export class AppModule { }
