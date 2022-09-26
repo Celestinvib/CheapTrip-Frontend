@@ -8,9 +8,7 @@ import { Feature } from "../../models/feature/feature.model";
 import { BargainService } from '../../services/bargain/bargain.service';
 import { Bargain } from '../../models/bargain/bargain.model';
 import { AccommodationsFeaturesService } from '../../services/accommodations-features/accommodations-features.service';
-import { AccommodationsFeatures } from 'src/app/models/accommodations-features/accommodations-features.model';
 import { AccommodationService } from 'src/app/services/accommodation/accommodation.service';
-import { Accommodation } from 'src/app/models/accommodation/accommodation.model';
 
 @Component({
   selector: 'app-main',
@@ -81,11 +79,9 @@ export class MainComponent implements OnInit {
 
             this.filteredBargains = this.filteredBargainsPrice;
             //next filter
-            console.log(this.citySelected + ' city selected')
             if (this.citySelected != 0) {
               this.getBargainsCity();
             }else{
-              console.log(this.categorySelected)
               if (this.categorySelected != "") {
                 this.getBargainsCategory();
               }else{
@@ -133,12 +129,10 @@ export class MainComponent implements OnInit {
         );
   }
   getBargainsCategory() {
-    console.log(this.categorySelected)
     this.bargainService.getAllWithCategory(this.categorySelected)
       .subscribe(
           (result) => {
             this.filteredBargainsCategory= result;
-            console.log(this.filteredBargainsCategory)
             if(this.filteredBargainsCategory.length != 0){
               this.filteredBargains = this.filteredBargains.filter(o1 => this.filteredBargainsCategory.some(o2 => o1.id === o2.id));
               this.isEmpty=false;
@@ -175,13 +169,11 @@ export class MainComponent implements OnInit {
 
   categorySelectedChange(e: any){
     this.categorySelected = e.target.value;
-    console.log(this.categorySelected)
   }
 
   reloadPage(): void {
     this.citySelected=0;
     this.categorySelected="";
     this.getBargains();
-    //window.location.reload();
   }
 }

@@ -133,7 +133,6 @@ export class BargainInformationComponent implements OnInit {
       this.bargainsAccountsService.createBookmarked(data)
       .subscribe(
         (result) => {
-          this.reloadPage();
         },
         (error) => {
           console.log('Was impossible to book the bargain');
