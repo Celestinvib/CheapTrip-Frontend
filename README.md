@@ -42,7 +42,8 @@ Built with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1 
 
 
 ## 🚀 ¿Want to check the app? (deploy):
- ·CheapTrip: https://deploy.d3w3e4fbeadyvx.amplifyapp.com/bargains
+ ·CheapTrip: https://deploy.d3w3e4fbeadyvx.amplifyapp.com/bargains <br><br>
+ ·User/Admin demo vídeo: https://www.youtube.com/watch?v=P0SC2Od9ZFs
  
 ## 💻 Repo Backend:
 
